@@ -74,7 +74,7 @@
 <text x="56" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="600" letter-spacing="3" fill="#6366f1" opacity="0.9">WORDPRESS PLUGIN</text>
 
 <!-- Main title -->
-<text x="54" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="40" font-weight="800" fill="url(#title)" letter-spacing="-1">Email Spam Shield</text>
+<text x="54" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="40" font-weight="800" fill="url(#title)" letter-spacing="-1">Spamify</text>
 
 <!-- Tagline -->
 <text x="55" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="16" font-weight="400" fill="#94a3b8">Intelligent email protection — 6 layers, zero cloud dependency</text>

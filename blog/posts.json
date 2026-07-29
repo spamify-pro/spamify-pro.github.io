@@ -1,0 +1,398 @@
+[
+  {
+    "slug": "block-vs-flag-choosing-the-right-action",
+    "title": "Block or Flag? Choosing the Right Action for Each Defense",
+    "category": "setup-tuning",
+    "date": "2026-07-28",
+    "readingTime": 6,
+    "excerpt": "Almost every Spamify layer lets you choose between blocking a submission and flagging it for review. Here’s a framework for deciding which action fits which signal.",
+    "tags": [
+      "block_action",
+      "actions",
+      "strategy"
+    ],
+    "emoji": "🚦",
+    "grad": "#f59e0b,#ef4444"
+  },
+  {
+    "slug": "wpforms-jetpack-elementor-integrations",
+    "title": "WPForms, Jetpack, and Elementor: One Engine for Every Form Builder",
+    "category": "integrations",
+    "date": "2026-07-27",
+    "readingTime": 5,
+    "excerpt": "You shouldn’t need a different anti-spam plugin for each form builder. Spamify protects WPForms, Jetpack Forms, and Elementor Forms with the same engine and the same settings.",
+    "tags": [
+      "wpforms",
+      "jetpack",
+      "elementor",
+      "integrations"
+    ],
+    "emoji": "🧩",
+    "grad": "#8b5cf6,#ec4899"
+  },
+  {
+    "slug": "real-time-inline-email-validation",
+    "title": "Real-Time Inline Validation: Catching Typos as Users Type",
+    "category": "email-validation",
+    "date": "2026-07-26",
+    "readingTime": 6,
+    "excerpt": "Blocking bad emails after submission is good; catching a real customer’s typo before they submit is better. Spamify’s real-time mode does exactly that — here’s how realtime_mode and realtime_debounce work.",
+    "tags": [
+      "realtime",
+      "realtime_mode",
+      "realtime_debounce",
+      "ux"
+    ],
+    "emoji": "⌨️",
+    "grad": "#0ea5e9,#3b82f6"
+  },
+  {
+    "slug": "contact-form-7-spam-protection",
+    "title": "Contact Form 7 Spam Protection with Spamify",
+    "category": "integrations",
+    "date": "2026-07-24",
+    "readingTime": 5,
+    "excerpt": "Contact Form 7 is powerful but ships with almost no spam defense. Here’s how Spamify layers validation and bot protection onto every CF7 form automatically.",
+    "tags": [
+      "contact-form-7",
+      "cf7",
+      "integrations"
+    ],
+    "emoji": "📮",
+    "grad": "#3b82f6,#6366f1"
+  },
+  {
+    "slug": "protecting-wordpress-core-forms",
+    "title": "Protecting WordPress Core Forms: Registration, Comments, and More",
+    "category": "integrations",
+    "date": "2026-07-22",
+    "readingTime": 6,
+    "excerpt": "Before any form plugin, WordPress itself ships forms that spammers love. Spamify protects registration, comments, profile updates, lost-password, and multisite signup out of the box.",
+    "tags": [
+      "wordpress-core",
+      "registration",
+      "comments",
+      "integrations"
+    ],
+    "emoji": "🧱",
+    "grad": "#6366f1,#8b5cf6"
+  },
+  {
+    "slug": "site-health-checks-keeping-everything-green",
+    "title": "Site Health Checks: Keeping DNS, Port 25, and Logging Green",
+    "category": "setup-tuning",
+    "date": "2026-07-19",
+    "readingTime": 5,
+    "excerpt": "Spamify plugs into WordPress Site Health so you can confirm at a glance that its moving parts are working. Here’s what each check means and how to fix a red one.",
+    "tags": [
+      "site-health",
+      "port-25",
+      "dns",
+      "diagnostics"
+    ],
+    "emoji": "🩺",
+    "grad": "#10b981,#6366f1"
+  },
+  {
+    "slug": "email-deliverability-spf-dkim-dmarc",
+    "title": "Email Deliverability 101: SPF, DKIM & DMARC Explained",
+    "category": "email-validation",
+    "date": "2026-07-16",
+    "readingTime": 10,
+    "excerpt": "Stop your WordPress emails landing in spam. A plain-English guide to the three DNS records that prove your mail is legit.",
+    "tags": [
+      "deliverability",
+      "spf",
+      "dkim",
+      "dmarc"
+    ],
+    "emoji": "✉️",
+    "grad": "#4f46e5,#0ea5e9"
+  },
+  {
+    "slug": "why-self-contained-beats-cloud-spam-filters",
+    "title": "Privacy-First Anti-Spam: Why Self-Contained Beats Cloud Filters",
+    "category": "privacy-gdpr",
+    "date": "2026-07-16",
+    "readingTime": 7,
+    "excerpt": "Most anti-spam services work by shipping every submission to their servers. Spamify runs entirely on yours. Here’s why that architectural choice matters for privacy, compliance, and trust.",
+    "tags": [
+      "privacy",
+      "self-contained",
+      "gdpr",
+      "architecture"
+    ],
+    "emoji": "🏠",
+    "grad": "#4f46e5,#0ea5e9"
+  },
+  {
+    "slug": "woocommerce-spam-fake-orders-signups",
+    "title": "Fighting WooCommerce Fake Orders & Spam Signups",
+    "category": "integrations",
+    "date": "2026-07-14",
+    "readingTime": 7,
+    "excerpt": "Card-testing bots, fake accounts and junk orders cost real money. Here’s how to lock down WooCommerce checkout and registration.",
+    "tags": [
+      "woocommerce",
+      "fraud"
+    ],
+    "emoji": "🛒",
+    "grad": "#10b981,#3b82f6"
+  },
+  {
+    "slug": "gdpr-logging-retention-and-anonymisation",
+    "title": "GDPR-Friendly Logging: Retention Windows and IP Anonymisation",
+    "category": "privacy-gdpr",
+    "date": "2026-07-13",
+    "readingTime": 6,
+    "excerpt": "Anti-spam plugins log submissions by nature — which means they hold personal data. Spamify’s retention window and IP anonymisation keep that logging on the right side of GDPR.",
+    "tags": [
+      "gdpr",
+      "log_retention_days",
+      "privacy",
+      "ip-anonymisation"
+    ],
+    "emoji": "🔒",
+    "grad": "#10b981,#3b82f6"
+  },
+  {
+    "slug": "reading-the-spamify-dashboard",
+    "title": "Reading the Dashboard: Blocked, Flagged, and Allowed",
+    "category": "setup-tuning",
+    "date": "2026-07-10",
+    "readingTime": 6,
+    "excerpt": "Spamify’s dashboard and logs turn raw form traffic into a picture you can act on. Here’s how to read the three buckets and use them to tune your settings.",
+    "tags": [
+      "dashboard",
+      "logs",
+      "tuning"
+    ],
+    "emoji": "📊",
+    "grad": "#6366f1,#0ea5e9"
+  },
+  {
+    "slug": "honeypot-vs-captcha-bot-protection",
+    "title": "Honeypot vs CAPTCHA: Which Actually Stops Bots?",
+    "category": "bot-protection",
+    "date": "2026-07-08",
+    "readingTime": 7,
+    "excerpt": "The trade-offs between honeypots, timing traps and modern invisible CAPTCHA — and why the best answer is usually “both”.",
+    "tags": [
+      "honeypot",
+      "captcha",
+      "bots"
+    ],
+    "emoji": "🤖",
+    "grad": "#0ea5e9,#6366f1"
+  },
+  {
+    "slug": "the-one-minute-setup-wizard",
+    "title": "The One-Minute Setup Wizard, Walked Through",
+    "category": "setup-tuning",
+    "date": "2026-07-07",
+    "readingTime": 5,
+    "excerpt": "Spamify’s first-run wizard gets your forms protected in about a minute. Here’s what each step configures and the choices worth pausing on.",
+    "tags": [
+      "setup",
+      "wizard",
+      "onboarding"
+    ],
+    "emoji": "🧭",
+    "grad": "#3b82f6,#8b5cf6"
+  },
+  {
+    "slug": "tuning-the-scoring-engine-weights",
+    "title": "Tuning the Scoring Engine: Weighting Each Layer",
+    "category": "setup-tuning",
+    "date": "2026-07-03",
+    "readingTime": 6,
+    "excerpt": "Not every spam signal deserves the same weight. Spamify’s per-layer weights let you decide how much a failed syntax check, a dead mailbox, or a content flag contributes to the final score.",
+    "tags": [
+      "weights",
+      "scoring",
+      "engine"
+    ],
+    "emoji": "⚖️",
+    "grad": "#8b5cf6,#6366f1"
+  },
+  {
+    "slug": "wordpress-comment-spam-prevention-guide",
+    "title": "The Complete Guide to Stopping WordPress Comment Spam",
+    "category": "guides",
+    "date": "2026-07-01",
+    "readingTime": 9,
+    "excerpt": "From Akismet to honeypots and rate limiting — a layered playbook for keeping your comment section clean and human.",
+    "tags": [
+      "comments",
+      "guide"
+    ],
+    "emoji": "💬",
+    "grad": "#8b5cf6,#ec4899"
+  },
+  {
+    "slug": "setting-flag-and-block-thresholds",
+    "title": "How to Set Your Flag and Block Thresholds",
+    "category": "setup-tuning",
+    "date": "2026-06-30",
+    "readingTime": 7,
+    "excerpt": "Spamify scores every submission, and two thresholds turn that score into a decision. Get flag_threshold and block_threshold right and you catch spam without ever losing a real message.",
+    "tags": [
+      "thresholds",
+      "flag_threshold",
+      "block_threshold",
+      "scoring"
+    ],
+    "emoji": "🎚️",
+    "grad": "#6366f1,#8b5cf6"
+  },
+  {
+    "slug": "building-a-trusted-allowlist",
+    "title": "Building an Allowlist for Trusted Domains, Emails, and IP Ranges",
+    "category": "setup-tuning",
+    "date": "2026-06-26",
+    "readingTime": 6,
+    "excerpt": "The allowlist is your override switch — it lets known-good senders straight through, no matter what the score says. Learn how to safely allow domains, exact addresses, and IP/CIDR ranges.",
+    "tags": [
+      "allowlist",
+      "rules",
+      "cidr"
+    ],
+    "emoji": "✅",
+    "grad": "#10b981,#0ea5e9"
+  },
+  {
+    "slug": "block-disposable-temporary-email-addresses",
+    "title": "How to Block Disposable & Temporary Email Addresses",
+    "category": "email-validation",
+    "date": "2026-06-24",
+    "readingTime": 6,
+    "excerpt": "Why throwaway inboxes wreck your list and conversions — and how to detect and block 100k+ disposable domains the right way.",
+    "tags": [
+      "disposable",
+      "email-validation"
+    ],
+    "emoji": "🗑️",
+    "grad": "#3b82f6,#6366f1"
+  },
+  {
+    "slug": "invisible-captcha-turnstile-recaptcha",
+    "title": "Invisible CAPTCHA with Turnstile or reCAPTCHA v3 — Bring Your Own Keys",
+    "category": "bot-protection",
+    "date": "2026-06-23",
+    "readingTime": 7,
+    "excerpt": "When honeypot and rate limiting aren’t enough, Spamify adds invisible CAPTCHA using your own free provider keys. Here’s how captcha_provider and captcha_action work, and why it stays off until you opt in.",
+    "tags": [
+      "captcha",
+      "turnstile",
+      "recaptcha",
+      "captcha_provider"
+    ],
+    "emoji": "🤖",
+    "grad": "#0ea5e9,#6366f1"
+  },
+  {
+    "slug": "rate-limiting-by-ip",
+    "title": "Rate Limiting: Throttling Repeat Submitters by IP",
+    "category": "bot-protection",
+    "date": "2026-06-19",
+    "readingTime": 6,
+    "excerpt": "When one source hammers your form, rate limiting caps them without touching everyone else. Learn how ratelimit_max, ratelimit_window, and ratelimit_action work together.",
+    "tags": [
+      "rate-limiting",
+      "ratelimit_max",
+      "ratelimit_window"
+    ],
+    "emoji": "⏱️",
+    "grad": "#10b981,#3b82f6"
+  },
+  {
+    "slug": "stopping-bots-honeypot-and-timing",
+    "title": "Stopping Bots with the Honeypot and Minimum Fill Time",
+    "category": "bot-protection",
+    "date": "2026-06-16",
+    "readingTime": 6,
+    "excerpt": "The two cheapest, most private anti-bot defenses Spamify offers never bother a real visitor. Here’s how the honeypot decoy field and the honeypot_min_seconds timing check work together.",
+    "tags": [
+      "honeypot",
+      "timing",
+      "honeypot_min_seconds"
+    ],
+    "emoji": "🍯",
+    "grad": "#f59e0b,#ef4444"
+  },
+  {
+    "slug": "how-to-stop-contact-form-spam-wordpress",
+    "title": "How to Stop Contact Form Spam in WordPress (2026 Guide)",
+    "category": "guides",
+    "date": "2026-06-12",
+    "readingTime": 8,
+    "excerpt": "Seven layers that kill form spam — honeypots, rate limits, live email checks and invisible CAPTCHA — without adding friction for real visitors.",
+    "tags": [
+      "contact-form",
+      "guide",
+      "layers"
+    ],
+    "emoji": "🛡️",
+    "grad": "#6366f1,#8b5cf6"
+  },
+  {
+    "slug": "why-submissions-are-unverifiable",
+    "title": "Why Some Submissions Come Back “Unverifiable” (and What To Do)",
+    "category": "email-validation",
+    "date": "2026-06-12",
+    "readingTime": 5,
+    "excerpt": "An unverifiable result doesn’t mean an address is bad — it means the mail server wouldn’t give a straight answer. Here’s why it happens and how Spamify’s unverifiable-action setting keeps real customers from being blocked.",
+    "tags": [
+      "smtp",
+      "unverifiable",
+      "deliverability"
+    ],
+    "emoji": "❓",
+    "grad": "#8b5cf6,#ec4899"
+  },
+  {
+    "slug": "enabling-smtp-verification-safely",
+    "title": "Enabling SMTP Mailbox Verification Safely",
+    "category": "email-validation",
+    "date": "2026-06-09",
+    "readingTime": 7,
+    "excerpt": "SMTP verification is Spamify’s most powerful email check — and the one that reaches outside your server. Here’s how to turn it on without blocking real customers, using the port-25 probe, timeout, and unverifiable-action settings.",
+    "tags": [
+      "smtp",
+      "port-25",
+      "smtp_timeout"
+    ],
+    "emoji": "📡",
+    "grad": "#0ea5e9,#6366f1"
+  },
+  {
+    "slug": "syntax-vs-smtp-what-each-catches",
+    "title": "Syntax vs. SMTP Verification: What Each Layer Actually Catches",
+    "category": "email-validation",
+    "date": "2026-06-05",
+    "readingTime": 7,
+    "excerpt": "Spamify has two email-validation layers. One is always on and free; the other is optional and reaches out to the mail server. Knowing what each catches helps you decide when to enable the second.",
+    "tags": [
+      "syntax",
+      "smtp",
+      "detection-layers"
+    ],
+    "emoji": "✉️",
+    "grad": "#3b82f6,#6366f1"
+  },
+  {
+    "slug": "what-form-spam-costs-your-wordpress-site",
+    "title": "What Form Spam Actually Costs Your WordPress Site",
+    "category": "email-validation",
+    "date": "2026-06-02",
+    "readingTime": 6,
+    "excerpt": "Fake signups and junk contact-form entries do more than clutter your inbox — they poison your data, waste your team’s time, and can hurt deliverability. Here’s the real bill.",
+    "tags": [
+      "spam",
+      "deliverability",
+      "overview"
+    ],
+    "emoji": "💸",
+    "grad": "#6366f1,#8b5cf6"
+  }
+]

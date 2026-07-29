@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Real-Time Inline Validation: Catching Typos as Users Type — Spamify</title>
+    <meta name="description" content="Blocking bad emails after submission is good; catching a real customer’s typo before they submit is better. Spamify’s real-time mode does exactly that — here’s how realtime_mode and realtime_debounce work.">
+    <meta name="keywords" content="realtime, realtime_mode, realtime_debounce, ux">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamify-pro.github.io/blog/real-time-inline-email-validation.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Spamify">
+    <meta property="og:title" content="Real-Time Inline Validation: Catching Typos as Users Type">
+    <meta property="og:description" content="Blocking bad emails after submission is good; catching a real customer’s typo before they submit is better. Spamify’s real-time mode does exactly that — here’s how realtime_mode and realtime_debounce work.">
+    <meta property="og:url" content="https://spamify-pro.github.io/blog/real-time-inline-email-validation.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Real-Time Inline Validation: Catching Typos as Users Type",
+            "description": "Blocking bad emails after submission is good; catching a real customer’s typo before they submit is better. Spamify’s real-time mode does exactly that — here’s how realtime_mode and realtime_debounce work.",
+            "datePublished": "2026-07-26",
+            "articleSection": "Email Validation",
+            "keywords": "realtime, realtime_mode, realtime_debounce, ux",
+            "author": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "publisher": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "mainEntityOfPage": "https://spamify-pro.github.io/blog/real-time-inline-email-validation.html"
+    }
+    </script>
+</head>
+
+<body>
+
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="../index.html" aria-label="Spamify home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Spamify</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#engine">Engine</a>
+                <a href="../index.html#integrations">Integrations</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="../index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="article">
+            <div class="wrap wrap--narrow">
+                <nav class="crumb"><a href="index.html">Blog</a><span>/</span>Email Validation</nav>
+                <header class="posthead">
+                    <span class="eyebrow">Email Validation</span>
+                    <h1>Real-Time Inline Validation: Catching Typos as Users Type</h1>
+                    <p class="posthead__sub">Blocking bad emails after submission is good; catching a real customer’s typo before they submit is better. Spamify’s real-time mode does exactly that — here’s how realtime_mode and realtime_debounce work.</p>
+                    <div class="postmeta"><span><b>Spamify</b></span><span>Updated Jul 26, 2026</span><span>6 min read</span></div>
+                </header>
+
+                <div class="prose">
+                    <p>Most of Spamify’s job is defensive — scoring submissions and blocking the bad ones. But one feature is about <em>helping</em> your real visitors: real-time inline validation, which checks an email address as the user types and warns them before they submit a mistake.</p>
+                    <h2>The problem it solves</h2>
+                    <p>A genuine customer types <code>jane@gmial.com</code>, submits, and leaves happy — but you can never reach them, and your site racks up a hard bounce. Post-submission validation can flag it, but the customer is already gone. Catching the typo <em>in the field</em>, while they’re still there, is the only fix that recovers the customer.</p>
+                    <h2>How realtime_mode works</h2>
+                    <p>The <code>realtime_mode</code> setting turns on live validation of the email field. As the visitor finishes typing an address, Spamify checks it and can surface a gentle inline hint if it looks wrong — a malformed structure, or (if you’ve enabled it) a mailbox that doesn’t verify. The visitor gets a chance to fix it before hitting submit.</p>
+                    <h2>Why realtime_debounce matters</h2>
+                    <p>You don’t want to validate on every keystroke — that would be noisy and wasteful. The <code>realtime_debounce</code> setting defines how long to wait after the user <em>stops</em> typing before running the check. A well-chosen debounce (a few hundred milliseconds) means the check fires once, when the address looks complete, rather than firing repeatedly mid-type.</p>
+                    <ul>
+                    <li><strong>Too short</strong> and you validate half-typed addresses, showing false warnings.</li>
+                    <li><strong>Too long</strong> and the feedback feels laggy.</li>
+                    </ul>
+                    <h2>Real-time vs. server-side scoring</h2>
+                    <p>Real-time validation is a UX layer, not a security layer — a bot ignores inline hints. So it complements, never replaces, your server-side <a href="setting-flag-and-block-thresholds.html">scoring and thresholds</a>. Think of it this way: real-time mode helps honest people avoid mistakes, while the <a href="stopping-bots-honeypot-and-timing.html">honeypot</a>, <a href="rate-limiting-by-ip.html">rate limiting</a>, and scoring stop the bad actors. Both matter.</p>
+
+                    <div class="postcta">
+                        <h3>Stop spam at the source with Spamify</h3>
+                        <p>Self-contained email validation and bot protection for WordPress — syntax checks, honeypot, rate limiting and optional SMTP verification, all on your own server.</p>
+                        <a class="btn btn--light btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get the free plugin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap wrap--narrow morereads">
+                <h2>Keep reading</h2>
+                <div class="postgrid">
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="email-deliverability-spf-dkim-dmarc.html" style="background:linear-gradient(135deg,#4f46e5,#0ea5e9)" aria-hidden="true">✉️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="email-deliverability-spf-dkim-dmarc.html">Email Deliverability 101: SPF, DKIM &amp; DMARC Explained</a></h2>
+                            <div class="postcard__meta"><span>10 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="block-disposable-temporary-email-addresses.html" style="background:linear-gradient(135deg,#3b82f6,#6366f1)" aria-hidden="true">🗑️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="block-disposable-temporary-email-addresses.html">How to Block Disposable &amp; Temporary Email Addresses</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="why-submissions-are-unverifiable.html" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)" aria-hidden="true">❓</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="why-submissions-are-unverifiable.html">Why Some Submissions Come Back “Unverifiable” (and What To Do)</a></h2>
+                            <div class="postcard__meta"><span>5 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Spamify</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="../index.html#features">Features</a><a href="../index.html#engine">Engine</a><a href="../index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>

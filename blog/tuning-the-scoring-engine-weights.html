@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tuning the Scoring Engine: Weighting Each Layer — Spamify</title>
+    <meta name="description" content="Not every spam signal deserves the same weight. Spamify’s per-layer weights let you decide how much a failed syntax check, a dead mailbox, or a content flag contributes to the final score.">
+    <meta name="keywords" content="weights, scoring, engine">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamify-pro.github.io/blog/tuning-the-scoring-engine-weights.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Spamify">
+    <meta property="og:title" content="Tuning the Scoring Engine: Weighting Each Layer">
+    <meta property="og:description" content="Not every spam signal deserves the same weight. Spamify’s per-layer weights let you decide how much a failed syntax check, a dead mailbox, or a content flag contributes to the final score.">
+    <meta property="og:url" content="https://spamify-pro.github.io/blog/tuning-the-scoring-engine-weights.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Tuning the Scoring Engine: Weighting Each Layer",
+            "description": "Not every spam signal deserves the same weight. Spamify’s per-layer weights let you decide how much a failed syntax check, a dead mailbox, or a content flag contributes to the final score.",
+            "datePublished": "2026-07-03",
+            "articleSection": "Setup & Tuning",
+            "keywords": "weights, scoring, engine",
+            "author": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "publisher": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "mainEntityOfPage": "https://spamify-pro.github.io/blog/tuning-the-scoring-engine-weights.html"
+    }
+    </script>
+</head>
+
+<body>
+
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="../index.html" aria-label="Spamify home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Spamify</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#engine">Engine</a>
+                <a href="../index.html#integrations">Integrations</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="../index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="article">
+            <div class="wrap wrap--narrow">
+                <nav class="crumb"><a href="index.html">Blog</a><span>/</span>Setup & Tuning</nav>
+                <header class="posthead">
+                    <span class="eyebrow">Setup & Tuning</span>
+                    <h1>Tuning the Scoring Engine: Weighting Each Layer</h1>
+                    <p class="posthead__sub">Not every spam signal deserves the same weight. Spamify’s per-layer weights let you decide how much a failed syntax check, a dead mailbox, or a content flag contributes to the final score.</p>
+                    <div class="postmeta"><span><b>Spamify</b></span><span>Updated Jul 3, 2026</span><span>6 min read</span></div>
+                </header>
+
+                <div class="prose">
+                    <p>Spamify’s decision is only as good as the score behind it — and the score is a weighted sum of what each layer found. The <code>weights</code> setting lets you decide how much each signal matters, so the final number reflects <em>your</em> risk tolerance.</p>
+                    <h2>Why weighting matters</h2>
+                    <p>Consider two submissions:</p>
+                    <ul>
+                    <li>One from an address whose domain has no mail server at all — a near-certain dead end.</li>
+                    <li>One that merely came in a little faster than your timing threshold — suspicious, but not proof.</li>
+                    </ul>
+                    <p>These shouldn’t contribute equally to the score. Weighting lets the high-confidence signal push hard toward blocking while the soft signal only nudges the submission toward review.</p>
+                    <h2>How weights feed the thresholds</h2>
+                    <p>Each layer produces a result; its weight scales that result’s contribution to the total. The total is then compared against your <a href="setting-flag-and-block-thresholds.html">flag and block thresholds</a>. So weights and thresholds are two halves of one dial:</p>
+                    <ul>
+                    <li><strong>Weights</strong> shape <em>how</em> the score is built from signals.</li>
+                    <li><strong>Thresholds</strong> decide <em>what</em> the finished score triggers.</li>
+                    </ul>
+                    <h2>A sensible weighting strategy</h2>
+                    <ol>
+                    <li><strong>Give high confidence to definitive signals</strong> — a confirmed-dead mailbox or a resolutely invalid domain.</li>
+                    <li><strong>Give moderate weight to structural signals</strong> — syntax problems that strongly suggest fakery.</li>
+                    <li><strong>Give low weight to soft heuristics</strong> — a marginally fast fill time, a borderline content flag governed by <code>content_block_threshold</code>.</li>
+                    </ol>
+                    <p>Change one weight at a time, then watch the <a href="reading-the-spamify-dashboard.html">dashboard</a> to see how the distribution of blocked vs. flagged shifts before adjusting the next. Small, observed changes beat a big guess.</p>
+
+                    <div class="postcta">
+                        <h3>Stop spam at the source with Spamify</h3>
+                        <p>Self-contained email validation and bot protection for WordPress — syntax checks, honeypot, rate limiting and optional SMTP verification, all on your own server.</p>
+                        <a class="btn btn--light btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get the free plugin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap wrap--narrow morereads">
+                <h2>Keep reading</h2>
+                <div class="postgrid">
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="block-vs-flag-choosing-the-right-action.html" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" aria-hidden="true">🚦</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Setup & Tuning</span>
+                            <h2><a href="block-vs-flag-choosing-the-right-action.html">Block or Flag? Choosing the Right Action for Each Defense</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="site-health-checks-keeping-everything-green.html" style="background:linear-gradient(135deg,#10b981,#6366f1)" aria-hidden="true">🩺</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Setup & Tuning</span>
+                            <h2><a href="site-health-checks-keeping-everything-green.html">Site Health Checks: Keeping DNS, Port 25, and Logging Green</a></h2>
+                            <div class="postcard__meta"><span>5 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="reading-the-spamify-dashboard.html" style="background:linear-gradient(135deg,#6366f1,#0ea5e9)" aria-hidden="true">📊</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Setup & Tuning</span>
+                            <h2><a href="reading-the-spamify-dashboard.html">Reading the Dashboard: Blocked, Flagged, and Allowed</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Spamify</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="../index.html#features">Features</a><a href="../index.html#engine">Engine</a><a href="../index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>

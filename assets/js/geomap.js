@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Elastic Spam Shield — "where spam comes from" map
+   Spamify — "where spam comes from" map
    The world map itself is a plain <img src="assets/world.svg"> (an
    equirectangular map derived from Natural Earth 110m) so it loads even
    when the page is opened directly from disk (file://) — unlike fetch(),

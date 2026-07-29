@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Why Some Submissions Come Back “Unverifiable” (and What To Do) — Spamify</title>
+    <meta name="description" content="An unverifiable result doesn’t mean an address is bad — it means the mail server wouldn’t give a straight answer. Here’s why it happens and how Spamify’s unverifiable-action setting keeps real customers from being blocked.">
+    <meta name="keywords" content="smtp, unverifiable, deliverability">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamify-pro.github.io/blog/why-submissions-are-unverifiable.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Spamify">
+    <meta property="og:title" content="Why Some Submissions Come Back “Unverifiable” (and What To Do)">
+    <meta property="og:description" content="An unverifiable result doesn’t mean an address is bad — it means the mail server wouldn’t give a straight answer. Here’s why it happens and how Spamify’s unverifiable-action setting keeps real customers from being blocked.">
+    <meta property="og:url" content="https://spamify-pro.github.io/blog/why-submissions-are-unverifiable.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Why Some Submissions Come Back “Unverifiable” (and What To Do)",
+            "description": "An unverifiable result doesn’t mean an address is bad — it means the mail server wouldn’t give a straight answer. Here’s why it happens and how Spamify’s unverifiable-action setting keeps real customers from being blocked.",
+            "datePublished": "2026-06-12",
+            "articleSection": "Email Validation",
+            "keywords": "smtp, unverifiable, deliverability",
+            "author": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "publisher": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "mainEntityOfPage": "https://spamify-pro.github.io/blog/why-submissions-are-unverifiable.html"
+    }
+    </script>
+</head>
+
+<body>
+
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="../index.html" aria-label="Spamify home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Spamify</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#engine">Engine</a>
+                <a href="../index.html#integrations">Integrations</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="../index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="article">
+            <div class="wrap wrap--narrow">
+                <nav class="crumb"><a href="index.html">Blog</a><span>/</span>Email Validation</nav>
+                <header class="posthead">
+                    <span class="eyebrow">Email Validation</span>
+                    <h1>Why Some Submissions Come Back “Unverifiable” (and What To Do)</h1>
+                    <p class="posthead__sub">An unverifiable result doesn’t mean an address is bad — it means the mail server wouldn’t give a straight answer. Here’s why it happens and how Spamify’s unverifiable-action setting keeps real customers from being blocked.</p>
+                    <div class="postmeta"><span><b>Spamify</b></span><span>Updated Jun 12, 2026</span><span>5 min read</span></div>
+                </header>
+
+                <div class="prose">
+                    <p>Turn on SMTP verification and you’ll soon see a status that surprises people: <strong>unverifiable</strong>. It’s not a failure — it’s an honest "we couldn’t get a definitive yes or no." Understanding why keeps you from blocking real customers.</p>
+                    <h2>The common causes</h2>
+                    <ul>
+                    <li><strong>Blocked outbound port 25.</strong> If your host blocks port 25, Spamify can’t reach mail servers at all. The <a href="enabling-smtp-verification-safely.html">port-25 probe</a> will tell you if this is the cause.</li>
+                    <li><strong>Greylisting.</strong> Many servers deliberately give a temporary "try again later" to unknown senders. That’s a non-answer, not a rejection.</li>
+                    <li><strong>Catch-all domains.</strong> Some domains accept mail for <em>any</em> address, so the server can’t say a specific mailbox doesn’t exist.</li>
+                    <li><strong>Timeouts.</strong> A slow server that doesn’t answer within your <code>smtp_timeout</code> window.</li>
+                    </ul>
+                    <h2>The key setting: smtp_unverifiable_action</h2>
+                    <p>Because unverifiable is ambiguous, Spamify lets you decide its fate with <code>smtp_unverifiable_action</code>:</p>
+                    <ul>
+                    <li><strong>Flag for review</strong> (default, recommended) — the submission goes through but is marked so you can eyeball it. No real customer is ever turned away.</li>
+                    <li><strong>Block</strong> — only sensible if you’ve confirmed clean port-25 connectivity and prefer to err strict.</li>
+                    </ul>
+                    <p>For most sites, flag-for-review is the right call: you still get syntax validation, honeypot, timing, and rate limiting doing their jobs, and the genuinely-dead addresses are caught by the <code>hard_block_smtp</code> rule regardless. Watch your <a href="reading-the-spamify-dashboard.html">dashboard</a> for a week and only tighten if you see abuse slipping through the flagged bucket.</p>
+
+                    <div class="postcta">
+                        <h3>Stop spam at the source with Spamify</h3>
+                        <p>Self-contained email validation and bot protection for WordPress — syntax checks, honeypot, rate limiting and optional SMTP verification, all on your own server.</p>
+                        <a class="btn btn--light btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get the free plugin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap wrap--narrow morereads">
+                <h2>Keep reading</h2>
+                <div class="postgrid">
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="real-time-inline-email-validation.html" style="background:linear-gradient(135deg,#0ea5e9,#3b82f6)" aria-hidden="true">⌨️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="real-time-inline-email-validation.html">Real-Time Inline Validation: Catching Typos as Users Type</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="email-deliverability-spf-dkim-dmarc.html" style="background:linear-gradient(135deg,#4f46e5,#0ea5e9)" aria-hidden="true">✉️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="email-deliverability-spf-dkim-dmarc.html">Email Deliverability 101: SPF, DKIM &amp; DMARC Explained</a></h2>
+                            <div class="postcard__meta"><span>10 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="block-disposable-temporary-email-addresses.html" style="background:linear-gradient(135deg,#3b82f6,#6366f1)" aria-hidden="true">🗑️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="block-disposable-temporary-email-addresses.html">How to Block Disposable &amp; Temporary Email Addresses</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Spamify</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="../index.html#features">Features</a><a href="../index.html#engine">Engine</a><a href="../index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>

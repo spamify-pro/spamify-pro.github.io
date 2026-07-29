@@ -1,4 +1,4 @@
-/* Elastic Spam Shield — marketing site motion + interactions */
+/* Spamify — marketing site motion + interactions */
 (function() {
     'use strict';
 

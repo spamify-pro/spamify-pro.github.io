@@ -1,4 +1,4 @@
-# robots.txt — Elastic Spam Shield
+# robots.txt — Spamify
 # Search engines and AI crawlers are welcome. See /llms.txt for an AI-readable summary.
 
 User-agent: *
@@ -48,4 +48,4 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-Sitemap: https://spamcheckers.github.io/sitemap.xml
+Sitemap: https://spamify-pro.github.io/sitemap.xml

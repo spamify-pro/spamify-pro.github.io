@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Syntax vs. SMTP Verification: What Each Layer Actually Catches — Spamify</title>
+    <meta name="description" content="Spamify has two email-validation layers. One is always on and free; the other is optional and reaches out to the mail server. Knowing what each catches helps you decide when to enable the second.">
+    <meta name="keywords" content="syntax, smtp, detection-layers">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamify-pro.github.io/blog/syntax-vs-smtp-what-each-catches.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Spamify">
+    <meta property="og:title" content="Syntax vs. SMTP Verification: What Each Layer Actually Catches">
+    <meta property="og:description" content="Spamify has two email-validation layers. One is always on and free; the other is optional and reaches out to the mail server. Knowing what each catches helps you decide when to enable the second.">
+    <meta property="og:url" content="https://spamify-pro.github.io/blog/syntax-vs-smtp-what-each-catches.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Syntax vs. SMTP Verification: What Each Layer Actually Catches",
+            "description": "Spamify has two email-validation layers. One is always on and free; the other is optional and reaches out to the mail server. Knowing what each catches helps you decide when to enable the second.",
+            "datePublished": "2026-06-05",
+            "articleSection": "Email Validation",
+            "keywords": "syntax, smtp, detection-layers",
+            "author": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "publisher": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "mainEntityOfPage": "https://spamify-pro.github.io/blog/syntax-vs-smtp-what-each-catches.html"
+    }
+    </script>
+</head>
+
+<body>
+
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="../index.html" aria-label="Spamify home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Spamify</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#engine">Engine</a>
+                <a href="../index.html#integrations">Integrations</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="../index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="article">
+            <div class="wrap wrap--narrow">
+                <nav class="crumb"><a href="index.html">Blog</a><span>/</span>Email Validation</nav>
+                <header class="posthead">
+                    <span class="eyebrow">Email Validation</span>
+                    <h1>Syntax vs. SMTP Verification: What Each Layer Actually Catches</h1>
+                    <p class="posthead__sub">Spamify has two email-validation layers. One is always on and free; the other is optional and reaches out to the mail server. Knowing what each catches helps you decide when to enable the second.</p>
+                    <div class="postmeta"><span><b>Spamify</b></span><span>Updated Jun 5, 2026</span><span>7 min read</span></div>
+                </header>
+
+                <div class="prose">
+                    <p>Spamify’s email checking is built from two independent layers. They catch different classes of bad address, and understanding the split is the key to tuning the plugin well.</p>
+                    <h2>Layer 1 — Syntax validation (always on)</h2>
+                    <p>The syntax layer runs entirely on your server, on every submission, with no outbound connection. It confirms the address is well-formed and rejects the obviously broken and obviously fake:</p>
+                    <ul>
+                    <li>Malformed structure — missing <code>@</code>, double dots, illegal characters.</li>
+                    <li>Keyboard-mash and gibberish local parts.</li>
+                    <li>Domains that can’t resolve to a mail host at all.</li>
+                    </ul>
+                    <p>Syntax validation is fast, private, and free — it’s the floor under everything else, and it can never be turned off.</p>
+                    <h2>Layer 2 — SMTP mailbox verification (optional, off by default)</h2>
+                    <p>Syntax can tell you <code>john@gmial.com</code> is structurally valid — but not that the mailbox doesn’t exist. That’s what the SMTP layer does. When enabled, Spamify opens a direct connection to the recipient domain’s own mail server (its MX host) and performs an SMTP handshake asking whether the mailbox exists. <strong>No email is ever sent</strong>, and nothing goes to the plugin author or any third party.</p>
+                    <p>This catches the addresses that pass syntax but are still dead: typo’d real domains, abandoned mailboxes, and made-up local parts on real domains.</p>
+                    <h2>Which should you rely on?</h2>
+                    <div class="tablewrap"><table>
+                    <tr><th>Bad address type</th><th>Caught by syntax</th><th>Caught by SMTP</th></tr>
+                    <tr><td><code>asdfgh</code> (no @)</td><td>✅</td><td>—</td></tr>
+                    <tr><td><code>x@nonexistent-domain.zzz</code></td><td>✅</td><td>✅</td></tr>
+                    <tr><td><code>notreal@gmail.com</code> (dead mailbox)</td><td>❌</td><td>✅</td></tr>
+                    <tr><td>Disposable / catch-all domain</td><td>partial</td><td>partial</td></tr>
+                    </table></div>
+                    <h2>The catch with SMTP</h2>
+                    <p>Many hosts block outbound port 25, and many mail servers greylist or use catch-all addresses — so a mailbox can’t always be confirmed. Spamify treats those as <em>unverifiable</em> rather than bad, and by default flags them for review instead of blocking. See <a href="why-submissions-are-unverifiable.html">why submissions come back unverifiable</a> and <a href="enabling-smtp-verification-safely.html">how to enable SMTP verification safely</a> for the details.</p>
+
+                    <div class="postcta">
+                        <h3>Stop spam at the source with Spamify</h3>
+                        <p>Self-contained email validation and bot protection for WordPress — syntax checks, honeypot, rate limiting and optional SMTP verification, all on your own server.</p>
+                        <a class="btn btn--light btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get the free plugin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap wrap--narrow morereads">
+                <h2>Keep reading</h2>
+                <div class="postgrid">
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="real-time-inline-email-validation.html" style="background:linear-gradient(135deg,#0ea5e9,#3b82f6)" aria-hidden="true">⌨️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="real-time-inline-email-validation.html">Real-Time Inline Validation: Catching Typos as Users Type</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="email-deliverability-spf-dkim-dmarc.html" style="background:linear-gradient(135deg,#4f46e5,#0ea5e9)" aria-hidden="true">✉️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="email-deliverability-spf-dkim-dmarc.html">Email Deliverability 101: SPF, DKIM &amp; DMARC Explained</a></h2>
+                            <div class="postcard__meta"><span>10 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="block-disposable-temporary-email-addresses.html" style="background:linear-gradient(135deg,#3b82f6,#6366f1)" aria-hidden="true">🗑️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="block-disposable-temporary-email-addresses.html">How to Block Disposable &amp; Temporary Email Addresses</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Spamify</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="../index.html#features">Features</a><a href="../index.html#engine">Engine</a><a href="../index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>

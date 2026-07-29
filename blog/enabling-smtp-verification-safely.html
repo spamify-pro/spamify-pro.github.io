@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Enabling SMTP Mailbox Verification Safely — Spamify</title>
+    <meta name="description" content="SMTP verification is Spamify’s most powerful email check — and the one that reaches outside your server. Here’s how to turn it on without blocking real customers, using the port-25 probe, timeout, and unverifiable-action settings.">
+    <meta name="keywords" content="smtp, port-25, smtp_timeout">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamify-pro.github.io/blog/enabling-smtp-verification-safely.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Spamify">
+    <meta property="og:title" content="Enabling SMTP Mailbox Verification Safely">
+    <meta property="og:description" content="SMTP verification is Spamify’s most powerful email check — and the one that reaches outside your server. Here’s how to turn it on without blocking real customers, using the port-25 probe, timeout, and unverifiable-action settings.">
+    <meta property="og:url" content="https://spamify-pro.github.io/blog/enabling-smtp-verification-safely.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Enabling SMTP Mailbox Verification Safely",
+            "description": "SMTP verification is Spamify’s most powerful email check — and the one that reaches outside your server. Here’s how to turn it on without blocking real customers, using the port-25 probe, timeout, and unverifiable-action settings.",
+            "datePublished": "2026-06-09",
+            "articleSection": "Email Validation",
+            "keywords": "smtp, port-25, smtp_timeout",
+            "author": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "publisher": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "mainEntityOfPage": "https://spamify-pro.github.io/blog/enabling-smtp-verification-safely.html"
+    }
+    </script>
+</head>
+
+<body>
+
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="../index.html" aria-label="Spamify home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Spamify</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#engine">Engine</a>
+                <a href="../index.html#integrations">Integrations</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="../index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="article">
+            <div class="wrap wrap--narrow">
+                <nav class="crumb"><a href="index.html">Blog</a><span>/</span>Email Validation</nav>
+                <header class="posthead">
+                    <span class="eyebrow">Email Validation</span>
+                    <h1>Enabling SMTP Mailbox Verification Safely</h1>
+                    <p class="posthead__sub">SMTP verification is Spamify’s most powerful email check — and the one that reaches outside your server. Here’s how to turn it on without blocking real customers, using the port-25 probe, timeout, and unverifiable-action settings.</p>
+                    <div class="postmeta"><span><b>Spamify</b></span><span>Updated Jun 9, 2026</span><span>7 min read</span></div>
+                </header>
+
+                <div class="prose">
+                    <p>SMTP mailbox verification is off by default for good reason: it’s the one feature that opens an outbound connection, and it behaves differently on every host. Turn it on deliberately and it becomes your strongest filter. Here’s the safe path.</p>
+                    <h2>Step 1 — Check outbound port 25 first</h2>
+                    <p>Mailbox verification needs outbound port 25, and many shared hosts block it. Spamify runs a one-off <strong>connectivity probe</strong>: it opens a TCP connection to a well-known public mail server (by default Google’s inbound MX) and closes it immediately <em>without sending any data</em>, keeping only a yes/no "is port 25 open" result cached for up to a week. Check <strong>Tools → Site Health</strong> or the Advanced settings tab to see the result before you rely on the feature.</p>
+                    <p>If port 25 is blocked, verification will mark most addresses <em>unverifiable</em> — so decide how those are handled (below) before enabling.</p>
+                    <h2>Step 2 — Set a sane timeout</h2>
+                    <p>The <code>smtp_timeout</code> setting caps how long Spamify waits for each mail server to answer. Too low and slow-but-valid servers get abandoned; too high and a sluggish server delays your form. Start around the default and only raise it if you see legitimate domains timing out in the logs.</p>
+                    <h2>Step 3 — Decide what "unverifiable" means to you</h2>
+                    <p>The <code>smtp_unverifiable_action</code> setting controls what happens when the mailbox genuinely can’t be confirmed (greylisting, catch-all, blocked port). The safe default is <strong>flag for review</strong>, not block — so you never turn away a real customer because their provider was cautious. Only switch this to block if you’ve confirmed your host allows clean verification and you’d rather err strict.</p>
+                    <h2>Step 4 — Choose your hard-block rules</h2>
+                    <p>Two switches decide whether an address is rejected outright:</p>
+                    <ul>
+                    <li><code>hard_block_mx</code> — block when the domain has no valid mail host at all (a strong, safe signal).</li>
+                    <li><code>hard_block_smtp</code> — block when the mail server explicitly says the mailbox does not exist.</li>
+                    </ul>
+                    <p>Both are high-confidence signals, which is why they can hard-block rather than just add to the score. Pair this with sensible <a href="setting-flag-and-block-thresholds.html">flag and block thresholds</a> and you’ll catch dead addresses while leaving the ambiguous ones for review.</p>
+
+                    <div class="postcta">
+                        <h3>Stop spam at the source with Spamify</h3>
+                        <p>Self-contained email validation and bot protection for WordPress — syntax checks, honeypot, rate limiting and optional SMTP verification, all on your own server.</p>
+                        <a class="btn btn--light btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get the free plugin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap wrap--narrow morereads">
+                <h2>Keep reading</h2>
+                <div class="postgrid">
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="real-time-inline-email-validation.html" style="background:linear-gradient(135deg,#0ea5e9,#3b82f6)" aria-hidden="true">⌨️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="real-time-inline-email-validation.html">Real-Time Inline Validation: Catching Typos as Users Type</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="email-deliverability-spf-dkim-dmarc.html" style="background:linear-gradient(135deg,#4f46e5,#0ea5e9)" aria-hidden="true">✉️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="email-deliverability-spf-dkim-dmarc.html">Email Deliverability 101: SPF, DKIM &amp; DMARC Explained</a></h2>
+                            <div class="postcard__meta"><span>10 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="block-disposable-temporary-email-addresses.html" style="background:linear-gradient(135deg,#3b82f6,#6366f1)" aria-hidden="true">🗑️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Email Validation</span>
+                            <h2><a href="block-disposable-temporary-email-addresses.html">How to Block Disposable &amp; Temporary Email Addresses</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Spamify</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="../index.html#features">Features</a><a href="../index.html#engine">Engine</a><a href="../index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>

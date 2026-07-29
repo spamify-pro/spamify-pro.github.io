@@ -4,23 +4,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog — Elastic Spam Shield | WordPress anti-spam guides</title>
-    <meta name="description" content="Practical guides on stopping WordPress form, comment and registration spam — disposable email blocking, honeypots vs CAPTCHA, WooCommerce fraud, email deliverability and more.">
+    <title>Blog — Spamify | WordPress anti-spam &amp; email validation guides</title>
+    <meta name="description" content="Practical guides on stopping WordPress form, comment and registration spam — email validation, honeypots, rate limiting, CAPTCHA, GDPR logging and tuning every Spamify setting. Search and filter by topic.">
     <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="https://spamcheckers.github.io/blog/">
+    <link rel="canonical" href="https://spamify-pro.github.io/blog/">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
 
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Elastic Spam Shield">
-    <meta property="og:title" content="Elastic Spam Shield Blog — WordPress anti-spam guides">
-    <meta property="og:description" content="Guides on stopping WordPress spam: disposable emails, comment spam, bots, WooCommerce fraud and email deliverability.">
-    <meta property="og:url" content="https://spamcheckers.github.io/blog/">
+    <meta property="og:site_name" content="Spamify">
+    <meta property="og:title" content="Spamify Blog — WordPress anti-spam &amp; email validation guides">
+    <meta property="og:description" content="Guides on stopping WordPress spam and validating email, grounded in the settings you actually configure. Search and filter by topic.">
+    <meta property="og:url" content="https://spamify-pro.github.io/blog/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
+
+    <style>
+    .blogtools{margin:26px 0 6px;display:flex;flex-direction:column;gap:16px}
+    .blogsearch{position:relative;max-width:560px}
+    .blogsearch input{width:100%;padding:14px 44px 14px 44px;border:1px solid var(--border-2);border-radius:var(--r);background:#fff;color:var(--ink);font:inherit;font-size:16px;box-shadow:var(--sh-1,0 1px 2px rgba(16,24,40,.05))}
+    .blogsearch input:focus{outline:none;border-color:var(--brand)}
+    .blogsearch .si{position:absolute;left:15px;top:50%;transform:translateY(-50%);opacity:.5}
+    .blogsearch .sc{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:none;background:var(--bg-2);color:var(--muted);width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:14px;line-height:1;display:none}
+    .blogfilters{display:flex;flex-wrap:wrap;gap:9px}
+    .chip{cursor:pointer;border:1px solid var(--border-2);background:#fff;color:var(--ink-2);border-radius:999px;padding:8px 15px;font:inherit;font-size:14px;font-weight:600;transition:all .15s ease}
+    .chip:hover{border-color:var(--brand);color:var(--ink)}
+    .chip.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+    .chip .n{opacity:.7;font-weight:500}
+    .blogcount{color:var(--muted);font-size:14px;margin:2px 0 22px}
+    .noresults{text-align:center;padding:56px 20px;color:var(--muted)}
+    .noresults .nrbig{font-size:38px;margin-bottom:10px}
+    .postcard mark{background:var(--grad-soft,rgba(99,102,241,.18));color:inherit;padding:0 2px;border-radius:3px}
+    @media (prefers-color-scheme:dark){.blogsearch input{background:var(--bg-2)}.chip{background:transparent}}
+    </style>
 
     <script>
         document.documentElement.classList.remove('no-js');
@@ -31,9 +50,9 @@
 
     <header class="nav" id="nav">
         <div class="wrap nav__inner">
-            <a class="brand" href="../index.html" aria-label="Elastic Spam Shield home">
+            <a class="brand" href="../index.html" aria-label="Spamify home">
                 <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
-                <span class="brand__name">Email&nbsp;Spam&nbsp;Shield</span>
+                <span class="brand__name">Spamify</span>
             </a>
             <nav class="nav__links" id="navLinks">
                 <a href="../index.html#features">Features</a>
@@ -55,74 +74,34 @@
             <div class="wrap">
                 <span class="eyebrow">The blog</span>
                 <h1>Beat spam at the source</h1>
-                <p>Field-tested guides on keeping WordPress forms, comments, registrations and checkouts clean — no fluff, no dark patterns.</p>
+                <p>Field-tested guides on keeping WordPress forms, comments, registrations and checkouts clean — one article per feature, grounded in the settings you actually configure.</p>
+
+                <div class="blogtools">
+                    <div class="blogsearch">
+                        <span class="si" aria-hidden="true">🔍</span>
+                        <input id="q" type="search" placeholder="Search articles — try “SMTP”, “honeypot”, “GDPR”…" autocomplete="off" aria-label="Search articles">
+                        <button class="sc" id="clear" type="button" aria-label="Clear search">✕</button>
+                    </div>
+                    <div class="blogfilters" id="filters">
+                        <button class="chip on" data-cat="all" type="button">All <span class="n" id="n-all"></span></button>
+                        <button class="chip" data-cat="email-validation" type="button">Email Validation <span class="n" id="n-email-validation"></span></button>
+                    <button class="chip" data-cat="bot-protection" type="button">Bot Protection <span class="n" id="n-bot-protection"></span></button>
+                    <button class="chip" data-cat="privacy-gdpr" type="button">Privacy & GDPR <span class="n" id="n-privacy-gdpr"></span></button>
+                    <button class="chip" data-cat="setup-tuning" type="button">Setup & Tuning <span class="n" id="n-setup-tuning"></span></button>
+                    <button class="chip" data-cat="integrations" type="button">Integrations <span class="n" id="n-integrations"></span></button>
+                    <button class="chip" data-cat="guides" type="button">Guides <span class="n" id="n-guides"></span></button>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section>
             <div class="wrap">
-                <div class="postgrid">
-
-                    <article class="postcard reveal">
-                        <a class="postcard__thumb" href="how-to-stop-contact-form-spam-wordpress.html" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)" aria-hidden="true">🛡️</a>
-                        <div class="postcard__body">
-                            <span class="postcard__cat">Guides</span>
-                            <h2><a href="how-to-stop-contact-form-spam-wordpress.html">How to Stop Contact Form Spam in WordPress (2026 Guide)</a></h2>
-                            <p>Seven layers that kill form spam — honeypots, rate limits, live email checks and invisible CAPTCHA — without adding friction for real visitors.</p>
-                            <div class="postcard__meta"><span>Jun 12, 2026</span><span>8 min read</span></div>
-                        </div>
-                    </article>
-
-                    <article class="postcard reveal" data-d="1">
-                        <a class="postcard__thumb" href="block-disposable-temporary-email-addresses.html" style="background:linear-gradient(135deg,#3b82f6,#6366f1)" aria-hidden="true">🗑️</a>
-                        <div class="postcard__body">
-                            <span class="postcard__cat">Email validation</span>
-                            <h2><a href="block-disposable-temporary-email-addresses.html">How to Block Disposable &amp; Temporary Email Addresses</a></h2>
-                            <p>Why throwaway inboxes wreck your list and conversions — and how to detect and block 100k+ disposable domains the right way.</p>
-                            <div class="postcard__meta"><span>Jun 24, 2026</span><span>6 min read</span></div>
-                        </div>
-                    </article>
-
-                    <article class="postcard reveal" data-d="2">
-                        <a class="postcard__thumb" href="wordpress-comment-spam-prevention-guide.html" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)" aria-hidden="true">💬</a>
-                        <div class="postcard__body">
-                            <span class="postcard__cat">Guides</span>
-                            <h2><a href="wordpress-comment-spam-prevention-guide.html">The Complete Guide to Stopping WordPress Comment Spam</a></h2>
-                            <p>From Akismet to honeypots and rate limiting — a layered playbook for keeping your comment section clean and human.</p>
-                            <div class="postcard__meta"><span>Jul 1, 2026</span><span>9 min read</span></div>
-                        </div>
-                    </article>
-
-                    <article class="postcard reveal">
-                        <a class="postcard__thumb" href="honeypot-vs-captcha-bot-protection.html" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)" aria-hidden="true">🤖</a>
-                        <div class="postcard__body">
-                            <span class="postcard__cat">Deep dive</span>
-                            <h2><a href="honeypot-vs-captcha-bot-protection.html">Honeypot vs CAPTCHA: Which Actually Stops Bots?</a></h2>
-                            <p>The trade-offs between honeypots, timing traps and modern invisible CAPTCHA — and why the best answer is usually "both".</p>
-                            <div class="postcard__meta"><span>Jul 8, 2026</span><span>7 min read</span></div>
-                        </div>
-                    </article>
-
-                    <article class="postcard reveal" data-d="1">
-                        <a class="postcard__thumb" href="woocommerce-spam-fake-orders-signups.html" style="background:linear-gradient(135deg,#10b981,#3b82f6)" aria-hidden="true">🛒</a>
-                        <div class="postcard__body">
-                            <span class="postcard__cat">WooCommerce</span>
-                            <h2><a href="woocommerce-spam-fake-orders-signups.html">Fighting WooCommerce Fake Orders &amp; Spam Signups</a></h2>
-                            <p>Card-testing bots, fake accounts and junk orders cost real money. Here's how to lock down WooCommerce checkout and registration.</p>
-                            <div class="postcard__meta"><span>Jul 14, 2026</span><span>7 min read</span></div>
-                        </div>
-                    </article>
-
-                    <article class="postcard reveal" data-d="2">
-                        <a class="postcard__thumb" href="email-deliverability-spf-dkim-dmarc.html" style="background:linear-gradient(135deg,#4f46e5,#0ea5e9)" aria-hidden="true">✉️</a>
-                        <div class="postcard__body">
-                            <span class="postcard__cat">Deliverability</span>
-                            <h2><a href="email-deliverability-spf-dkim-dmarc.html">Email Deliverability 101: SPF, DKIM &amp; DMARC Explained</a></h2>
-                            <p>Stop your WordPress emails landing in spam. A plain-English guide to the three DNS records that prove your mail is legit.</p>
-                            <div class="postcard__meta"><span>Jul 16, 2026</span><span>10 min read</span></div>
-                        </div>
-                    </article>
-
+                <p class="blogcount" id="count"></p>
+                <div class="postgrid" id="grid"></div>
+                <div class="noresults" id="noresults" hidden>
+                    <div class="nrbig">🔍</div>
+                    <p>No articles match your search. Try another term or category.</p>
                 </div>
             </div>
         </section>
@@ -131,7 +110,7 @@
     <footer class="foot">
         <div class="wrap foot__grid">
             <div class="foot__brand">
-                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Elastic Spam Shield</span></a>
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Spamify</span></a>
                 <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
             </div>
             <nav>
@@ -139,9 +118,94 @@
             <nav>
                 <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
         </div>
-        <div class="wrap foot__bar"><span>© <span id="yr"></span> Elastic Spam Shield</span><span>Built for WordPress · GPL-2.0</span></div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
     </footer>
 
+    <script id="posts-data" type="application/json">[{"slug":"block-vs-flag-choosing-the-right-action","title":"Block or Flag? Choosing the Right Action for Each Defense","category":"setup-tuning","date":"2026-07-28","readingTime":6,"excerpt":"Almost every Spamify layer lets you choose between blocking a submission and flagging it for review. Here’s a framework for deciding which action fits which signal.","tags":["block_action","actions","strategy"],"emoji":"🚦","grad":"#f59e0b,#ef4444"},{"slug":"wpforms-jetpack-elementor-integrations","title":"WPForms, Jetpack, and Elementor: One Engine for Every Form Builder","category":"integrations","date":"2026-07-27","readingTime":5,"excerpt":"You shouldn’t need a different anti-spam plugin for each form builder. Spamify protects WPForms, Jetpack Forms, and Elementor Forms with the same engine and the same settings.","tags":["wpforms","jetpack","elementor","integrations"],"emoji":"🧩","grad":"#8b5cf6,#ec4899"},{"slug":"real-time-inline-email-validation","title":"Real-Time Inline Validation: Catching Typos as Users Type","category":"email-validation","date":"2026-07-26","readingTime":6,"excerpt":"Blocking bad emails after submission is good; catching a real customer’s typo before they submit is better. Spamify’s real-time mode does exactly that — here’s how realtime_mode and realtime_debounce work.","tags":["realtime","realtime_mode","realtime_debounce","ux"],"emoji":"⌨️","grad":"#0ea5e9,#3b82f6"},{"slug":"contact-form-7-spam-protection","title":"Contact Form 7 Spam Protection with Spamify","category":"integrations","date":"2026-07-24","readingTime":5,"excerpt":"Contact Form 7 is powerful but ships with almost no spam defense. Here’s how Spamify layers validation and bot protection onto every CF7 form automatically.","tags":["contact-form-7","cf7","integrations"],"emoji":"📮","grad":"#3b82f6,#6366f1"},{"slug":"protecting-wordpress-core-forms","title":"Protecting WordPress Core Forms: Registration, Comments, and More","category":"integrations","date":"2026-07-22","readingTime":6,"excerpt":"Before any form plugin, WordPress itself ships forms that spammers love. Spamify protects registration, comments, profile updates, lost-password, and multisite signup out of the box.","tags":["wordpress-core","registration","comments","integrations"],"emoji":"🧱","grad":"#6366f1,#8b5cf6"},{"slug":"site-health-checks-keeping-everything-green","title":"Site Health Checks: Keeping DNS, Port 25, and Logging Green","category":"setup-tuning","date":"2026-07-19","readingTime":5,"excerpt":"Spamify plugs into WordPress Site Health so you can confirm at a glance that its moving parts are working. Here’s what each check means and how to fix a red one.","tags":["site-health","port-25","dns","diagnostics"],"emoji":"🩺","grad":"#10b981,#6366f1"},{"slug":"email-deliverability-spf-dkim-dmarc","title":"Email Deliverability 101: SPF, DKIM & DMARC Explained","category":"email-validation","date":"2026-07-16","readingTime":10,"excerpt":"Stop your WordPress emails landing in spam. A plain-English guide to the three DNS records that prove your mail is legit.","tags":["deliverability","spf","dkim","dmarc"],"emoji":"✉️","grad":"#4f46e5,#0ea5e9"},{"slug":"why-self-contained-beats-cloud-spam-filters","title":"Privacy-First Anti-Spam: Why Self-Contained Beats Cloud Filters","category":"privacy-gdpr","date":"2026-07-16","readingTime":7,"excerpt":"Most anti-spam services work by shipping every submission to their servers. Spamify runs entirely on yours. Here’s why that architectural choice matters for privacy, compliance, and trust.","tags":["privacy","self-contained","gdpr","architecture"],"emoji":"🏠","grad":"#4f46e5,#0ea5e9"},{"slug":"woocommerce-spam-fake-orders-signups","title":"Fighting WooCommerce Fake Orders & Spam Signups","category":"integrations","date":"2026-07-14","readingTime":7,"excerpt":"Card-testing bots, fake accounts and junk orders cost real money. Here’s how to lock down WooCommerce checkout and registration.","tags":["woocommerce","fraud"],"emoji":"🛒","grad":"#10b981,#3b82f6"},{"slug":"gdpr-logging-retention-and-anonymisation","title":"GDPR-Friendly Logging: Retention Windows and IP Anonymisation","category":"privacy-gdpr","date":"2026-07-13","readingTime":6,"excerpt":"Anti-spam plugins log submissions by nature — which means they hold personal data. Spamify’s retention window and IP anonymisation keep that logging on the right side of GDPR.","tags":["gdpr","log_retention_days","privacy","ip-anonymisation"],"emoji":"🔒","grad":"#10b981,#3b82f6"},{"slug":"reading-the-spamify-dashboard","title":"Reading the Dashboard: Blocked, Flagged, and Allowed","category":"setup-tuning","date":"2026-07-10","readingTime":6,"excerpt":"Spamify’s dashboard and logs turn raw form traffic into a picture you can act on. Here’s how to read the three buckets and use them to tune your settings.","tags":["dashboard","logs","tuning"],"emoji":"📊","grad":"#6366f1,#0ea5e9"},{"slug":"honeypot-vs-captcha-bot-protection","title":"Honeypot vs CAPTCHA: Which Actually Stops Bots?","category":"bot-protection","date":"2026-07-08","readingTime":7,"excerpt":"The trade-offs between honeypots, timing traps and modern invisible CAPTCHA — and why the best answer is usually “both”.","tags":["honeypot","captcha","bots"],"emoji":"🤖","grad":"#0ea5e9,#6366f1"},{"slug":"the-one-minute-setup-wizard","title":"The One-Minute Setup Wizard, Walked Through","category":"setup-tuning","date":"2026-07-07","readingTime":5,"excerpt":"Spamify’s first-run wizard gets your forms protected in about a minute. Here’s what each step configures and the choices worth pausing on.","tags":["setup","wizard","onboarding"],"emoji":"🧭","grad":"#3b82f6,#8b5cf6"},{"slug":"tuning-the-scoring-engine-weights","title":"Tuning the Scoring Engine: Weighting Each Layer","category":"setup-tuning","date":"2026-07-03","readingTime":6,"excerpt":"Not every spam signal deserves the same weight. Spamify’s per-layer weights let you decide how much a failed syntax check, a dead mailbox, or a content flag contributes to the final score.","tags":["weights","scoring","engine"],"emoji":"⚖️","grad":"#8b5cf6,#6366f1"},{"slug":"wordpress-comment-spam-prevention-guide","title":"The Complete Guide to Stopping WordPress Comment Spam","category":"guides","date":"2026-07-01","readingTime":9,"excerpt":"From Akismet to honeypots and rate limiting — a layered playbook for keeping your comment section clean and human.","tags":["comments","guide"],"emoji":"💬","grad":"#8b5cf6,#ec4899"},{"slug":"setting-flag-and-block-thresholds","title":"How to Set Your Flag and Block Thresholds","category":"setup-tuning","date":"2026-06-30","readingTime":7,"excerpt":"Spamify scores every submission, and two thresholds turn that score into a decision. Get flag_threshold and block_threshold right and you catch spam without ever losing a real message.","tags":["thresholds","flag_threshold","block_threshold","scoring"],"emoji":"🎚️","grad":"#6366f1,#8b5cf6"},{"slug":"building-a-trusted-allowlist","title":"Building an Allowlist for Trusted Domains, Emails, and IP Ranges","category":"setup-tuning","date":"2026-06-26","readingTime":6,"excerpt":"The allowlist is your override switch — it lets known-good senders straight through, no matter what the score says. Learn how to safely allow domains, exact addresses, and IP/CIDR ranges.","tags":["allowlist","rules","cidr"],"emoji":"✅","grad":"#10b981,#0ea5e9"},{"slug":"block-disposable-temporary-email-addresses","title":"How to Block Disposable & Temporary Email Addresses","category":"email-validation","date":"2026-06-24","readingTime":6,"excerpt":"Why throwaway inboxes wreck your list and conversions — and how to detect and block 100k+ disposable domains the right way.","tags":["disposable","email-validation"],"emoji":"🗑️","grad":"#3b82f6,#6366f1"},{"slug":"invisible-captcha-turnstile-recaptcha","title":"Invisible CAPTCHA with Turnstile or reCAPTCHA v3 — Bring Your Own Keys","category":"bot-protection","date":"2026-06-23","readingTime":7,"excerpt":"When honeypot and rate limiting aren’t enough, Spamify adds invisible CAPTCHA using your own free provider keys. Here’s how captcha_provider and captcha_action work, and why it stays off until you opt in.","tags":["captcha","turnstile","recaptcha","captcha_provider"],"emoji":"🤖","grad":"#0ea5e9,#6366f1"},{"slug":"rate-limiting-by-ip","title":"Rate Limiting: Throttling Repeat Submitters by IP","category":"bot-protection","date":"2026-06-19","readingTime":6,"excerpt":"When one source hammers your form, rate limiting caps them without touching everyone else. Learn how ratelimit_max, ratelimit_window, and ratelimit_action work together.","tags":["rate-limiting","ratelimit_max","ratelimit_window"],"emoji":"⏱️","grad":"#10b981,#3b82f6"},{"slug":"stopping-bots-honeypot-and-timing","title":"Stopping Bots with the Honeypot and Minimum Fill Time","category":"bot-protection","date":"2026-06-16","readingTime":6,"excerpt":"The two cheapest, most private anti-bot defenses Spamify offers never bother a real visitor. Here’s how the honeypot decoy field and the honeypot_min_seconds timing check work together.","tags":["honeypot","timing","honeypot_min_seconds"],"emoji":"🍯","grad":"#f59e0b,#ef4444"},{"slug":"how-to-stop-contact-form-spam-wordpress","title":"How to Stop Contact Form Spam in WordPress (2026 Guide)","category":"guides","date":"2026-06-12","readingTime":8,"excerpt":"Seven layers that kill form spam — honeypots, rate limits, live email checks and invisible CAPTCHA — without adding friction for real visitors.","tags":["contact-form","guide","layers"],"emoji":"🛡️","grad":"#6366f1,#8b5cf6"},{"slug":"why-submissions-are-unverifiable","title":"Why Some Submissions Come Back “Unverifiable” (and What To Do)","category":"email-validation","date":"2026-06-12","readingTime":5,"excerpt":"An unverifiable result doesn’t mean an address is bad — it means the mail server wouldn’t give a straight answer. Here’s why it happens and how Spamify’s unverifiable-action setting keeps real customers from being blocked.","tags":["smtp","unverifiable","deliverability"],"emoji":"❓","grad":"#8b5cf6,#ec4899"},{"slug":"enabling-smtp-verification-safely","title":"Enabling SMTP Mailbox Verification Safely","category":"email-validation","date":"2026-06-09","readingTime":7,"excerpt":"SMTP verification is Spamify’s most powerful email check — and the one that reaches outside your server. Here’s how to turn it on without blocking real customers, using the port-25 probe, timeout, and unverifiable-action settings.","tags":["smtp","port-25","smtp_timeout"],"emoji":"📡","grad":"#0ea5e9,#6366f1"},{"slug":"syntax-vs-smtp-what-each-catches","title":"Syntax vs. SMTP Verification: What Each Layer Actually Catches","category":"email-validation","date":"2026-06-05","readingTime":7,"excerpt":"Spamify has two email-validation layers. One is always on and free; the other is optional and reaches out to the mail server. Knowing what each catches helps you decide when to enable the second.","tags":["syntax","smtp","detection-layers"],"emoji":"✉️","grad":"#3b82f6,#6366f1"},{"slug":"what-form-spam-costs-your-wordpress-site","title":"What Form Spam Actually Costs Your WordPress Site","category":"email-validation","date":"2026-06-02","readingTime":6,"excerpt":"Fake signups and junk contact-form entries do more than clutter your inbox — they poison your data, waste your team’s time, and can hurt deliverability. Here’s the real bill.","tags":["spam","deliverability","overview"],"emoji":"💸","grad":"#6366f1,#8b5cf6"}]</script>
+    <script>
+    (function () {
+        var POSTS = JSON.parse(document.getElementById('posts-data').textContent);
+        var CATLABEL = {"email-validation":"Email Validation","bot-protection":"Bot Protection","privacy-gdpr":"Privacy & GDPR","setup-tuning":"Setup & Tuning","integrations":"Integrations","guides":"Guides"};
+        var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var q = document.getElementById('q'), clearBtn = document.getElementById('clear');
+        var grid = document.getElementById('grid'), noRes = document.getElementById('noresults');
+        var countEl = document.getElementById('count');
+        var state = { term: '', cat: 'all' };
+
+        document.getElementById('n-all').textContent = '(' + POSTS.length + ')';
+        Object.keys(CATLABEL).forEach(function (k) {
+            var el = document.getElementById('n-' + k);
+            if (el) el.textContent = '(' + POSTS.filter(function (p) { return p.category === k; }).length + ')';
+        });
+
+        function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+        function fmt(iso){var p=iso.split('-');return MONTHS[+p[1]-1]+' '+(+p[2])+', '+p[0];}
+        function hl(text, term){
+            var safe = esc(text);
+            if(!term) return safe;
+            try{var re=new RegExp('('+term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');return safe.replace(re,'<mark>$1</mark>');}
+            catch(e){return safe;}
+        }
+        function match(p, term){
+            if(!term) return true;
+            var hay=(p.title+' '+p.excerpt+' '+(CATLABEL[p.category]||'')+' '+(p.tags||[]).join(' ')).toLowerCase();
+            return term.toLowerCase().split(/\s+/).filter(Boolean).every(function(w){return hay.indexOf(w)>-1;});
+        }
+
+        function render(){
+            var term = state.term.trim();
+            var list = POSTS.filter(function(p){
+                return (state.cat==='all' || p.category===state.cat) && match(p, term);
+            });
+            grid.innerHTML = list.map(function(p){
+                return '<article class="postcard">'
+                    + '<a class="postcard__thumb" href="'+p.slug+'.html" style="background:linear-gradient(135deg,'+p.grad+')" aria-hidden="true">'+p.emoji+'</a>'
+                    + '<div class="postcard__body">'
+                    + '<span class="postcard__cat">'+esc(CATLABEL[p.category]||p.category)+'</span>'
+                    + '<h2><a href="'+p.slug+'.html">'+hl(p.title, term)+'</a></h2>'
+                    + '<p>'+hl(p.excerpt, term)+'</p>'
+                    + '<div class="postcard__meta"><span>'+fmt(p.date)+'</span><span>'+p.readingTime+' min read</span></div>'
+                    + '</div></article>';
+            }).join('');
+            var has = list.length > 0;
+            grid.hidden = !has; noRes.hidden = has;
+            var bits = [String(list.length) + (list.length===1?' article':' articles')];
+            if(state.cat!=='all') bits.push('in ' + (CATLABEL[state.cat]||state.cat));
+            if(term) bits.push('matching “'+esc(term)+'”');
+            countEl.textContent = bits.join(' ');
+            clearBtn.style.display = term ? 'block' : 'none';
+        }
+
+        function readURL(){
+            var sp = new URLSearchParams(location.search);
+            state.cat = sp.get('cat') || 'all';
+            state.term = sp.get('q') || '';
+            q.value = state.term;
+            document.querySelectorAll('.chip').forEach(function(b){ b.classList.toggle('on', b.dataset.cat===state.cat); });
+        }
+        function writeURL(){
+            var sp = new URLSearchParams();
+            if(state.cat!=='all') sp.set('cat', state.cat);
+            if(state.term.trim()) sp.set('q', state.term.trim());
+            var s = sp.toString();
+            history.replaceState(null, '', s ? '?'+s : location.pathname);
+        }
+
+        q.addEventListener('input', function(){ state.term=q.value; writeURL(); render(); });
+        clearBtn.addEventListener('click', function(){ q.value=''; state.term=''; q.focus(); writeURL(); render(); });
+        document.getElementById('filters').addEventListener('click', function(e){
+            var b = e.target.closest('.chip'); if(!b) return;
+            state.cat = b.dataset.cat;
+            document.querySelectorAll('.chip').forEach(function(x){ x.classList.toggle('on', x===b); });
+            writeURL(); render();
+        });
+        document.addEventListener('keydown', function(e){
+            if(e.key==='/' && document.activeElement!==q){ e.preventDefault(); q.focus(); }
+        });
+
+        readURL(); render();
+    })();
+    </script>
     <script src="../assets/js/main.js" defer></script>
 </body>
 

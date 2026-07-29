@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reading the Dashboard: Blocked, Flagged, and Allowed — Spamify</title>
+    <meta name="description" content="Spamify’s dashboard and logs turn raw form traffic into a picture you can act on. Here’s how to read the three buckets and use them to tune your settings.">
+    <meta name="keywords" content="dashboard, logs, tuning">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamify-pro.github.io/blog/reading-the-spamify-dashboard.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Spamify">
+    <meta property="og:title" content="Reading the Dashboard: Blocked, Flagged, and Allowed">
+    <meta property="og:description" content="Spamify’s dashboard and logs turn raw form traffic into a picture you can act on. Here’s how to read the three buckets and use them to tune your settings.">
+    <meta property="og:url" content="https://spamify-pro.github.io/blog/reading-the-spamify-dashboard.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Reading the Dashboard: Blocked, Flagged, and Allowed",
+            "description": "Spamify’s dashboard and logs turn raw form traffic into a picture you can act on. Here’s how to read the three buckets and use them to tune your settings.",
+            "datePublished": "2026-07-10",
+            "articleSection": "Setup & Tuning",
+            "keywords": "dashboard, logs, tuning",
+            "author": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "publisher": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "mainEntityOfPage": "https://spamify-pro.github.io/blog/reading-the-spamify-dashboard.html"
+    }
+    </script>
+</head>
+
+<body>
+
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="../index.html" aria-label="Spamify home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Spamify</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#engine">Engine</a>
+                <a href="../index.html#integrations">Integrations</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="../index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="article">
+            <div class="wrap wrap--narrow">
+                <nav class="crumb"><a href="index.html">Blog</a><span>/</span>Setup & Tuning</nav>
+                <header class="posthead">
+                    <span class="eyebrow">Setup & Tuning</span>
+                    <h1>Reading the Dashboard: Blocked, Flagged, and Allowed</h1>
+                    <p class="posthead__sub">Spamify’s dashboard and logs turn raw form traffic into a picture you can act on. Here’s how to read the three buckets and use them to tune your settings.</p>
+                    <div class="postmeta"><span><b>Spamify</b></span><span>Updated Jul 10, 2026</span><span>6 min read</span></div>
+                </header>
+
+                <div class="prose">
+                    <p>Every setting in Spamify is a hypothesis about what’s spam. The dashboard is where you check whether the hypothesis is right. It sorts your form traffic into three buckets, with per-day charts so you can see trends, not just totals.</p>
+                    <h2>The three buckets</h2>
+                    <ul>
+                    <li><strong>Blocked</strong> — submissions that scored at or above your <a href="setting-flag-and-block-thresholds.html">block threshold</a>, or tripped a hard-block rule. These never reached your inbox or database.</li>
+                    <li><strong>Flagged</strong> — submissions in the gray zone: allowed through, but marked for your review.</li>
+                    <li><strong>Allowed</strong> — submissions that scored clean and passed silently.</li>
+                    </ul>
+                    <h2>What each bucket tells you</h2>
+                    <h3>Read the flagged bucket first</h3>
+                    <p>This is the most informative one. Skim it:</p>
+                    <ul>
+                    <li>All obvious spam? Your <code>block_threshold</code> is set too high — lower it so these block automatically.</li>
+                    <li>Real messages showing up? Your <code>flag_threshold</code> is too aggressive, or a specific sender needs <a href="building-a-trusted-allowlist.html">allowlisting</a>.</li>
+                    </ul>
+                    <h3>Spot-check the blocked bucket</h3>
+                    <p>Occasionally scan what got blocked to make sure nothing legitimate is being turned away. If it is, you’ve found a false positive — allowlist the sender or revisit your <a href="tuning-the-scoring-engine-weights.html">weights</a>.</p>
+                    <h3>Watch the daily charts</h3>
+                    <p>A sudden spike in blocked submissions usually means an attack — and confirms your defenses are working. A spike in <em>allowed</em> junk means something is slipping through and it’s time to tighten.</p>
+                    <h2>Logs and log level</h2>
+                    <p>Behind the dashboard, the log detail is governed by <code>log_level</code>. Turn it up when you’re actively debugging a false positive; keep it lower for normal operation to save space. And remember the logs respect your <a href="gdpr-logging-retention-and-anonymisation.html">retention and anonymisation settings</a> — they’re purged automatically.</p>
+
+                    <div class="postcta">
+                        <h3>Stop spam at the source with Spamify</h3>
+                        <p>Self-contained email validation and bot protection for WordPress — syntax checks, honeypot, rate limiting and optional SMTP verification, all on your own server.</p>
+                        <a class="btn btn--light btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get the free plugin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap wrap--narrow morereads">
+                <h2>Keep reading</h2>
+                <div class="postgrid">
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="block-vs-flag-choosing-the-right-action.html" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" aria-hidden="true">🚦</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Setup & Tuning</span>
+                            <h2><a href="block-vs-flag-choosing-the-right-action.html">Block or Flag? Choosing the Right Action for Each Defense</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="site-health-checks-keeping-everything-green.html" style="background:linear-gradient(135deg,#10b981,#6366f1)" aria-hidden="true">🩺</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Setup & Tuning</span>
+                            <h2><a href="site-health-checks-keeping-everything-green.html">Site Health Checks: Keeping DNS, Port 25, and Logging Green</a></h2>
+                            <div class="postcard__meta"><span>5 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="the-one-minute-setup-wizard.html" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)" aria-hidden="true">🧭</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Setup & Tuning</span>
+                            <h2><a href="the-one-minute-setup-wizard.html">The One-Minute Setup Wizard, Walked Through</a></h2>
+                            <div class="postcard__meta"><span>5 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Spamify</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="../index.html#features">Features</a><a href="../index.html#engine">Engine</a><a href="../index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>

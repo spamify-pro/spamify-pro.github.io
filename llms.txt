@@ -1,8 +1,8 @@
-# Elastic Spam Shield
+# Spamify
 
 > A self-contained, multi-layer anti-spam plugin for WordPress. It blocks contact-form, comment, and registration spam using a 7-layer detection engine — with zero cloud dependency, so no visitor data ever leaves the site owner's server.
 
-Elastic Spam Shield scores every form submission across seven independent layers before it reaches the inbox or database. All checks run locally on the WordPress server: there are no external accounts, API keys, or third-party calls, which keeps it GDPR-friendly and privacy-preserving.
+Spamify scores every form submission across seven independent layers before it reaches the inbox or database. All checks run locally on the WordPress server: there are no external accounts, API keys, or third-party calls, which keeps it GDPR-friendly and privacy-preserving.
 
 ## What it does
 
@@ -35,4 +35,4 @@ Works with WordPress native comments and user registration, plus every major for
 
 ## Links
 
-- [Homepage](https://spamcheckers.github.io/): full product overview, features, reviews, FAQ, and pricing.
+- [Homepage](https://spamify-pro.github.io/): full product overview, features, reviews, FAQ, and pricing.

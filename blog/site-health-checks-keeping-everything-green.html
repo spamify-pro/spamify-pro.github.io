@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Site Health Checks: Keeping DNS, Port 25, and Logging Green — Spamify</title>
+    <meta name="description" content="Spamify plugs into WordPress Site Health so you can confirm at a glance that its moving parts are working. Here’s what each check means and how to fix a red one.">
+    <meta name="keywords" content="site-health, port-25, dns, diagnostics">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamify-pro.github.io/blog/site-health-checks-keeping-everything-green.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Spamify">
+    <meta property="og:title" content="Site Health Checks: Keeping DNS, Port 25, and Logging Green">
+    <meta property="og:description" content="Spamify plugs into WordPress Site Health so you can confirm at a glance that its moving parts are working. Here’s what each check means and how to fix a red one.">
+    <meta property="og:url" content="https://spamify-pro.github.io/blog/site-health-checks-keeping-everything-green.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Site Health Checks: Keeping DNS, Port 25, and Logging Green",
+            "description": "Spamify plugs into WordPress Site Health so you can confirm at a glance that its moving parts are working. Here’s what each check means and how to fix a red one.",
+            "datePublished": "2026-07-19",
+            "articleSection": "Setup & Tuning",
+            "keywords": "site-health, port-25, dns, diagnostics",
+            "author": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "publisher": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "mainEntityOfPage": "https://spamify-pro.github.io/blog/site-health-checks-keeping-everything-green.html"
+    }
+    </script>
+</head>
+
+<body>
+
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="../index.html" aria-label="Spamify home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Spamify</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#engine">Engine</a>
+                <a href="../index.html#integrations">Integrations</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="../index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="article">
+            <div class="wrap wrap--narrow">
+                <nav class="crumb"><a href="index.html">Blog</a><span>/</span>Setup & Tuning</nav>
+                <header class="posthead">
+                    <span class="eyebrow">Setup & Tuning</span>
+                    <h1>Site Health Checks: Keeping DNS, Port 25, and Logging Green</h1>
+                    <p class="posthead__sub">Spamify plugs into WordPress Site Health so you can confirm at a glance that its moving parts are working. Here’s what each check means and how to fix a red one.</p>
+                    <div class="postmeta"><span><b>Spamify</b></span><span>Updated Jul 19, 2026</span><span>5 min read</span></div>
+                </header>
+
+                <div class="prose">
+                    <p>A spam filter that silently stops working is worse than none — you think you’re protected when you aren’t. Spamify avoids that trap by adding checks to WordPress’s built-in <strong>Tools → Site Health</strong> screen, so its status is always visible.</p>
+                    <h2>The checks it adds</h2>
+                    <h3>Logging</h3>
+                    <p>Confirms the log table exists and records are being written. If this is red, your <a href="reading-the-spamify-dashboard.html">dashboard</a> would show nothing — usually a database permissions or activation issue. Deactivating and reactivating the plugin normally repairs the table.</p>
+                    <h3>DNS resolution</h3>
+                    <p>Email checks depend on resolving domains to their mail hosts (MX lookups). This check confirms your server can perform DNS lookups. If it’s failing, even <a href="syntax-vs-smtp-what-each-catches.html">syntax validation’s</a> domain checks will be unreliable — talk to your host about DNS access.</p>
+                    <h3>Mailbox verification / port 25</h3>
+                    <p>If you’ve enabled <a href="enabling-smtp-verification-safely.html">SMTP verification</a>, this reflects the port-25 connectivity probe: can your server open outbound port 25 at all? A red result here explains a flood of <a href="why-submissions-are-unverifiable.html">"unverifiable" results</a> — your host is blocking the port, and you should either ask them to open it or set <code>smtp_unverifiable_action</code> to flag rather than block.</p>
+                    <h2>Make it a habit</h2>
+                    <p>Check Site Health after any major change — a host migration, a PHP upgrade, a big WordPress update. Those are exactly the moments when DNS access or port availability can silently change underneath you. Thirty seconds on this screen confirms your protection survived the change.</p>
+
+                    <div class="postcta">
+                        <h3>Stop spam at the source with Spamify</h3>
+                        <p>Self-contained email validation and bot protection for WordPress — syntax checks, honeypot, rate limiting and optional SMTP verification, all on your own server.</p>
+                        <a class="btn btn--light btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get the free plugin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap wrap--narrow morereads">
+                <h2>Keep reading</h2>
+                <div class="postgrid">
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="block-vs-flag-choosing-the-right-action.html" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" aria-hidden="true">🚦</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Setup & Tuning</span>
+                            <h2><a href="block-vs-flag-choosing-the-right-action.html">Block or Flag? Choosing the Right Action for Each Defense</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="reading-the-spamify-dashboard.html" style="background:linear-gradient(135deg,#6366f1,#0ea5e9)" aria-hidden="true">📊</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Setup & Tuning</span>
+                            <h2><a href="reading-the-spamify-dashboard.html">Reading the Dashboard: Blocked, Flagged, and Allowed</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="the-one-minute-setup-wizard.html" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)" aria-hidden="true">🧭</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Setup & Tuning</span>
+                            <h2><a href="the-one-minute-setup-wizard.html">The One-Minute Setup Wizard, Walked Through</a></h2>
+                            <div class="postcard__meta"><span>5 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Spamify</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="../index.html#features">Features</a><a href="../index.html#engine">Engine</a><a href="../index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>

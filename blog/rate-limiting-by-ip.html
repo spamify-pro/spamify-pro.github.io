@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rate Limiting: Throttling Repeat Submitters by IP — Spamify</title>
+    <meta name="description" content="When one source hammers your form, rate limiting caps them without touching everyone else. Learn how ratelimit_max, ratelimit_window, and ratelimit_action work together.">
+    <meta name="keywords" content="rate-limiting, ratelimit_max, ratelimit_window">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamify-pro.github.io/blog/rate-limiting-by-ip.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Spamify">
+    <meta property="og:title" content="Rate Limiting: Throttling Repeat Submitters by IP">
+    <meta property="og:description" content="When one source hammers your form, rate limiting caps them without touching everyone else. Learn how ratelimit_max, ratelimit_window, and ratelimit_action work together.">
+    <meta property="og:url" content="https://spamify-pro.github.io/blog/rate-limiting-by-ip.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Rate Limiting: Throttling Repeat Submitters by IP",
+            "description": "When one source hammers your form, rate limiting caps them without touching everyone else. Learn how ratelimit_max, ratelimit_window, and ratelimit_action work together.",
+            "datePublished": "2026-06-19",
+            "articleSection": "Bot Protection",
+            "keywords": "rate-limiting, ratelimit_max, ratelimit_window",
+            "author": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "publisher": {
+                    "@type": "Organization",
+                    "name": "Spamify"
+            },
+            "mainEntityOfPage": "https://spamify-pro.github.io/blog/rate-limiting-by-ip.html"
+    }
+    </script>
+</head>
+
+<body>
+
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="../index.html" aria-label="Spamify home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Spamify</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#engine">Engine</a>
+                <a href="../index.html#integrations">Integrations</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="../index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="article">
+            <div class="wrap wrap--narrow">
+                <nav class="crumb"><a href="index.html">Blog</a><span>/</span>Bot Protection</nav>
+                <header class="posthead">
+                    <span class="eyebrow">Bot Protection</span>
+                    <h1>Rate Limiting: Throttling Repeat Submitters by IP</h1>
+                    <p class="posthead__sub">When one source hammers your form, rate limiting caps them without touching everyone else. Learn how ratelimit_max, ratelimit_window, and ratelimit_action work together.</p>
+                    <div class="postmeta"><span><b>Spamify</b></span><span>Updated Jun 19, 2026</span><span>6 min read</span></div>
+                </header>
+
+                <div class="prose">
+                    <p>Some abuse isn’t about one clever submission — it’s about volume. A single IP firing your contact form hundreds of times an hour. Rate limiting is the setting that caps that flood while leaving normal visitors untouched.</p>
+                    <h2>The two numbers that define a limit</h2>
+                    <p>Spamify’s rate limiter is a classic rolling window built from two settings:</p>
+                    <ul>
+                    <li><code>ratelimit_max</code> — the maximum number of submissions allowed…</li>
+                    <li><code>ratelimit_window</code> — …within this many seconds, per IP address.</li>
+                    </ul>
+                    <p>So <code>ratelimit_max = 5</code> and <code>ratelimit_window = 300</code> means "no more than 5 submissions from one IP in any 5-minute stretch." The window <em>rolls</em> — it’s not a fixed clock reset — so a burst can’t game the boundary.</p>
+                    <h2>Choosing the numbers</h2>
+                    <p>Think about how a real person uses the form:</p>
+                    <ul>
+                    <li><strong>Contact form:</strong> almost nobody submits more than once or twice in a few minutes. A low max over a several-minute window is safe.</li>
+                    <li><strong>Comment forms on a busy post:</strong> allow a bit more headroom so an engaged commenter isn’t throttled.</li>
+                    <li><strong>Shared networks (offices, schools, mobile carriers):</strong> many people can share one IP — don’t set the max so low that a legitimate crowd trips it.</li>
+                    </ul>
+                    <h2>What happens when the limit is hit</h2>
+                    <p>The <code>ratelimit_action</code> setting decides the response — block the excess submissions outright, or flag them for review. Blocking is the usual choice here, because exceeding a sane rate is a strong abuse signal on its own. If you serve a lot of shared-IP traffic, flag-for-review is the gentler option.</p>
+                    <p>Rate limiting pairs naturally with the <a href="stopping-bots-honeypot-and-timing.html">honeypot and timing checks</a>: those stop the unsophisticated single hits, and the rate limiter stops the same source coming back for more.</p>
+
+                    <div class="postcta">
+                        <h3>Stop spam at the source with Spamify</h3>
+                        <p>Self-contained email validation and bot protection for WordPress — syntax checks, honeypot, rate limiting and optional SMTP verification, all on your own server.</p>
+                        <a class="btn btn--light btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get the free plugin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap wrap--narrow morereads">
+                <h2>Keep reading</h2>
+                <div class="postgrid">
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="honeypot-vs-captcha-bot-protection.html" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)" aria-hidden="true">🤖</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Bot Protection</span>
+                            <h2><a href="honeypot-vs-captcha-bot-protection.html">Honeypot vs CAPTCHA: Which Actually Stops Bots?</a></h2>
+                            <div class="postcard__meta"><span>7 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="invisible-captcha-turnstile-recaptcha.html" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)" aria-hidden="true">🤖</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Bot Protection</span>
+                            <h2><a href="invisible-captcha-turnstile-recaptcha.html">Invisible CAPTCHA with Turnstile or reCAPTCHA v3 — Bring Your Own Keys</a></h2>
+                            <div class="postcard__meta"><span>7 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="stopping-bots-honeypot-and-timing.html" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" aria-hidden="true">🍯</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Bot Protection</span>
+                            <h2><a href="stopping-bots-honeypot-and-timing.html">Stopping Bots with the Honeypot and Minimum Fill Time</a></h2>
+                            <div class="postcard__meta"><span>6 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Spamify</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="../index.html#features">Features</a><a href="../index.html#engine">Engine</a><a href="../index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>
