@@ -664,7 +664,7 @@ h4 {
 }
 
 .section__head h2 {
-    font-size: clamp(28px, 3.6vw, 42px);
+    font-size: clamp(28px, 3.6vw, 40px);
     margin: 16px 0 0;
 }
 
