@@ -578,7 +578,7 @@ h4 {
     font-size: 12.5px;
     letter-spacing: .1em;
     text-transform: uppercase;
-    color: var(--muted-2);
+    color: #000;
     font-weight: 600;
     margin: 0 0 20px;
 }
@@ -595,7 +595,7 @@ h4 {
     height: 48px;
     width: auto;
     object-fit: contain;
-    opacity: .62;
+    opacity: .90;
     transition: opacity .2s, filter .2s;
 }
 
