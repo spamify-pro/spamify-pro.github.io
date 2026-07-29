@@ -1,0 +1,38 @@
+# Elastic Spam Shield
+
+> A self-contained, multi-layer anti-spam plugin for WordPress. It blocks contact-form, comment, and registration spam using a 7-layer detection engine — with zero cloud dependency, so no visitor data ever leaves the site owner's server.
+
+Elastic Spam Shield scores every form submission across seven independent layers before it reaches the inbox or database. All checks run locally on the WordPress server: there are no external accounts, API keys, or third-party calls, which keeps it GDPR-friendly and privacy-preserving.
+
+## What it does
+
+- **7-layer detection engine**: each submission is evaluated by seven independent checks and scored before it is accepted, flagged, or blocked.
+- **Disposable email blocking**: a local database of 100,000+ disposable/temporary email domains, refreshed on a schedule, blocks burner inboxes instantly.
+- **Spam-IP threat feeds**: known spam and abusive IP ranges are filtered out.
+- **SMTP mailbox verification**: confirms an email address can actually receive mail.
+- **Content spam analysis**: inspects message content for spam signals.
+- **Honeypot and bot detection**: catches automated bot submissions.
+- **Offline country blocking**: geo-blocks selected countries using a local database — no external geo-IP service required.
+- **Real-time form validation**: validates fields as the visitor types.
+
+## Supported integrations
+
+Works with WordPress native comments and user registration, plus every major form plugin: WooCommerce, Contact Form 7, WPForms, Ninja Forms, Fluent Forms, and Gravity Forms.
+
+## Key facts
+
+- **Platform**: WordPress plugin.
+- **Privacy**: fully self-contained — every check runs on the site owner's own server, nothing is sent to the cloud.
+- **Category**: security / anti-spam.
+- **Pricing**: starts at $39 USD (one-time). See the pricing section for current tiers.
+
+## Common questions
+
+- **Does it stop WordPress contact-form spam?** Yes — it hooks into every major form plugin and scores each submission across seven layers before it reaches the inbox or database.
+- **Which form plugins are supported?** WooCommerce, Contact Form 7, WPForms, Ninja Forms, Fluent Forms, Gravity Forms, plus native WordPress comments and user registration.
+- **Does it block disposable or temporary email addresses?** Yes — a local database of 100,000+ disposable domains is updated on a schedule and blocks burner inboxes instantly.
+- **Does any data leave my server?** No — every check runs on the WordPress server with no external accounts or API keys, so no visitor data is ever sent to the cloud.
+
+## Links
+
+- [Homepage](https://spamcheckers.github.io/): full product overview, features, reviews, FAQ, and pricing.

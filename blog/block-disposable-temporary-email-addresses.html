@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to Block Disposable &amp; Temporary Email Addresses in WordPress — Elastic Spam Shield</title>
+    <meta name="description" content="Disposable email addresses inflate your list, skew analytics and hide abuse. Learn how temporary inboxes work and how to detect and block 100k+ throwaway domains in WordPress.">
+    <meta name="keywords" content="block disposable email, temporary email addresses, throwaway email blocker, mailinator, WordPress email validation">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamcheckers.github.io/blog/block-disposable-temporary-email-addresses.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Elastic Spam Shield">
+    <meta property="og:title" content="How to Block Disposable &amp; Temporary Email Addresses">
+    <meta property="og:description" content="Why throwaway inboxes hurt your site and how to block 100k+ disposable domains.">
+    <meta property="og:url" content="https://spamcheckers.github.io/blog/block-disposable-temporary-email-addresses.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "How to Block Disposable & Temporary Email Addresses in WordPress",
+            "description": "Why throwaway inboxes hurt your site and how to detect and block disposable email domains.",
+            "datePublished": "2026-06-24",
+            "author": {
+                "@type": "Organization",
+                "name": "Elastic Spam Shield"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Elastic Spam Shield"
+            },
+            "mainEntityOfPage": "https://spamcheckers.github.io/blog/block-disposable-temporary-email-addresses.html"
+        }
+    </script>
+</head>
+
+<body>
+
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="../index.html" aria-label="Elastic Spam Shield home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Email&nbsp;Spam&nbsp;Shield</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#engine">Engine</a>
+                <a href="../index.html#integrations">Integrations</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="../index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="article">
+            <div class="wrap wrap--narrow">
+                <nav class="crumb"><a href="index.html">Blog</a><span>/</span>Email validation</nav>
+                <header class="posthead">
+                    <span class="eyebrow">Email validation</span>
+                    <h1>How to Block Disposable &amp; Temporary Email Addresses</h1>
+                    <p class="posthead__sub">Throwaway inboxes look like real email but exist for minutes. They inflate your list, hide abuse and wreck your metrics. Here's how they work — and how to shut them out.</p>
+                    <div class="postmeta"><span><b>Elastic Spam Shield</b></span><span>Updated Jun 24, 2026</span><span>6 min read</span></div>
+                </header>
+
+                <div class="prose">
+                    <p>Services like Mailinator, Guerrilla Mail and 10MinuteMail hand out a working email address in one click, with no signup. The inbox self-destructs within minutes or hours. They're genuinely useful for privacy-conscious users testing
+                        a service — and equally useful to spammers, fraudsters and bots who want to slip past your "confirm your email" step without leaving a trace.</p>
+
+                    <h2>Why disposable addresses are a problem</h2>
+                    <ul>
+                        <li><strong>Fake signups.</strong> Bots create throwaway accounts to abuse free trials, farm referral bonuses or seed spam content.</li>
+                        <li><strong>Poisoned analytics.</strong> Every disposable signup skews your conversion and retention numbers, because those users never return.</li>
+                        <li><strong>Deliverability damage.</strong> Sending to short-lived inboxes drives up bounces and spam complaints, which hurts your <a href="email-deliverability-spf-dkim-dmarc.html">sender reputation</a> for everyone else.</li>
+                        <li><strong>Support and moderation load.</strong> Abuse from anonymous accounts is hard to trace and costs your team real time.</li>
+                    </ul>
+
+                    <h2>How disposable detection actually works</h2>
+                    <p>The core technique is a curated blocklist of domains known to belong to disposable providers. When an address comes in, you extract the domain and check it against the list. Simple in principle — the difficulty is in the details:</p>
+                    <ul>
+                        <li><strong>Scale.</strong> There are well over 100,000 disposable domains, and new ones appear constantly. A stale list is a leaky list.</li>
+                        <li><strong>Subdomains &amp; aliases.</strong> Providers rotate through many domains and subdomains to dodge blocks.</li>
+                        <li><strong>Plus-addressing.</strong> Some abuse uses <code>user+tag@domain</code> tricks on real providers, which disposable lists won't catch — you need behaviour and rate checks for those.</li>
+                    </ul>
+
+                    <div class="callout">
+                        <span class="callout__ico">🔄</span>
+                        <p><strong>Freshness matters most.</strong> A disposable blocklist is only as good as its last update. Look for a solution that refreshes automatically from multiple upstream sources rather than shipping a one-time static list.</p>
+                    </div>
+
+                    <h2>Don't block too aggressively</h2>
+                    <p>Blocking disposable domains is high-value and low-risk, but a few caveats keep you from turning away real customers:</p>
+                    <ul>
+                        <li>Keep an <strong>allowlist</strong> for domains you never want flagged.</li>
+                        <li>Consider a <strong>"flag, don't block"</strong> mode for borderline cases — hold the submission for review instead of rejecting it outright.</li>
+                        <li>Show a <strong>clear, friendly message</strong> when you do block, so a legitimate user who happens to use a privacy forwarder knows to try another address.</li>
+                    </ul>
+
+                    <h2>Pair it with live mailbox checks</h2>
+                    <p>Disposable detection answers "is this a throwaway provider?" It pairs naturally with live validation that answers "does this mailbox even exist?" Together they catch both throwaway inboxes and outright fake addresses. See our <a href="how-to-stop-contact-form-spam-wordpress.html">layered guide to stopping form spam</a>                        for how these checks fit into a full stack.</p>
+
+                    <blockquote>Blocking disposable email is one of the highest-ROI anti-spam changes you can make: it's nearly false-positive-free and removes an entire class of abuse in one step.</blockquote>
+
+                    <h2>Doing it in WordPress</h2>
+                    <p>Rather than maintaining domain lists yourself, <a href="../index.html#engine">Elastic Spam Shield</a> ships a disposable-domain layer (Pro) backed by an auto-refreshing database of 100k+ providers, alongside live SMTP/MX validation
+                        in the free tier. It runs on every form it detects — contact forms, registration, comments and WooCommerce — with allowlisting and a flag-instead-of-block option built in.</p>
+
+                    <div class="postcta">
+                        <h3>Block throwaway emails automatically</h3>
+                        <p>Add live mailbox validation for free, or unlock the 100k+ disposable-domain database with Pro.</p>
+                        <a class="btn btn--light btn--lg" href="../index.html#pricing">See plans</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap wrap--narrow morereads">
+                <h2>Keep reading</h2>
+                <div class="postgrid">
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="how-to-stop-contact-form-spam-wordpress.html" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)" aria-hidden="true">🛡️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Guides</span>
+                            <h2><a href="how-to-stop-contact-form-spam-wordpress.html">How to Stop Contact Form Spam in WordPress</a></h2>
+                            <div class="postcard__meta"><span>8 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="email-deliverability-spf-dkim-dmarc.html" style="background:linear-gradient(135deg,#4f46e5,#0ea5e9)" aria-hidden="true">✉️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Deliverability</span>
+                            <h2><a href="email-deliverability-spf-dkim-dmarc.html">Email Deliverability 101: SPF, DKIM &amp; DMARC</a></h2>
+                            <div class="postcard__meta"><span>10 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="woocommerce-spam-fake-orders-signups.html" style="background:linear-gradient(135deg,#10b981,#3b82f6)" aria-hidden="true">🛒</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">WooCommerce</span>
+                            <h2><a href="woocommerce-spam-fake-orders-signups.html">Fighting WooCommerce Fake Orders &amp; Spam Signups</a></h2>
+                            <div class="postcard__meta"><span>7 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Elastic Spam Shield</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="../index.html#features">Features</a><a href="../index.html#engine">Engine</a><a href="../index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Elastic Spam Shield</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>

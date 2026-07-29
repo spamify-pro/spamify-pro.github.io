@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="google-site-verification" content="wCppn_9DEZkIM1okCkUS2k0BqOHA5PAUrDPWjwzzSZg">
+
+    <title>Elastic Spam Shield — The self-contained anti-spam engine for WordPress</title>
+    <meta name="description" content="Stop form, comment and registration spam on WordPress. A multi-layer engine with invisible CAPTCHA, live mailbox verification, IP threat-intel, a firewall and a geo report — 100% on your own server, no cloud.">
+    <meta name="keywords" content="WordPress anti-spam plugin, contact form spam, disposable email blocker, invisible CAPTCHA, spam IP blocking, email validation WordPress, WooCommerce spam, VPN proxy blocking, country blocking WordPress">
+    <meta name="author" content="Elastic Spam Shield">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamcheckers.github.io/">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Elastic Spam Shield">
+    <meta property="og:title" content="Elastic Spam Shield — self-contained anti-spam for WordPress">
+    <meta property="og:description" content="A multi-layer engine that blocks disposable emails, spam IPs, bots, VPNs and bad content across every WordPress form — nothing leaves your server.">
+    <meta property="og:url" content="https://spamcheckers.github.io/">
+    <meta property="og:image" content="https://spamcheckers.github.io/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Elastic Spam Shield — self-contained anti-spam for WordPress">
+    <meta name="twitter:description" content="Block form, comment & registration spam with a self-contained multi-layer engine, invisible CAPTCHA, a firewall and a geo report.">
+    <meta name="twitter:image" content="https://spamcheckers.github.io/assets/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Elastic Spam Shield",
+            "applicationCategory": "SecurityApplication",
+            "operatingSystem": "WordPress",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "description": "A self-contained multi-layer anti-spam engine for WordPress forms."
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- ══ Nav ═══════════════════════════════════════════════════════════════ -->
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="#top" aria-label="Elastic Spam Shield home">
+                <span class="brand__mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg>
+            </span>
+                <span class="brand__name">Email&nbsp;Spam&nbsp;Shield</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="#features">Features</a>
+                <a href="#engine">Engine</a>
+                <a href="#integrations">Integrations</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+                <a href="blog/index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+
+        <!-- ══ Hero ══════════════════════════════════════════════════════════════ -->
+        <section class="hero">
+            <div class="hero__glow" aria-hidden="true"></div>
+            <div class="wrap hero__grid">
+                <div class="hero__copy reveal">
+                    <span class="pill"><span class="pill__dot"></span> 100% self-contained · no cloud, no data leaks</span>
+                    <h1>Stop form spam <span class="grad">before it starts.</span></h1>
+                    <p class="lead">Elastic Spam Shield is a multi-layer engine that blocks disposable emails, spam IPs, bots, VPNs and junk content across <strong>every</strong> WordPress form — validated live on your own server.</p>
+                    <div class="hero__actions">
+                        <a class="btn btn--primary btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Install free plugin</a>
+                        <a class="btn btn--soft btn--lg" href="#engine">See how it works</a>
+                    </div>
+                    <ul class="hero__ticks">
+                        <li>Invisible CAPTCHA</li>
+                        <li>Live mailbox check</li>
+                        <li>Firewall &amp; geo report</li>
+                    </ul>
+                </div>
+
+                <div class="hero__art reveal" data-d="1">
+                    <div class="verdict-card glass">
+                        <div class="verdict-card__head">
+                            <span class="dotrow"><i></i><i></i><i></i></span>
+                            <span class="verdict-card__title">Live check</span>
+                        </div>
+                        <div class="verdict-row">
+                            <span class="mono">john.doe@gmail.com</span>
+                            <span class="tag tag--ok">Passed</span>
+                        </div>
+                        <div class="verdict-row">
+                            <span class="mono">win$$@mailinator.com</span>
+                            <span class="tag tag--bad">Blocked</span>
+                        </div>
+                        <div class="verdict-row">
+                            <span class="mono">bot@185.220.101.4</span>
+                            <span class="tag tag--warn">Tor · flagged</span>
+                        </div>
+                        <div class="gauge">
+                            <div class="gauge__label">Spam score</div>
+                            <div class="gauge__bar"><span style="width:92%"></span></div>
+                            <div class="gauge__val">92</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Trust / logos ═════════════════════════════════════════════════════ -->
+        <section class="logos">
+            <div class="wrap">
+                <p class="logos__label">Protects every major form &amp; commerce plugin</p>
+                <div class="logos__row reveal">
+                    <img src="assets/logos/wordpress.svg" alt="WordPress" loading="lazy">
+                    <img src="assets/logos/contact-form-7.png" alt="Contact Form 7" loading="lazy">
+                    <img src="assets/logos/wpforms.png" alt="WPForms" loading="lazy">
+                    <img src="assets/logos/gravity-forms.svg" alt="Gravity Forms" loading="lazy">
+                    <img src="assets/logos/ninja-forms.png" alt="Ninja Forms" loading="lazy">
+                    <img src="assets/logos/fluent-forms.png" alt="Fluent Forms" loading="lazy">
+                    <img src="assets/logos/woocommerce.png" alt="WooCommerce" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Stats ═════════════════════════════════════════════════════════════ -->
+        <section class="stats">
+            <div class="wrap stats__grid">
+                <div class="stat reveal"><b data-count="7">0</b><span>detection layers</span></div>
+                <div class="stat reveal" data-d="1"><b data-count="148078" data-suffix="+">0</b><span>disposable domains</span></div>
+                <div class="stat reveal" data-d="2"><b data-count="GDPR" data-text="GDPR">GDPR</b><span>GDPR compliance</span></div>
+                <div class="stat reveal" data-d="3"><b>100+</b><span>form integrations</span></div>
+            </div>
+        </section>
+
+        <!-- ══ Engine ════════════════════════════════════════════════════════════ -->
+        <section class="section engine" id="engine">
+            <div class="wrap">
+                <div class="section__head reveal">
+                    <span class="eyebrow">The engine</span>
+                    <h2>Every submission runs a gauntlet</h2>
+                    <p>Each layer scores the address, the sender and the message. Definitive signals block instantly; the rest combine into one spam score you control.</p>
+                </div>
+                <div class="engine__grid">
+                    <ul class="layers reveal">
+                        <li><span class="layers__ico">🔤</span>
+                            <div><b>Syntax &amp; patterns</b><small>Rejects malformed addresses, gibberish local-parts and typo-squatted or look-alike domains before any network call runs.</small></div><span class="layers__free">Free</span></li>
+                        <li><span class="layers__ico">📬</span>
+                            <div><b>Live SMTP + MX</b><small>Verifies the domain's MX records, then asks the receiving mail server in real time whether the mailbox actually exists.</small></div><span class="layers__free">Free</span></li>
+                        <li><span class="layers__ico">🗑️</span>
+                            <div><b>Disposable domains</b><small>Blocks 100,000+ throwaway and temporary-inbox providers, with the blocklist refreshed automatically.</small></div><span class="layers__pro">Pro</span></li>
+                        <li><span class="layers__ico">🌐</span>
+                            <div><b>IP threat &amp; DNSBL</b><small>Matches the sender's IP against aggregated abuse feeds and DNS blocklists of known spam and botnet sources.</small></div><span class="layers__pro">Pro</span></li>
+                        <li><span class="layers__ico">🕵️</span>
+                            <div><b>VPN / proxy / Tor</b><small>Flags anonymised traffic from VPNs, open proxies, Tor exit nodes and datacenter hosting ranges.</small></div><span class="layers__pro">Pro</span></li>
+                        <li><span class="layers__ico">📝</span>
+                            <div><b>Content analysis</b><small>Scans the submission for link stuffing, spam keywords and homoglyph or Unicode obfuscation tricks.</small></div><span class="layers__pro">Pro</span></li>
+                        <li><span class="layers__ico">🤖</span>
+                            <div><b>Behaviour &amp; honeypot</b><small>Catches bots with hidden honeypot fields, submission-timing checks and per-sender reputation history.</small></div><span class="layers__pro">Pro</span></li>
+                        <li><span class="layers__ico">📏</span>
+                            <div><b>Custom rules</b><small>Layer your own if-this-then-that logic on top to block, flag or allow by any field or signal.</small></div><span class="layers__pro">Pro</span></li>
+                    </ul>
+                    <div class="engine__panel reveal" data-d="1">
+                        <div class="score glass">
+                            <div class="score__ring">
+                                <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="52" class="score__track"/>
+                            <circle cx="60" cy="60" r="52" class="score__fill" id="scoreArc"/>
+                        </svg>
+                                <div class="score__num"><b id="scoreNum">0</b><span>/100</span></div>
+                            </div>
+                            <div class="score__verdict" id="scoreVerdict">Analysing…</div>
+                            <div class="score__reasons" id="scoreReasons"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Features ══════════════════════════════════════════════════════════ -->
+        <section class="section" id="features">
+            <div class="wrap">
+                <div class="section__head reveal">
+                    <span class="eyebrow">Everything included</span>
+                    <h2>A complete spam-defence toolkit</h2>
+                    <p>From invisible CAPTCHA to a full network firewall and a geographic report — one plugin, zero external services.</p>
+                </div>
+                <div class="cards">
+                    <article class="card reveal">
+                        <div class="card__ico grad-ico">🧩</div>
+                        <h3>Invisible CAPTCHA</h3>
+                        <p>Cloudflare Turnstile or reCAPTCHA v3 with your own keys — no puzzles, no friction for real visitors.</p>
+                    </article>
+                    <article class="card reveal" data-d="1">
+                        <div class="card__ico grad-ico">⚡</div>
+                        <h3>Real-time validation</h3>
+                        <p>Warns visitors about invalid or spammy addresses <em>as they type</em>, before they ever submit.</p>
+                    </article>
+                    <article class="card reveal" data-d="2">
+                        <div class="card__ico grad-ico">🚦</div>
+                        <h3>Rate limiting</h3>
+                        <p>Throttle how many submissions a single IP can make — flood and script abuse stopped cold.</p>
+                    </article>
+                    <article class="card reveal">
+                        <div class="card__ico grad-ico">🧱</div>
+                        <h3>Network firewall</h3>
+                        <p>Block Tor, VPN &amp; datacenter ASNs, bad user-agents/referrers, with escalating temporary bans.</p>
+                    </article>
+                    <article class="card reveal" data-d="1">
+                        <div class="card__ico grad-ico">🌍</div>
+                        <h3>Geo report &amp; blocking</h3>
+                        <p>A world-map choropleth of where your spam comes from, plus offline country blocking.</p>
+                    </article>
+                    <article class="card reveal" data-d="2">
+                        <div class="card__ico grad-ico">🛠️</div>
+                        <h3>Deliverability tools</h3>
+                        <p>Bulk email-list verification and an SPF / DMARC / DKIM checker, right in your dashboard.</p>
+                    </article>
+                    <article class="card reveal">
+                        <div class="card__ico grad-ico">🔒</div>
+                        <h3>Privacy by design</h3>
+                        <p>Nothing leaves your server. GDPR IP-anonymisation and automatic log purging built in.</p>
+                    </article>
+                    <article class="card reveal" data-d="1">
+                        <div class="card__ico grad-ico">📈</div>
+                        <h3>Uptime monitor</h3>
+                        <p>Ping your URLs on a schedule and get emailed the moment a site goes down — or slows.</p>
+                    </article>
+                    <article class="card reveal" data-d="2">
+                        <div class="card__ico grad-ico">🚀</div>
+                        <h3>Setup in a minute</h3>
+                        <p>A guided wizard, WP Site-Health checks and import/export get you protected instantly.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Geo highlight ═════════════════════════════════════════════════════ -->
+        <section class="section geo">
+            <div class="wrap geo__grid">
+                <div class="geo__copy reveal">
+                    <span class="eyebrow">Know your enemy</span>
+                    <h2>See where spam really comes from</h2>
+                    <p>The Pro geographic report resolves every blocked and flagged submission to its country and paints a Google-Analytics-style world map — powered by a free, offline database. No third-party analytics, no tracking.</p>
+                    <ul class="checklist">
+                        <li>Interactive choropleth, zoom &amp; pan</li>
+                        <li>Ranked country breakdown &amp; share</li>
+                        <li>Fully offline — free DB-IP database</li>
+                    </ul>
+                </div>
+                <div class="geo__art reveal" data-d="1">
+                    <div class="mapcard glass">
+                        <div class="mapcard__head">
+                            <span class="mapcard__dots"><i></i><i></i><i></i></span>
+                            <span class="mapcard__title">Spam origins · last 30 days</span>
+                        </div>
+                        <div class="worldmap" id="spamMap">
+                            <img class="worldmap__img" src="assets/world.svg" width="1000" height="363" alt="World map showing where blocked spam originates" loading="lazy">
+                        </div>
+                        <ol class="maprank" id="spamRank" aria-label="Top spam origin countries"></ol>
+                        <div class="mapcard__legend"><span>Fewer</span><i style="background:#8ab4f8"></i><i style="background:#4285f4"></i><i style="background:#1967d2"></i><i style="background:#174ea6"></i><i style="background:#0f3d86"></i><span>More</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Integrations ══════════════════════════════════════════════════════ -->
+        <section class="section" id="integrations">
+            <div class="wrap">
+                <div class="section__head reveal">
+                    <span class="eyebrow">Works everywhere</span>
+                    <h2>Drops into the forms you already use</h2>
+                    <p>Auto-detects and protects your forms — no shortcodes, no per-form setup.</p>
+                </div>
+                <div class="chips reveal">
+                    <span class="chip">WordPress core</span>
+                    <span class="chip">Comments</span>
+                    <span class="chip">Registration</span>
+                    <span class="chip">Contact Form 7</span>
+                    <span class="chip">WPForms</span>
+                    <span class="chip">Jetpack Forms</span>
+                    <span class="chip">Elementor</span>
+                    <span class="chip chip--pro">WooCommerce</span>
+                    <span class="chip chip--pro">Gravity Forms</span>
+                    <span class="chip chip--pro">Ninja Forms</span>
+                    <span class="chip chip--pro">Fluent Forms</span>
+                    <span class="chip chip--pro">Newsletter opt-ins</span>
+                    <span class="chip chip--pro">Any form (universal)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Pricing ═══════════════════════════════════════════════════════════ -->
+        <section class="section pricing" id="pricing">
+            <div class="wrap">
+                <div class="section__head reveal">
+                    <span class="eyebrow">Pricing</span>
+                    <h2>Start free. Upgrade when you scale.</h2>
+                    <p>The core plugin is free forever on WordPress.org. Pro unlocks the full engine, firewall and reporting.</p>
+                </div>
+                <div class="tiers">
+                    <article class="tier reveal">
+                        <h3>Free</h3>
+                        <div class="tier__price"><b>$0</b><span>/ forever</span></div>
+                        <p class="tier__sub">On WordPress.org</p>
+                        <ul>
+                            <li>Syntax + live SMTP/MX checks</li>
+                            <li>Invisible CAPTCHA</li>
+                            <li>Honeypot, timing &amp; rate limiting</li>
+                            <li>Allowlist &amp; GDPR tools</li>
+                            <li>WP core, CF7, WPForms, Jetpack, Elementor</li>
+                        </ul>
+                        <a class="btn btn--soft btn--block" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Download free</a>
+                    </article>
+                    <article class="tier reveal" data-d="1">
+                        <h3>Starter</h3>
+                        <div class="tier__price"><b>$49</b><span>/ year</span></div>
+                        <p class="tier__sub">Up to 3 sites</p>
+                        <ul>
+                            <li>Everything in Free, plus…</li>
+                            <li>All 12 detection layers</li>
+                            <li>IP threat-intel &amp; disposable DB</li>
+                            <li>WooCommerce, Gravity, Ninja, Fluent</li>
+                            <li>Email support</li>
+                        </ul>
+                        <a class="btn btn--soft btn--block" data-fs-plan="52908" href="https://checkout.freemius.com/plugin/32247/plan/52908/" target="_blank" rel="noopener">Choose Starter</a>
+                    </article>
+                    <article class="tier tier--pop reveal" data-d="2">
+                        <span class="tier__flag">Most popular</span>
+                        <h3>Agency</h3>
+                        <div class="tier__price"><b>$99</b><span>/ year</span></div>
+                        <p class="tier__sub">Up to 50 sites</p>
+                        <ul>
+                            <li>Everything in Starter, plus…</li>
+                            <li>Firewall: VPN/Tor/ASN + auto-ban</li>
+                            <li>Geo report &amp; country blocking</li>
+                            <li>Uptime monitor &amp; deliverability tools</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <a class="btn btn--primary btn--block" data-fs-plan="52909" href="https://checkout.freemius.com/plugin/32247/plan/52909/" target="_blank" rel="noopener">Choose Agency</a>
+                    </article>
+                    <article class="tier reveal" data-d="3">
+                        <h3>Lifetime</h3>
+                        <div class="tier__price"><b>$249</b><span>/ once</span></div>
+                        <p class="tier__sub">Unlimited sites</p>
+                        <ul>
+                            <li>Everything in Agency</li>
+                            <li>Unlimited sites, forever</li>
+                            <li>All future Pro features</li>
+                            <li>One payment, no renewals</li>
+                        </ul>
+                        <a class="btn btn--soft btn--block" data-fs-plan="52910" href="https://checkout.freemius.com/plugin/32247/plan/52910/" target="_blank" rel="noopener">Get Lifetime</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ FAQ ═══════════════════════════════════════════════════════════════ -->
+        <section class="section faq" id="faq">
+            <div class="wrap wrap--narrow">
+                <div class="section__head reveal">
+                    <span class="eyebrow">FAQ</span>
+                    <h2>Questions, answered</h2>
+                </div>
+                <div class="acc reveal">
+                    <details>
+                        <summary>Does it send my data to any external service?<i></i></summary>
+                        <p>No. The engine runs entirely on your server. SMTP checks talk directly to the recipient's mail server, and the geo database is stored locally. Nothing about your visitors is sent to us or anyone else.</p>
+                    </details>
+                    <details>
+                        <summary>Will it block real customers by mistake?<i></i></summary>
+                        <p>Every layer is tunable and you can set an allowlist for trusted domains, emails and IPs. Thresholds, hard-block rules and a "flag instead of block" mode give you full control.</p>
+                    </details>
+                    <details>
+                        <summary>Do I need a paid CAPTCHA service?<i></i></summary>
+                        <p>CAPTCHA is optional and uses your own free Cloudflare Turnstile or Google reCAPTCHA v3 keys. The engine already stops most spam without it.</p>
+                    </details>
+                    <details>
+                        <summary>What's the difference between Free and Pro?<i></i></summary>
+                        <p>Free covers core validation, CAPTCHA, honeypot, rate limiting and the common form plugins. Pro adds the full detection stack, the network firewall, the geo report, deliverability tools and every integration.</p>
+                    </details>
+                    <details>
+                        <summary>Is it GDPR-friendly?<i></i></summary>
+                        <p>Yes — optional IP anonymisation, automatic log purging on a schedule, and zero third-party data sharing by design.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ CTA ═══════════════════════════════════════════════════════════════ -->
+        <section class="cta">
+            <div class="wrap cta__box reveal">
+                <h2>Give spammers nothing.</h2>
+                <p>Install the free plugin in seconds, or unlock the full engine with Pro.</p>
+                <div class="hero__actions">
+                    <a class="btn btn--light btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Install free</a>
+                    <a class="btn btn--outline btn--lg" href="#pricing">Explore Pro</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="#top"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Elastic Spam Shield</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="#features">Features</a><a href="#engine">Engine</a><a href="#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="blog/index.html">Blog</a><a href="#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a><a href="https://spamcheckers.github.io" target="_blank" rel="noopener">Pro add-on</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Elastic Spam Shield</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="https://checkout.freemius.com/checkout.min.js"></script>
+    <script src="assets/js/geomap.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+</body>
+
+</html>

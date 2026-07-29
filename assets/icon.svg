@@ -1,0 +1,45 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Elastic Spam Shield</title>
+<defs>
+  <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#1e1b4b"/>
+    <stop offset="100%" stop-color="#064e3b"/>
+  </linearGradient>
+  <linearGradient id="shield" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#312e81"/>
+    <stop offset="100%" stop-color="#065f46"/>
+  </linearGradient>
+  <linearGradient id="stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#818cf8"/>
+    <stop offset="100%" stop-color="#10b981"/>
+  </linearGradient>
+  <linearGradient id="env" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#c7d2fe"/>
+    <stop offset="100%" stop-color="#6ee7b7"/>
+  </linearGradient>
+</defs>
+<!-- Background -->
+<rect width="512" height="512" rx="112" fill="url(#bg)"/>
+<!-- Glow rings -->
+<ellipse cx="256" cy="240" rx="180" ry="172" fill="none" stroke="url(#stroke)" stroke-width="1.5" opacity="0.2"/>
+<ellipse cx="256" cy="240" rx="140" ry="132" fill="none" stroke="url(#stroke)" stroke-width="1" opacity="0.12"/>
+<!-- Shield body -->
+<path d="M256 76 L392 132 L392 244 C392 320 330 384 256 408 C182 384 120 320 120 244 L120 132 Z" fill="url(#shield)" stroke="url(#stroke)" stroke-width="5"/>
+<!-- Shield inner highlight -->
+<path d="M256 104 L368 152 L368 244 C368 306 322 360 256 380 C190 360 144 306 144 244 L144 152 Z" fill="none" stroke="url(#env)" stroke-width="1.5" opacity="0.25"/>
+<!-- Envelope body -->
+<rect x="184" y="200" width="144" height="104" rx="10" fill="#0f172a" opacity="0.7" stroke="url(#env)" stroke-width="4"/>
+<!-- Envelope flap -->
+<polyline points="184,202 256,254 328,202" fill="none" stroke="url(#env)" stroke-width="4" stroke-linejoin="round"/>
+<!-- Check circle -->
+<circle cx="294" cy="276" r="28" fill="#0f172a" opacity="0.9"/>
+<circle cx="294" cy="276" r="26" fill="#10b981" opacity="0.2"/>
+<!-- Checkmark -->
+<polyline points="280,276 290,288 310,262" fill="none" stroke="#34d399" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Sparkle dots -->
+<circle cx="352" cy="108" r="5" fill="#818cf8" opacity="0.8"/>
+<circle cx="376" cy="132" r="3" fill="#34d399" opacity="0.6"/>
+<circle cx="340" cy="92" r="3" fill="#818cf8" opacity="0.5"/>
+<circle cx="168" cy="116" r="4" fill="#34d399" opacity="0.5"/>
+<circle cx="148" cy="140" r="2.5" fill="#818cf8" opacity="0.4"/>
+</svg>

@@ -1,0 +1,99 @@
+<svg width="772" height="250" viewBox="0 0 772 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#0f0f1a"/>
+    <stop offset="50%" stop-color="#1e1b4b"/>
+    <stop offset="100%" stop-color="#064e3b"/>
+  </linearGradient>
+  <linearGradient id="sh" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#312e81"/>
+    <stop offset="100%" stop-color="#065f46"/>
+  </linearGradient>
+  <linearGradient id="st" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#818cf8"/>
+    <stop offset="100%" stop-color="#10b981"/>
+  </linearGradient>
+  <linearGradient id="en" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#c7d2fe"/>
+    <stop offset="100%" stop-color="#6ee7b7"/>
+  </linearGradient>
+  <linearGradient id="title" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#a5b4fc"/>
+    <stop offset="100%" stop-color="#6ee7b7"/>
+  </linearGradient>
+  <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3"/>
+    <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+    <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+
+<!-- Background -->
+<rect width="772" height="250" fill="url(#bg)"/>
+
+<!-- Grid lines -->
+<g opacity="0.04" stroke="#ffffff" stroke-width="0.5">
+  <line x1="0" y1="50" x2="772" y2="50"/>
+  <line x1="0" y1="100" x2="772" y2="100"/>
+  <line x1="0" y1="150" x2="772" y2="150"/>
+  <line x1="0" y1="200" x2="772" y2="200"/>
+  <line x1="100" y1="0" x2="100" y2="250"/>
+  <line x1="200" y1="0" x2="200" y2="250"/>
+  <line x1="300" y1="0" x2="300" y2="250"/>
+  <line x1="400" y1="0" x2="400" y2="250"/>
+  <line x1="500" y1="0" x2="500" y2="250"/>
+  <line x1="600" y1="0" x2="600" y2="250"/>
+  <line x1="700" y1="0" x2="700" y2="250"/>
+</g>
+
+<!-- Glow orbs -->
+<ellipse cx="620" cy="125" rx="160" ry="140" fill="url(#glow1)"/>
+<ellipse cx="150" cy="200" rx="120" ry="100" fill="url(#glow2)"/>
+
+<!-- Icon (right side) -->
+<g transform="translate(560, 25)">
+  <path d="M96 14 L148 36 L148 91 C148 120 124 143 96 153 C68 143 44 120 44 91 L44 36 Z" fill="url(#sh)" stroke="url(#st)" stroke-width="2"/>
+  <path d="M96 26 L138 44 L138 91 C138 114 120 134 96 142 C72 134 54 114 54 91 L54 44 Z" fill="none" stroke="url(#en)" stroke-width="0.8" opacity="0.3"/>
+  <rect x="68" y="74" width="56" height="40" rx="5" fill="#0f172a" opacity="0.7" stroke="url(#en)" stroke-width="2"/>
+  <polyline points="68,75 96,95 124,75" fill="none" stroke="url(#en)" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="114" cy="104" r="13" fill="#0f172a" opacity="0.9"/>
+  <circle cx="114" cy="104" r="12" fill="#10b981" opacity="0.2"/>
+  <polyline points="108,104 112,109 121,97" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Sparkle dots -->
+  <circle cx="137" cy="22" r="3" fill="#818cf8" opacity="0.8"/>
+  <circle cx="148" cy="35" r="2" fill="#34d399" opacity="0.6"/>
+  <circle cx="128" cy="14" r="2" fill="#818cf8" opacity="0.5"/>
+  <circle cx="57" cy="30" r="2.5" fill="#34d399" opacity="0.5"/>
+</g>
+
+<!-- Text content (left side) -->
+<!-- Small label -->
+<text x="56" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="600" letter-spacing="3" fill="#6366f1" opacity="0.9">WORDPRESS PLUGIN</text>
+
+<!-- Main title -->
+<text x="54" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="40" font-weight="800" fill="url(#title)" letter-spacing="-1">Email Spam Shield</text>
+
+<!-- Tagline -->
+<text x="55" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="16" font-weight="400" fill="#94a3b8">Intelligent email protection — 6 layers, zero cloud dependency</text>
+
+<!-- Pill badges -->
+<g transform="translate(56, 168)">
+  <rect width="100" height="24" rx="12" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+  <text x="50" y="16" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#a5b4fc">6 Detection Layers</text>
+</g>
+<g transform="translate(168, 168)">
+  <rect width="110" height="24" rx="12" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.35)" stroke-width="1"/>
+  <text x="55" y="16" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#6ee7b7">No Cloud Required</text>
+</g>
+<g transform="translate(290, 168)">
+  <rect width="96" height="24" rx="12" fill="rgba(148,163,184,0.1)" stroke="rgba(148,163,184,0.25)" stroke-width="1"/>
+  <text x="48" y="16" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#94a3b8">7 Form Plugins</text>
+</g>
+
+<!-- Bottom line -->
+<line x1="56" y1="215" x2="500" y2="215" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+<text x="56" y="234" font-family="-apple-system, sans-serif" font-size="12" fill="#475569">Free · GPL-2.0 · Requires WordPress 5.8+ and PHP 7.4+</text>
+</svg>

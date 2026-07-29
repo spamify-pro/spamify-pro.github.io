@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Honeypot vs CAPTCHA: Which Actually Stops Bots? — Elastic Spam Shield</title>
+    <meta name="description" content="Honeypots, timing traps and modern invisible CAPTCHA each catch bots differently. Compare accuracy, friction and privacy — and learn why combining them beats picking one.">
+    <meta name="keywords" content="honeypot vs captcha, invisible captcha, reCAPTCHA v3, Cloudflare Turnstile, bot protection WordPress">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamcheckers.github.io/blog/honeypot-vs-captcha-bot-protection.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Elastic Spam Shield">
+    <meta property="og:title" content="Honeypot vs CAPTCHA: Which Actually Stops Bots?">
+    <meta property="og:description" content="Accuracy, friction and privacy compared — and why the best answer is usually both.">
+    <meta property="og:url" content="https://spamcheckers.github.io/blog/honeypot-vs-captcha-bot-protection.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Honeypot vs CAPTCHA: Which Actually Stops Bots?",
+            "description": "Comparing honeypots, timing traps and invisible CAPTCHA on accuracy, friction and privacy.",
+            "datePublished": "2026-07-08",
+            "author": {
+                "@type": "Organization",
+                "name": "Elastic Spam Shield"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Elastic Spam Shield"
+            },
+            "mainEntityOfPage": "https://spamcheckers.github.io/blog/honeypot-vs-captcha-bot-protection.html"
+        }
+    </script>
+</head>
+
+<body>
+
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="../index.html" aria-label="Elastic Spam Shield home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Email&nbsp;Spam&nbsp;Shield</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#engine">Engine</a>
+                <a href="../index.html#integrations">Integrations</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="../index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main id="top">
+        <article class="article">
+            <div class="wrap wrap--narrow">
+                <nav class="crumb"><a href="index.html">Blog</a><span>/</span>Deep dive</nav>
+                <header class="posthead">
+                    <span class="eyebrow">Deep dive</span>
+                    <h1>Honeypot vs CAPTCHA: Which Actually Stops Bots?</h1>
+                    <p class="posthead__sub">Both stop bots, but they make very different trade-offs on accuracy, user friction and privacy. Here's how each works — and why the strongest setups use them together.</p>
+                    <div class="postmeta"><span><b>Elastic Spam Shield</b></span><span>Updated Jul 8, 2026</span><span>7 min read</span></div>
+                </header>
+
+                <div class="prose">
+                    <h2>How a honeypot works</h2>
+                    <p>A honeypot adds a decoy field to your form and hides it from humans using CSS (or positions it off-screen). Real visitors never see it and leave it empty. Many bots auto-fill every field they can find, so a non-empty honeypot is a
+                        near-certain bot signal. You discard the submission silently — the bot never learns why it failed.</p>
+                    <p><strong>Pros:</strong> invisible, zero friction, free, privacy-friendly (nothing leaves your server). <strong>Cons:</strong> targeted bots that read your specific markup can learn to skip the field, so a honeypot alone won't stop a
+                        determined attacker.</p>
+
+                    <h2>How timing traps work</h2>
+                    <p>Closely related to honeypots, timing checks record when the page rendered and compare it to when the form was submitted. A submission that arrives in 300&nbsp;milliseconds wasn't typed by a person. Timing traps cost nothing and catch
+                        fast, scripted bots that a honeypot might miss.</p>
+
+                    <h2>How modern CAPTCHA works</h2>
+                    <p>Forget the old "type these squiggly letters" puzzles. Today's tools — Google reCAPTCHA v3 and Cloudflare Turnstile — mostly run invisibly, scoring each visitor from behavioural and network signals and only challenging the suspicious
+                        ones. They're very good at catching advanced bots that beat honeypots.</p>
+                    <p><strong>Pros:</strong> strong against sophisticated automation; low friction when invisible. <strong>Cons:</strong> depends on a third-party service, sends visitor signals off-site (a privacy and GDPR consideration), and can occasionally
+                        challenge or misjudge real users.</p>
+
+                    <div class="callout">
+                        <span class="callout__ico">🔬</span>
+                        <p><strong>Different bots, different traps.</strong> Honeypots and timing beat the cheap, high-volume bots that make up most spam. CAPTCHA scoring beats the smarter minority. Neither is a complete answer alone.</p>
+                    </div>
+
+                    <h2>Accuracy, friction, privacy: the trade-offs</h2>
+                    <ul>
+                        <li><strong>Accuracy.</strong> Honeypots catch the bulk cheaply; CAPTCHA catches the sophisticated remainder. Combined coverage is far higher than either alone.</li>
+                        <li><strong>Friction.</strong> Honeypots and timing are truly invisible. Invisible CAPTCHA is close, but strict thresholds risk the occasional real-user challenge.</li>
+                        <li><strong>Privacy.</strong> Honeypots and timing keep everything on your server. CAPTCHA shares visitor data with a third party — worth a consent notice depending on your jurisdiction.</li>
+                        <li><strong>Cost &amp; setup.</strong> Honeypots need no keys or accounts. CAPTCHA requires provider keys and configuration.</li>
+                    </ul>
+
+                    <h2>The verdict: layer them</h2>
+                    <p>This isn't really "versus". Start with honeypot and timing because they're free, invisible and stop most spam. Add rate limiting and email/IP checks next. Then keep invisible CAPTCHA as a backstop for the small slice of advanced bots
+                        that survive — set to a strict score, since the earlier layers have already removed the volume that would cause false positives.</p>
+
+                    <blockquote>Use honeypots to make spam cheap to reject, and CAPTCHA to make the survivors expensive to attempt. Together they raise the cost of attacking you past the point of being worthwhile.</blockquote>
+
+                    <h2>Doing it in WordPress</h2>
+                    <p><a href="../index.html#engine">Elastic Spam Shield</a> ships honeypot and timing protection in the free tier and supports invisible CAPTCHA (Cloudflare Turnstile or reCAPTCHA v3) with your own keys, so you decide whether to involve
+                        a third party. Because it also layers rate limiting, IP reputation and content analysis, CAPTCHA becomes a last resort rather than a front door — which is exactly where it belongs. For the full stack, see <a href="how-to-stop-contact-form-spam-wordpress.html">how to stop contact form spam</a>.</p>
+
+                    <div class="postcta">
+                        <h3>Invisible protection, your keys</h3>
+                        <p>Honeypot and timing traps for free, optional Turnstile / reCAPTCHA v3 when you want a backstop.</p>
+                        <a class="btn btn--light btn--lg" href="https://wordpress.org/plugins/" target="_blank" rel="noopener">Get the free plugin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap wrap--narrow morereads">
+                <h2>Keep reading</h2>
+                <div class="postgrid">
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="how-to-stop-contact-form-spam-wordpress.html" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)" aria-hidden="true">🛡️</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Guides</span>
+                            <h2><a href="how-to-stop-contact-form-spam-wordpress.html">How to Stop Contact Form Spam in WordPress</a></h2>
+                            <div class="postcard__meta"><span>8 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="wordpress-comment-spam-prevention-guide.html" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)" aria-hidden="true">💬</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">Guides</span>
+                            <h2><a href="wordpress-comment-spam-prevention-guide.html">Stopping WordPress Comment Spam</a></h2>
+                            <div class="postcard__meta"><span>9 min read</span></div>
+                        </div>
+                    </article>
+                    <article class="postcard">
+                        <a class="postcard__thumb" href="woocommerce-spam-fake-orders-signups.html" style="background:linear-gradient(135deg,#10b981,#3b82f6)" aria-hidden="true">🛒</a>
+                        <div class="postcard__body">
+                            <span class="postcard__cat">WooCommerce</span>
+                            <h2><a href="woocommerce-spam-fake-orders-signups.html">Fighting WooCommerce Fake Orders &amp; Spam Signups</a></h2>
+                            <div class="postcard__meta"><span>7 min read</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="../index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Elastic Spam Shield</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="../index.html#features">Features</a><a href="../index.html#engine">Engine</a><a href="../index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="index.html">Blog</a><a href="../index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Elastic Spam Shield</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+</body>
+
+</html>
