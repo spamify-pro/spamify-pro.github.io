@@ -103,6 +103,7 @@
                     <div class="nrbig">🔍</div>
                     <p>No articles match your search. Try another term or category.</p>
                 </div>
+                <nav class="pager" id="pager" aria-label="Blog pagination"></nav>
             </div>
         </section>
     </main>
@@ -129,8 +130,9 @@
         var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         var q = document.getElementById('q'), clearBtn = document.getElementById('clear');
         var grid = document.getElementById('grid'), noRes = document.getElementById('noresults');
-        var countEl = document.getElementById('count');
-        var state = { term: '', cat: 'all' };
+        var countEl = document.getElementById('count'), pager = document.getElementById('pager');
+        var PAGE_SIZE = 9;
+        var state = { term: '', cat: 'all', page: 1 };
 
         document.getElementById('n-all').textContent = '(' + POSTS.length + ')';
         Object.keys(CATLABEL).forEach(function (k) {
@@ -152,34 +154,70 @@
             return term.toLowerCase().split(/\s+/).filter(Boolean).every(function(w){return hay.indexOf(w)>-1;});
         }
 
+        function cardHTML(p, term){
+            return '<article class="postcard">'
+                + '<a class="postcard__thumb" href="'+p.slug+'.html" aria-hidden="true" tabindex="-1"><img src="../assets/blog/'+p.slug+'.svg" alt="" loading="lazy" width="1200" height="675"></a>'
+                + '<div class="postcard__body">'
+                + '<span class="postcard__cat">'+esc(CATLABEL[p.category]||p.category)+'</span>'
+                + '<h2><a href="'+p.slug+'.html">'+hl(p.title, term)+'</a></h2>'
+                + '<p>'+hl(p.excerpt, term)+'</p>'
+                + '<div class="postcard__meta"><span>'+fmt(p.date)+'</span><span>'+p.readingTime+' min read</span></div>'
+                + '</div></article>';
+        }
+
+        function pageList(totalPages){
+            // windowed page numbers with gaps: 1 … (cur-1) cur (cur+1) … last
+            var cur = state.page, out = [];
+            function push(n){ out.push(n); }
+            var win = new Set([1, totalPages, cur, cur-1, cur+1]);
+            var prev = 0;
+            for (var i=1;i<=totalPages;i++){
+                if (win.has(i)) { if (i-prev>1) out.push('gap'); push(i); prev=i; }
+            }
+            return out;
+        }
+
+        function renderPager(totalPages){
+            if (totalPages <= 1){ pager.innerHTML=''; return; }
+            var cur = state.page, html = '';
+            html += '<button type="button" data-go="'+(cur-1)+'"'+(cur<=1?' disabled':'')+' aria-label="Previous page">‹ Prev</button>';
+            pageList(totalPages).forEach(function(n){
+                if (n==='gap'){ html += '<span class="gap">…</span>'; }
+                else { html += '<button type="button" data-go="'+n+'" class="'+(n===cur?'on':'')+'"'+(n===cur?' aria-current="page"':'')+'>'+n+'</button>'; }
+            });
+            html += '<button type="button" data-go="'+(cur+1)+'"'+(cur>=totalPages?' disabled':'')+' aria-label="Next page">Next ›</button>';
+            pager.innerHTML = html;
+        }
+
         function render(){
             var term = state.term.trim();
             var list = POSTS.filter(function(p){
                 return (state.cat==='all' || p.category===state.cat) && match(p, term);
             });
-            grid.innerHTML = list.map(function(p){
-                return '<article class="postcard">'
-                    + '<a class="postcard__thumb" href="'+p.slug+'.html" style="background:linear-gradient(135deg,'+p.grad+')" aria-hidden="true">'+p.emoji+'</a>'
-                    + '<div class="postcard__body">'
-                    + '<span class="postcard__cat">'+esc(CATLABEL[p.category]||p.category)+'</span>'
-                    + '<h2><a href="'+p.slug+'.html">'+hl(p.title, term)+'</a></h2>'
-                    + '<p>'+hl(p.excerpt, term)+'</p>'
-                    + '<div class="postcard__meta"><span>'+fmt(p.date)+'</span><span>'+p.readingTime+' min read</span></div>'
-                    + '</div></article>';
-            }).join('');
+            var totalPages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+            if (state.page > totalPages) state.page = totalPages;
+            if (state.page < 1) state.page = 1;
+            var start = (state.page - 1) * PAGE_SIZE;
+            var pageItems = list.slice(start, start + PAGE_SIZE);
+
+            grid.innerHTML = pageItems.map(function(p){ return cardHTML(p, term); }).join('');
             var has = list.length > 0;
             grid.hidden = !has; noRes.hidden = has;
+
             var bits = [String(list.length) + (list.length===1?' article':' articles')];
             if(state.cat!=='all') bits.push('in ' + (CATLABEL[state.cat]||state.cat));
             if(term) bits.push('matching “'+esc(term)+'”');
+            if(has && totalPages>1) bits.push('· page '+state.page+' of '+totalPages);
             countEl.textContent = bits.join(' ');
             clearBtn.style.display = term ? 'block' : 'none';
+            renderPager(totalPages);
         }
 
         function readURL(){
             var sp = new URLSearchParams(location.search);
             state.cat = sp.get('cat') || 'all';
             state.term = sp.get('q') || '';
+            state.page = Math.max(1, parseInt(sp.get('page'), 10) || 1);
             q.value = state.term;
             document.querySelectorAll('.chip').forEach(function(b){ b.classList.toggle('on', b.dataset.cat===state.cat); });
         }
@@ -187,17 +225,25 @@
             var sp = new URLSearchParams();
             if(state.cat!=='all') sp.set('cat', state.cat);
             if(state.term.trim()) sp.set('q', state.term.trim());
+            if(state.page>1) sp.set('page', state.page);
             var s = sp.toString();
             history.replaceState(null, '', s ? '?'+s : location.pathname);
         }
 
-        q.addEventListener('input', function(){ state.term=q.value; writeURL(); render(); });
-        clearBtn.addEventListener('click', function(){ q.value=''; state.term=''; q.focus(); writeURL(); render(); });
+        q.addEventListener('input', function(){ state.term=q.value; state.page=1; writeURL(); render(); });
+        clearBtn.addEventListener('click', function(){ q.value=''; state.term=''; state.page=1; q.focus(); writeURL(); render(); });
         document.getElementById('filters').addEventListener('click', function(e){
             var b = e.target.closest('.chip'); if(!b) return;
-            state.cat = b.dataset.cat;
+            state.cat = b.dataset.cat; state.page = 1;
             document.querySelectorAll('.chip').forEach(function(x){ x.classList.toggle('on', x===b); });
             writeURL(); render();
+        });
+        pager.addEventListener('click', function(e){
+            var b = e.target.closest('button[data-go]'); if(!b || b.disabled) return;
+            state.page = parseInt(b.dataset.go, 10) || 1;
+            writeURL(); render();
+            var top = document.querySelector('.pagehead');
+            if (top) window.scrollTo({ top: top.offsetTop + top.offsetHeight - 70, behavior: 'smooth' });
         });
         document.addEventListener('keydown', function(e){
             if(e.key==='/' && document.activeElement!==q){ e.preventDefault(); q.focus(); }

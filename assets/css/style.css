@@ -1725,6 +1725,88 @@ h4 {
     margin: 0;
 }
 
+/* Featured image thumbnails (replace emoji icons) */
+.postcard__thumb {
+    padding: 0;
+}
+
+.postcard__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* ── Pagination ──────────────────────────────────────────────────── */
+
+.pager {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 4px 0 78px;
+}
+
+.pager button {
+    min-width: 42px;
+    height: 42px;
+    padding: 0 13px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink-2);
+    border-radius: 11px;
+    font: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform .15s, border-color .15s, color .15s, background .15s;
+}
+
+.pager button:hover:not(:disabled) {
+    border-color: var(--brand);
+    color: var(--ink);
+    transform: translateY(-1px);
+}
+
+.pager button.on {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+}
+
+.pager button:disabled {
+    opacity: .4;
+    cursor: default;
+}
+
+.pager .gap {
+    color: var(--muted-2);
+    padding: 0 4px;
+    user-select: none;
+}
+
+
+/* ── Post featured hero ──────────────────────────────────────────── */
+
+.posthero {
+    margin: 4px 0 8px;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--sh-sm);
+    aspect-ratio: 16 / 9;
+    background: var(--grad);
+}
+
+.posthero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 
 /* ── Article ─────────────────────────────────────────────────────── */
 

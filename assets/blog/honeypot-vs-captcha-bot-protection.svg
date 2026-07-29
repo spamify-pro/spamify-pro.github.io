@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img">
+  <defs>
+    <linearGradient id="ghoneypotvscaptchabotprotection" x1="0" y1="0" x2="0.937" y2="0.742">
+      <stop offset="0" stop-color="#0ea5e9"/>
+      <stop offset="0.55" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#075985"/>
+    </linearGradient>
+    <radialGradient id="hlhoneypotvscaptchabotprotection" cx="0.32" cy="0.28" r="0.9">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softhoneypotvscaptchabotprotection" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+    <pattern id="dotshoneypotvscaptchabotprotection" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2" fill="#ffffff" opacity="0.10"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#ghoneypotvscaptchabotprotection)"/>
+  <rect width="1200" height="675" fill="url(#dotshoneypotvscaptchabotprotection)"/>
+  <circle cx="219" cy="179" r="200" fill="#ffffff" opacity="0.12" filter="url(#softhoneypotvscaptchabotprotection)"/>
+  <circle cx="951" cy="501" r="240" fill="#000000" opacity="0.10" filter="url(#softhoneypotvscaptchabotprotection)"/>
+  <rect width="1200" height="675" fill="url(#hlhoneypotvscaptchabotprotection)"/>
+
+  <g transform="translate(600 336)">
+    <circle r="184" fill="#ffffff" opacity="0.10"/>
+    <circle r="184" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2"/>
+    <circle r="232" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="2" stroke-dasharray="3 16"/>
+    <g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" transform="scale(0.92)">
+      <rect x="-82" y="-58" width="164" height="142" rx="28"/><circle cx="-36" cy="6" r="16" fill="#fff" stroke="none"/><circle cx="36" cy="6" r="16" fill="#fff" stroke="none"/><line x1="0" y1="-58" x2="0" y2="-92"/><circle cx="0" cy="-102" r="11" fill="#fff" stroke="none"/><line x1="-42" y1="50" x2="42" y2="50"/>
+    </g>
+  </g>
+</svg>
