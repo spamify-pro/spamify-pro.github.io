@@ -21,6 +21,8 @@
         burger.addEventListener('click', function() {
             var open = nav.classList.toggle('is-open');
             burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            var links = document.getElementById('navLinks');
+            if (open && links) { nav.style.setProperty('--menu-h', links.offsetHeight + 'px'); }
         });
         nav.querySelectorAll('.nav__links a, .nav__cta a').forEach(function(a) {
             a.addEventListener('click', function() {

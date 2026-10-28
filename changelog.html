@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Changelog — Spamify release history</title>
+    <meta name="description" content="Every released version of the Spamify WordPress anti-spam plugin, newest first — new features, fixes and security changes, with dates from the WordPress.org repository.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spamify-pro.github.io/changelog.html">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Spamify">
+    <meta property="og:title" content="Spamify changelog — release history">
+    <meta property="og:description" content="Every released version of the Spamify WordPress anti-spam plugin, newest first.">
+    <meta property="og:url" content="https://spamify-pro.github.io/changelog.html">
+    <meta property="og:image" content="https://spamify-pro.github.io/assets/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+    </script>
+</head>
+
+<body>
+
+    <!-- ══ Nav ═══════════════════════════════════════════════════════════════ -->
+    <header class="nav" id="nav">
+        <div class="wrap nav__inner">
+            <a class="brand" href="index.html" aria-label="Spamify home">
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
+                <span class="brand__name">Spamify</span>
+            </a>
+            <nav class="nav__links" id="navLinks">
+                <a href="index.html#engine">Engine</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#compare">Free vs Pro</a>
+                <a href="changelog.html" aria-current="page">Changelog</a>
+                <a href="index.html#scan">Spam Scan</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="blog/index.html">Blog</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="https://wordpress.org/plugins/spamify/" target="_blank" rel="noopener">Get&nbsp;free</a>
+                <a class="btn btn--primary" href="index.html#pricing">Get&nbsp;Pro</a>
+            </div>
+            <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+
+    <main id="top">
+        <section class="pagehead">
+            <div class="wrap">
+                <span class="eyebrow">Changelog</span>
+                <h1>Release history</h1>
+                <p>Every released version of Spamify, newest first. Current version: <b>1.2.0</b> · requires WordPress 5.8+, PHP 7.4+ · tested up to 7.1.</p>
+            </div>
+        </section>
+
+        <section class="section changelog">
+            <div class="wrap wrap--narrow">
+                <div class="versions">
+<details class="ver" open>
+                        <summary><span class="ver__n">1.2.0</span><span class="tag tag--new">Latest</span><time>October 16, 2026</time><i></i></summary>
+                        <div class="ver__body">
+                            <h4>New features</h4>
+                            <ul>
+                                <li>Added <b>German (de_DE), Spanish (es_ES) and French (fr_FR)</b> translations covering the admin screens and the visitor-facing form messages.</li>
+                                <li><b>Per-zone rate-limit overrides</b> — give a zone (e.g. comments) its own independent submission budget instead of sharing the global limit.</li>
+                                <li><b>Honeypot and &quot;submitted too fast&quot;</b> detections can now flag for review instead of always hard-blocking.</li>
+                                <li><b>Greylist-aware SMTP checks</b> — a temporary response gets one automatic re-check a few minutes later instead of caching the inconclusive result for an hour.</li>
+                                <li><b>Hide Login Attempts</b> stat card on the Dashboard shows today's and this week's denied probes of the real login address.</li>
+                                <li><b>Spam Scan &quot;Review candidates&quot;</b> filter surfaces clean-looking accounts that have prior flagged or blocked activity on file.</li>
+                                <li><b>Send test digest now</b> button previews the digest email immediately.</li>
+                                <li><b>Run GDPR purge now</b> button applies the retention window immediately.</li>
+                                <li><b>Review Queue &quot;Dismiss all&quot;</b> clears every currently-filtered flagged submission in one action.</li>
+                                <li>The <b>setup wizard</b> pre-checks a form-plugin zone only when that plugin is actually active.</li>
+                            </ul>
+                            <h4>Fixes</h4>
+                            <ul>
+                                <li>The honeypot's &quot;submitted too quickly&quot; message now reaches blocked visitors.</li>
+                                <li>A domain with no mail server at all (no MX or A record) is now blocked, not just flagged.</li>
+                                <li>Removed the redundant &quot;full&quot; Real-Time Check Mode, which was identical to &quot;fast&quot;.</li>
+                                <li>First-activation settings now always match &quot;Reset to Defaults&quot; (IP anonymisation and log retention defaults no longer disagree).</li>
+                            </ul>
+                            <h4>Internal</h4>
+                            <ul>
+                                <li>Dashboard stat cards extracted into their own class; the Spam Scan table gained an indexed column (DB schema v15) that upgrades automatically.</li>
+                            </ul>
+                        <p class="ver__dl"><a href="https://downloads.wordpress.org/plugin/spamify.1.2.0.zip" rel="noopener">Download 1.2.0 (.zip)</a> · <a href="https://plugins.trac.wordpress.org/browser/spamify/tags/1.2.0" target="_blank" rel="noopener">View source</a></p>
+                        </div>
+                    </details>
+<details class="ver">
+                        <summary><span class="ver__n">1.1.0</span><time>September 14, 2026</time><i></i></summary>
+                        <div class="ver__body">
+                            <h4>New features</h4>
+                            <ul>
+                                <li>The Activity banner now appears on <b>every tab</b> (Log, Review Queue, Timeline and Pro sections).</li>
+                                <li>A <b>loading indicator</b> for every AJAX action and page navigation across the admin screens.</li>
+                            </ul>
+                            <h4>Security</h4>
+                            <ul>
+                                <li>Re-audited every AJAX endpoint to confirm nonce verification and capability checks are in place.</li>
+                            </ul>
+                            <h4>Fixes</h4>
+                            <ul>
+                                <li><b>Flag and Block thresholds</b> now behave distinctly: Flag Threshold means &quot;allow, but mark for review&quot;; only Block Threshold rejects — so the Review Queue receives real submissions.</li>
+                                <li>The admin banner is now light instead of dark, matching the rest of the admin UI.</li>
+                            </ul>
+                            <h4>Internal</h4>
+                            <ul>
+                                <li>Every source file is under 400 lines; admin pages, engine layers and stylesheets split into focused parts.</li>
+                                <li>JavaScript migrated to <code>wp.i18n</code> so every browser string is translatable.</li>
+                            </ul>
+                        <p class="ver__dl"><a href="https://downloads.wordpress.org/plugin/spamify.1.1.0.zip" rel="noopener">Download 1.1.0 (.zip)</a> · <a href="https://plugins.trac.wordpress.org/browser/spamify/tags/1.1.0" target="_blank" rel="noopener">View source</a></p>
+                        </div>
+                    </details>
+<details class="ver">
+                        <summary><span class="ver__n">1.0.1</span><time>September 8, 2026</time><i></i></summary>
+                        <div class="ver__body">
+                            <h4>New features</h4>
+                            <ul>
+                                <li><b>Continuous Spam Scan</b> — retro-scans survive a page reload, and Pause/Resume picks up exactly where it left off.</li>
+                                <li><b>Behavior &amp; Bot Signals</b> layer — headless-browser detection, keystroke rhythm, mouse/keyboard/focus activity and a JS challenge, all collected locally.</li>
+                                <li><b>Review Queue</b> — every flagged submission across comments, registrations, profiles and connected forms in one screen.</li>
+                                <li><b>Timeline</b> — a visual &quot;why was this blocked&quot; history per IP or email across all zones.</li>
+                                <li><b>WP Dashboard widget</b> with today's and this week's blocked/flagged counts.</li>
+                                <li><b>Digest emails</b> daily, weekly or monthly, optionally with a CSV summary attached.</li>
+                            </ul>
+                            <h4>Fixes</h4>
+                            <ul>
+                                <li>The Activity Log &quot;Delete entry&quot; button now actually deletes the row.</li>
+                                <li>The Spam Scan &quot;no offline Tor/ASN dataset&quot; notice renders as a normal banner.</li>
+                            </ul>
+                        <p class="ver__dl"><a href="https://downloads.wordpress.org/plugin/spamify.1.0.1.zip" rel="noopener">Download 1.0.1 (.zip)</a> · <a href="https://plugins.trac.wordpress.org/browser/spamify/tags/1.0.1" target="_blank" rel="noopener">View source</a></p>
+                        </div>
+                    </details>
+<details class="ver">
+                        <summary><span class="ver__n">1.0.0</span><span class="tag tag--new">Initial release</span><time>September 1, 2026</time><i></i></summary>
+                        <div class="ver__body">
+                            <h4>Features</h4>
+                            <ul>
+                                <li><b>Hide login</b> — serve wp-login.php (and /wp-admin/ for logged-out visitors) from a custom address, with a 404, home redirect or URL of your choice; all login links are rewritten.</li>
+                                <li><b>Multisite</b> — per-site login addresses, subdirectory-network aware, and an optional <code>SPAMIFY_HIDE_LOGIN_SLUG</code> constant to enforce one address network-wide.</li>
+                                <li>Syntax validation, optional SMTP mailbox verification, honeypot &amp; timing, per-IP rate limiting, allowlist, invisible CAPTCHA (bring your own keys), GDPR log tools, Site Health checks and a setup wizard.</li>
+                                <li>Integrations for WordPress core forms, Contact Form 7, WPForms, Jetpack Forms and Elementor Forms.</li>
+                            </ul>
+                        <p class="ver__dl"><a href="https://downloads.wordpress.org/plugin/spamify.1.0.0.zip" rel="noopener">Download 1.0.0 (.zip)</a> · <a href="https://plugins.trac.wordpress.org/browser/spamify/tags/1.0.0" target="_blank" rel="noopener">View source</a></p>
+                        </div>
+                    </details>
+                </div>
+                <p class="changelog__src">Release dates and notes come from the plugin's <a href="https://plugins.trac.wordpress.org/browser/spamify/trunk/readme.txt" target="_blank" rel="noopener">readme.txt</a> and tags in the <a href="https://plugins.svn.wordpress.org/spamify/tags/" target="_blank" rel="noopener">WordPress.org repository</a>. See also the <a href="https://wordpress.org/plugins/spamify/#developers" target="_blank" rel="noopener">plugin page</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap foot__grid">
+            <div class="foot__brand">
+                <a class="brand" href="index.html"><span class="brand__mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span><span class="brand__name">Spamify</span></a>
+                <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
+            </div>
+            <nav>
+                <h4>Product</h4><a href="index.html#features">Features</a><a href="index.html#compare">Free vs Pro</a><a href="changelog.html" aria-current="page">Changelog</a><a href="index.html#engine">Engine</a><a href="index.html#pricing">Pricing</a></nav>
+            <nav>
+                <h4>Resources</h4><a href="blog/index.html">Blog</a><a href="index.html#faq">FAQ</a><a href="https://wordpress.org/plugins/spamify/" target="_blank" rel="noopener">WordPress.org</a></nav>
+        </div>
+        <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
+    </footer>
+
+
+    <script src="assets/js/main.js" defer></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-  
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +8,8 @@
     <meta name="google-site-verification" content="wCppn_9DEZkIM1okCkUS2k0BqOHA5PAUrDPWjwzzSZg">
 
     <title>Spamify — The self-contained anti-spam engine for WordPress</title>
-    <meta name="description" content="Stop form, comment and registration spam on WordPress. A multi-layer engine with invisible CAPTCHA, live mailbox verification, IP threat-intel, a firewall and a geo report — 100% on your own server, no cloud.">
-    <meta name="keywords" content="WordPress anti-spam plugin, contact form spam, disposable email blocker, invisible CAPTCHA, spam IP blocking, email validation WordPress, WooCommerce spam, VPN proxy blocking, country blocking WordPress">
+    <meta name="description" content="Stop form, comment and registration spam on WordPress. Live mailbox verification, bot detection, a Review Queue, Spam Scan, hide-login and a firewall — 100% on your own server, no cloud.">
+    <meta name="keywords" content="WordPress anti-spam plugin, contact form spam, disposable email blocker, invisible CAPTCHA, spam IP blocking, email validation WordPress, WooCommerce spam, hide login WordPress, spam review queue, country blocking WordPress">
     <meta name="author" content="Spamify">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://spamify-pro.github.io/">
@@ -19,20 +19,21 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Spamify">
     <meta property="og:title" content="Spamify — self-contained anti-spam for WordPress">
-    <meta property="og:description" content="A multi-layer engine that blocks disposable emails, spam IPs, bots, VPNs and bad content across every WordPress form — nothing leaves your server.">
+    <meta property="og:description" content="A multi-layer engine that blocks fake emails, spam IPs, bots and bad content across every WordPress form — nothing leaves your server.">
     <meta property="og:url" content="https://spamify-pro.github.io/">
     <meta property="og:image" content="https://spamify-pro.github.io/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Spamify — self-contained anti-spam for WordPress">
-    <meta name="twitter:description" content="Block form, comment & registration spam with a self-contained multi-layer engine, invisible CAPTCHA, a firewall and a geo report.">
+    <meta name="twitter:description" content="Block form, comment & registration spam with a self-contained multi-layer engine, a Review Queue, Spam Scan and hide-login.">
     <meta name="twitter:image" content="https://spamify-pro.github.io/assets/og-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/home.css">
 
     <script>
         document.documentElement.classList.remove('no-js');
@@ -44,12 +45,13 @@
             "name": "Spamify",
             "applicationCategory": "SecurityApplication",
             "operatingSystem": "WordPress",
+            "softwareVersion": "1.2.0",
             "offers": {
                 "@type": "Offer",
                 "price": "0",
                 "priceCurrency": "USD"
             },
-            "description": "A self-contained multi-layer anti-spam engine for WordPress forms."
+            "description": "A self-contained multi-layer anti-spam engine for WordPress forms, comments and registrations."
         }
     </script>
 </head>
@@ -60,16 +62,15 @@
     <header class="nav" id="nav">
         <div class="wrap nav__inner">
             <a class="brand" href="#top" aria-label="Spamify home">
-                <span class="brand__mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg>
-            </span>
+                <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg></span>
                 <span class="brand__name">Spamify</span>
             </a>
             <nav class="nav__links" id="navLinks">
-                <a href="#features">Features</a>
                 <a href="#engine">Engine</a>
+                <a href="#features">Features</a>
+                <a href="#compare">Free vs Pro</a>
+                <a href="changelog.html">Changelog</a>
                 <a href="#scan">Spam Scan</a>
-                <a href="#integrations">Integrations</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
                 <a href="blog/index.html">Blog</a>
@@ -87,72 +88,44 @@
         <!-- ══ Hero ══════════════════════════════════════════════════════════════ -->
         <section class="hero">
             <div class="hero__bg" aria-hidden="true">
-                <div class="hero__grid-pattern"></div>
+                <span class="shape shape--sq"></span>
+                <span class="shape shape--tri"></span>
+                <span class="shape shape--ring"></span>
+                <span class="shape shape--dot"></span>
             </div>
             <div class="wrap hero__inner">
-                <span class="pill reveal"><span class="pill__dot"></span> 100% self-contained · no cloud, no data leaks</span>
-                <h1 class="reveal" data-d="1">Best WordPress <span class="underline-wrap">Anti-Spam<svg class="underline-svg" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M6,15 Q150,-3 294,10" stroke="#ef4444" stroke-width="7" stroke-linecap="round" fill="none"/></svg></span> Plugin</h1>
+                <h1 class="reveal">Best WordPress <span class="underline-wrap">Anti-Spam<svg class="underline-svg" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M6,15 Q150,-3 294,10" stroke="#ef4444" stroke-width="7" stroke-linecap="round" fill="none"/></svg></span> Plugin</h1>
                 <p class="hero__sub reveal" data-d="1"><b>Multi-layer detection,</b> zero cloud dependency</p>
-                <p class="lead reveal" data-d="2">Spamify blocks disposable emails, spam IPs, bots, VPNs and junk content across <strong>every</strong> WordPress form — validated live on your own server.</p>
+                <p class="lead reveal" data-d="2">Spamify scores every email, IP, bot and message across your WordPress forms, comments and sign-ups — entirely on your own server, with no coding and no external accounts.</p>
                 <div class="hero__actions reveal" data-d="2">
-                    <a class="btn btn--soft btn--lg" href="#engine">See how it works</a>
+                    <a class="btn btn--soft btn--lg" href="#features">See all features</a>
                     <a class="btn btn--primary btn--lg" href="https://wordpress.org/plugins/spamify/" target="_blank" rel="noopener">Install free plugin</a>
                 </div>
 
                 <div class="hero__icons reveal" data-d="3">
-                    <div class="hero__icon-badge" style="--ic-bg:#eef0ff;--ic-fg:#6366f1">
-                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 8 4 12 9 16"/><polyline points="15 8 20 12 15 16"/></svg></span>
-                        <small>Syntax &amp; Patterns</small>
-                    </div>
                     <div class="hero__icon-badge" style="--ic-bg:#e0f2fe;--ic-fg:#0284c7">
                         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><polyline points="4 8 12 13 20 8"/></svg></span>
                         <small>Live SMTP + MX</small>
                     </div>
-                    <div class="hero__icon-badge" style="--ic-bg:#dcfce7;--ic-fg:#059669">
-                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M6.5 7l1 12a2 2 0 0 0 2 1.8h5a2 2 0 0 0 2-1.8l1-12"/><line x1="10" y1="11" x2="10" y2="16"/><line x1="14" y1="11" x2="14" y2="16"/></svg></span>
-                        <small>Disposable Domains</small>
-                    </div>
-                    <div class="hero__icon-badge" style="--ic-bg:#fef3c7;--ic-fg:#d97706">
-                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><line x1="3.5" y1="12" x2="20.5" y2="12"/><path d="M12 3.5c2.5 2.2 4 5.2 4 8.5s-1.5 6.3-4 8.5"/><path d="M12 3.5c-2.5 2.2-4 5.2-4 8.5s1.5 6.3 4 8.5"/></svg></span>
-                        <small>IP Threat &amp; DNSBL</small>
-                    </div>
-                    <div class="hero__icon-badge" style="--ic-bg:#ffe4e6;--ic-fg:#e11d48">
-                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6.5 5.5 12 5.5 21.5 12 21.5 12 17.5 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/><line x1="4" y1="20" x2="20" y2="4"/></svg></span>
-                        <small>VPN / Proxy / Tor</small>
-                    </div>
                     <div class="hero__icon-badge" style="--ic-bg:#f5edff;--ic-fg:#7c3aed">
                         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 13 7 13 9 7 13 19 15.5 13 21.5 13"/></svg></span>
-                        <small>Behaviour &amp; Honeypot</small>
+                        <small>Bot &amp; Honeypot</small>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ══ Forms / integrations ═════════════════════════════════════════════ -->
-        <section class="section forms">
-            <div class="wrap">
-                <div class="section__head reveal">
-                    <span class="eyebrow">100+ Integrations</span>
-                    <h2>Works with the forms you already use</h2>
-                    <p>Spamify auto-detects and protects every major form, comment and registration flow the moment it's active — no shortcodes, no per-form setup.</p>
-                </div>
-
-                <div class="forms__grid reveal" data-d="1">
-                    <div class="forms__logo"><img src="assets/logos/wordpress.svg" alt="WordPress" loading="lazy"><span>WordPress Core</span></div>
-                    <div class="forms__logo"><img src="assets/logos/contact-form-7.png" alt="Contact Form 7" loading="lazy"><span>Contact Form 7</span></div>
-                    <div class="forms__logo"><img src="assets/logos/wpforms.png" alt="WPForms" loading="lazy"><span>WPForms</span></div>
-                    <div class="forms__logo"><img src="assets/logos/gravity-forms.svg" alt="Gravity Forms" loading="lazy"><span>Gravity Forms</span></div>
-                    <div class="forms__logo"><img src="assets/logos/ninja-forms.png" alt="Ninja Forms" loading="lazy"><span>Ninja Forms</span></div>
-                    <div class="forms__logo"><img src="assets/logos/fluent-forms.png" alt="Fluent Forms" loading="lazy"><span>Fluent Forms</span></div>
-                    <div class="forms__logo"><img src="assets/logos/woocommerce.png" alt="WooCommerce" loading="lazy"><span>WooCommerce</span></div>
-                    <div class="forms__logo forms__logo--more"><span class="forms__more-count">100+</span><span>More via custom targets</span></div>
-                </div>
-
-                <div class="forms__custom reveal" data-d="2">
-                    <div class="forms__custom-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none"/><line x1="12" y1="1.5" x2="12" y2="4.5"/><line x1="12" y1="19.5" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4.5" y2="12"/><line x1="19.5" y1="12" x2="22.5" y2="12"/></svg></div>
-                    <div class="forms__custom-copy">
-                        <h3>Not on the list? Use a custom target.</h3>
-                        <p>Point Spamify at any form on your site with a CSS selector — new page builder, niche plugin or a hand-rolled HTML form all work the same way. No native integration required, no code to write.</p>
+                    <div class="hero__icon-badge" style="--ic-bg:#dcfce7;--ic-fg:#059669">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><polyline points="8 14 11 17 16 12"/></svg></span>
+                        <small>Review Queue</small>
+                    </div>
+                    <div class="hero__icon-badge" style="--ic-bg:#fef3c7;--ic-fg:#d97706">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><line x1="16" y1="16" x2="21" y2="21"/></svg></span>
+                        <small>Retro Spam Scan</small>
+                    </div>
+                    <div class="hero__icon-badge" style="--ic-bg:#eef0ff;--ic-fg:#6366f1">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="15" r="4.5"/><path d="M10.5 11.5L20 2"/><path d="M16 6l3 3"/></svg></span>
+                        <small>Hide Login</small>
+                    </div>
+                    <div class="hero__icon-badge" style="--ic-bg:#ffe4e6;--ic-fg:#e11d48">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><line x1="3.5" y1="12" x2="20.5" y2="12"/><path d="M12 3.5c2.5 2.2 4 5.2 4 8.5s-1.5 6.3-4 8.5"/><path d="M12 3.5c-2.5 2.2-4 5.2-4 8.5s1.5 6.3 4 8.5"/></svg></span>
+                        <small>IP Threat &amp; Geo</small>
                     </div>
                 </div>
             </div>
@@ -163,7 +136,7 @@
             <div class="wrap stats__grid">
                 <div class="stat reveal"><b data-count="7">0</b><span>detection layers</span></div>
                 <div class="stat reveal" data-d="1"><b data-count="148078" data-suffix="+">0</b><span>disposable domains</span></div>
-                <div class="stat reveal" data-d="2"><b>GDPR</b><span>Compliance</span></div>
+                <div class="stat reveal" data-d="2"><b>0</b><span>bytes sent to the cloud</span></div>
                 <div class="stat reveal" data-d="3"><b>100+</b><span>form integrations</span></div>
             </div>
         </section>
@@ -178,81 +151,31 @@
                 </div>
                 <div class="engine__grid">
                     <ul class="layers reveal">
-                        <li><span class="layers__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 8 4 12 9 16"/><polyline points="15 8 20 12 15 16"/></svg></span>
-                            <div><b>Syntax &amp; patterns</b><small>Rejects malformed addresses, gibberish local-parts and typo-squatted or look-alike domains before any network call runs.</small></div><span class="layers__free">Free</span></li>
-                        <li><span class="layers__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><polyline points="4 8 12 13 20 8"/></svg></span>
-                            <div><b>Live SMTP + MX</b><small>Verifies the domain's MX records, then asks the receiving mail server in real time whether the mailbox actually exists.</small></div><span class="layers__free">Free</span></li>
-                        <li><span class="layers__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M6.5 7l1 12a2 2 0 0 0 2 1.8h5a2 2 0 0 0 2-1.8l1-12"/><line x1="10" y1="11" x2="10" y2="16"/><line x1="14" y1="11" x2="14" y2="16"/></svg></span>
-                            <div><b>Disposable domains</b><small>Blocks 100,000+ throwaway and temporary-inbox providers, with the blocklist refreshed automatically.</small></div><span class="layers__pro">Pro</span></li>
-                        <li><span class="layers__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><line x1="3.5" y1="12" x2="20.5" y2="12"/><path d="M12 3.5c2.5 2.2 4 5.2 4 8.5s-1.5 6.3-4 8.5"/><path d="M12 3.5c-2.5 2.2-4 5.2-4 8.5s1.5 6.3 4 8.5"/></svg></span>
-                            <div><b>IP threat &amp; DNSBL</b><small>Matches the sender's IP against aggregated abuse feeds and DNS blocklists of known spam and botnet sources.</small></div><span class="layers__pro">Pro</span></li>
-                        <li><span class="layers__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6.5 5.5 12 5.5 21.5 12 21.5 12 17.5 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/><line x1="4" y1="20" x2="20" y2="4"/></svg></span>
-                            <div><b>VPN / proxy / Tor</b><small>Flags anonymised traffic from VPNs, open proxies, Tor exit nodes and datacenter hosting ranges.</small></div><span class="layers__pro">Pro</span></li>
-                        <li><span class="layers__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="11" height="15" rx="1.5"/><line x1="6.5" y1="7" x2="12.5" y2="7"/><line x1="6.5" y1="10.5" x2="12.5" y2="10.5"/><circle cx="16.5" cy="15.5" r="3"/><line x1="18.7" y1="17.7" x2="21" y2="20"/></svg></span>
-                            <div><b>Content analysis</b><small>Scans the submission for link stuffing, spam keywords and homoglyph or Unicode obfuscation tricks.</small></div><span class="layers__pro">Pro</span></li>
-                        <li><span class="layers__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 13 7 13 9 7 13 19 15.5 13 21.5 13"/></svg></span>
-                            <div><b>Behaviour &amp; honeypot</b><small>Catches bots with hidden honeypot fields, submission-timing checks and per-sender reputation history.</small></div><span class="layers__pro">Pro</span></li>
-                        <li><span class="layers__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="15" cy="12" r="2"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="11" cy="18" r="2"/></svg></span>
-                            <div><b>Custom rules</b><small>Layer your own if-this-then-that logic on top to block, flag or allow by any field or signal.</small></div><span class="layers__pro">Pro</span></li>
+                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 8 4 12 9 16"/><polyline points="15 8 20 12 15 16"/></svg></span>
+                            <div><b>Syntax &amp; patterns</b><small>Rejects malformed addresses, gibberish local-parts and keyboard-mash before any network call runs.</small></div><span class="tag tag--free">Free</span></li>
+                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><polyline points="4 8 12 13 20 8"/></svg></span>
+                            <div><b>Live SMTP + MX</b><small>Checks the domain's mail records, then asks the receiving server whether the mailbox exists — greylisting handled with an automatic re-check.</small></div><span class="tag tag--free">Free</span></li>
+                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 13 7 13 9 7 13 19 15.5 13 21.5 13"/></svg></span>
+                            <div><b>Behaviour &amp; honeypot</b><small>Hidden decoy fields, minimum fill time, mouse/scroll/keystroke rhythm, headless-browser detection and a JS challenge.</small></div><span class="tag tag--free">Free</span></li>
+                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M6.5 7l1 12a2 2 0 0 0 2 1.8h5a2 2 0 0 0 2-1.8l1-12"/></svg></span>
+                            <div><b>Disposable domains</b><small>Blocks 100,000+ throwaway and temporary-inbox providers, refreshed automatically.</small></div><span class="tag tag--pro">Pro</span></li>
+                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><line x1="3.5" y1="12" x2="20.5" y2="12"/><path d="M12 3.5c2.5 2.2 4 5.2 4 8.5s-1.5 6.3-4 8.5"/><path d="M12 3.5c-2.5 2.2-4 5.2-4 8.5s1.5 6.3 4 8.5"/></svg></span>
+                            <div><b>IP threat &amp; DNSBL</b><small>Matches the sender's IP against aggregated abuse feeds and DNS blocklists.</small></div><span class="tag tag--pro">Pro</span></li>
+                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6.5 5.5 12 5.5 21.5 12 21.5 12 17.5 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/><line x1="4" y1="20" x2="20" y2="4"/></svg></span>
+                            <div><b>VPN / proxy / Tor</b><small>Flags anonymised traffic from VPNs, open proxies, Tor exit nodes and datacenter ranges.</small></div><span class="tag tag--pro">Pro</span></li>
+                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="11" height="15" rx="1.5"/><line x1="6.5" y1="7" x2="12.5" y2="7"/><line x1="6.5" y1="10.5" x2="12.5" y2="10.5"/><circle cx="16.5" cy="15.5" r="3"/><line x1="18.7" y1="17.7" x2="21" y2="20"/></svg></span>
+                            <div><b>Content analysis</b><small>Link stuffing, spam keywords and homoglyph or Unicode obfuscation.</small></div><span class="tag tag--pro">Pro</span></li>
+                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="15" cy="12" r="2"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="11" cy="18" r="2"/></svg></span>
+                            <div><b>Reputation &amp; custom rules</b><small>Per-sender history plus your own if-this-then-that logic to block, flag or allow by any field.</small></div><span class="tag tag--pro">Pro</span></li>
                     </ul>
                     <div class="engine__panel reveal" data-d="1">
                         <div class="score glass">
                             <div class="score__ring">
-                                <svg viewBox="0 0 120 120">
-                            <circle cx="60" cy="60" r="52" class="score__track"/>
-                            <circle cx="60" cy="60" r="52" class="score__fill" id="scoreArc"/>
-                        </svg>
+                                <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="score__track"/><circle cx="60" cy="60" r="52" class="score__fill" id="scoreArc"/></svg>
                                 <div class="score__num"><b id="scoreNum">0</b><span>/100</span></div>
                             </div>
                             <div class="score__verdict" id="scoreVerdict">Analysing…</div>
                             <div class="score__reasons" id="scoreReasons"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ══ Spam Scan ═════════════════════════════════════════════════════════ -->
-        <section class="section scan" id="scan">
-            <div class="wrap scan__grid">
-                <div class="scan__copy reveal">
-                    <span class="eyebrow">New · Retro Spam Scan</span>
-                    <h2>Already have spam sitting in your database? Scan for it.</h2>
-                    <p>Spamify only judges submissions it actually sees — every account and comment that predates the plugin was never scored. The Spam Scan finds them, batch by batch, and shows the evidence behind every verdict.</p>
-                    <ul class="checklist">
-                        <li>Email pattern analysis — the same syntax layer that judges live submissions</li>
-                        <li>Network intelligence — flags Tor, VPN, hosting/datacenter and consumer-ISP sources</li>
-                        <li>Profile signals — bio links, suspicious URLs, machine-generated usernames</li>
-                        <li>Bulk-registration clustering — catches uncommon domains shared by 5+ accounts</li>
-                        <li>Prior Spamify history and dormancy, used as corroborating evidence only</li>
-                    </ul>
-                    <p class="scan__note">Runs in safe batches across thousands of accounts, works the same way for legacy comments, and never offers an admin, editor, or your own account for deletion.</p>
-                </div>
-
-                <div class="scan__art reveal" data-d="1">
-                    <div class="scancard glass">
-                        <div class="scancard__head">
-                            <span class="dotrow"><i></i><i></i><i></i></span>
-                            <span class="scancard__title">Spam Scan · Users</span>
-                        </div>
-                        <div class="scanrow">
-                            <div class="scanrow__who"><b>grxtchen88@mailhost-temp.net</b><small>Registered 2022-04-11</small></div>
-                            <span class="scanbadge scanbadge--spam">92 · Spam</span>
-                        </div>
-                        <div class="scanrow">
-                            <div class="scanrow__who"><b>maria.jenkins@gmail.com</b><small>Registered 2021-11-02</small></div>
-                            <span class="scanbadge scanbadge--clean">4 · Clean</span>
-                        </div>
-                        <div class="scanrow">
-                            <div class="scanrow__who"><b>user48213@freemailbox.top</b><small>Registered 2023-01-27</small></div>
-                            <span class="scanbadge scanbadge--warn">47 · Suspicious</span>
-                        </div>
-                        <div class="scancard__foot">
-                            <span class="scancard__found"><b>1,842</b> flagged of 9,306 scanned</span>
-                            <div class="scancard__actions">
-                                <span class="scanbtn scanbtn--ghost">Keep</span>
-                                <span class="scanbtn scanbtn--danger">Delete</span>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -264,89 +187,214 @@
             <div class="wrap">
                 <div class="section__head reveal">
                     <span class="eyebrow">Everything included</span>
-                    <h2>A complete spam-defence toolkit</h2>
-                    <p>From invisible CAPTCHA to a full network firewall and a geographic report — one plugin, zero external services.</p>
+                    <h2>One plugin. The whole spam-defence workflow.</h2>
+                    <p>Detect, review, investigate, report — without a single external service.</p>
                 </div>
-                <div class="cards">
-                    <article class="card reveal">
-                        <div class="card__ico grad-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg></div>
-                        <h3>Invisible CAPTCHA</h3>
-                        <p>Cloudflare Turnstile or reCAPTCHA v3 with your own keys — no puzzles, no friction for real visitors.</p>
+                <div class="bento">
+                    <article class="tile tile--wide reveal">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><polyline points="8 14 11 17 16 12"/></svg></span>
+                        <h3>Review Queue <span class="tag tag--free">Free</span></h3>
+                        <p>Every currently-flagged submission — comments, registrations, profile changes and every connected form — in one screen, instead of scattered across native Comments and Users.</p>
+                        <ul><li>Filter, approve or reject in bulk</li><li>"Dismiss all" for the current filter</li><li>Evidence shown behind every verdict</li></ul>
                     </article>
-                    <article class="card reveal" data-d="1">
-                        <div class="card__ico grad-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 4 14 11 14 10 22 20 10 13 10 14 2"/></svg></div>
+                    <article class="tile tile--wide reveal" data-d="1">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><circle cx="12" cy="7" r="2.2" fill="currentColor" stroke="none"/><circle cx="12" cy="13" r="2.2" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="2.2" fill="currentColor" stroke="none"/></svg></span>
+                        <h3>Timeline <span class="tag tag--free">Free</span></h3>
+                        <p>Look up one email address or IP and see its full chronological history across every zone — what it tried, when, and the evidence behind each hit.</p>
+                        <ul><li>Spot repeat offenders across forms</li><li>Confirm a false positive in seconds</li></ul>
+                    </article>
+                    <article class="tile reveal">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></span>
+                        <h3>Digest reports</h3>
+                        <p>Daily, weekly or monthly email with totals, source breakdown and top offending domains — optionally with a CSV attached.</p>
+                    </article>
+                    <article class="tile reveal" data-d="1">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="9" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="5" rx="1.5"/><rect x="13.5" y="11" width="7.5" height="10" rx="1.5"/><rect x="3" y="15" width="7.5" height="6" rx="1.5"/></svg></span>
+                        <h3>Dashboard &amp; widget</h3>
+                        <p>Per-day charts, traffic by form plugin with trend sparklines, and a WP Dashboard widget with today's and this week's numbers.</p>
+                    </article>
+                    <article class="tile reveal" data-d="2">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="15" r="4.5"/><path d="M10.5 11.5L20 2"/><path d="M16 6l3 3"/><path d="M13 9l2.5 2.5"/></svg></span>
+                        <h3>Hide login</h3>
+                        <p>Move wp-login.php (and /wp-admin/) to a secret address and 404 the old one. Multisite aware, with a wp-config constant to enforce one address network-wide.</p>
+                    </article>
+                    <article class="tile reveal">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 0 1 16 0"/><line x1="12" y1="16" x2="15.5" y2="11"/><circle cx="12" cy="16" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+                        <h3>Rate limiting</h3>
+                        <p>Throttle submissions per IP, with independent budgets per zone so a noisy comment form can't starve your contact form.</p>
+                    </article>
+                    <article class="tile reveal" data-d="1">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg></span>
+                        <h3>Invisible CAPTCHA</h3>
+                        <p>Cloudflare Turnstile or reCAPTCHA v3 with your own keys — off until you opt in, and no puzzles for real visitors.</p>
+                    </article>
+                    <article class="tile reveal" data-d="2">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+                        <h3>Privacy by design</h3>
+                        <p>Nothing leaves your server. IP anonymisation, scheduled log purging and an on-demand purge button are built in.</p>
+                    </article>
+                    <article class="tile reveal">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 4 14 11 14 10 22 20 10 13 10 14 2"/></svg></span>
                         <h3>Real-time validation</h3>
                         <p>Warns visitors about invalid or spammy addresses <em>as they type</em>, before they ever submit.</p>
                     </article>
-                    <article class="card reveal" data-d="2">
-                        <div class="card__ico grad-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 0 1 16 0"/><line x1="12" y1="16" x2="15.5" y2="11"/><circle cx="12" cy="16" r="1.2" fill="currentColor" stroke="none"/></svg></div>
-                        <h3>Rate limiting</h3>
-                        <p>Throttle how many submissions a single IP can make — flood and script abuse stopped cold.</p>
+                    <article class="tile reveal" data-d="1">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.5"/><line x1="3.5" y1="9.3" x2="20.5" y2="9.3"/><line x1="3.5" y1="14.7" x2="20.5" y2="14.7"/><line x1="12" y1="9.3" x2="12" y2="14.7"/></svg></span>
+                        <h3>Network firewall <span class="tag tag--pro">Pro</span></h3>
+                        <p>Block Tor, VPN and datacenter ASNs, bad user-agents and referrers, with escalating temporary bans.</p>
                     </article>
-                    <article class="card reveal">
-                        <div class="card__ico grad-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.5"/><line x1="3.5" y1="9.3" x2="20.5" y2="9.3"/><line x1="3.5" y1="14.7" x2="20.5" y2="14.7"/><line x1="8.5" y1="4" x2="8.5" y2="9.3"/><line x1="15.5" y1="4" x2="15.5" y2="9.3"/><line x1="12" y1="9.3" x2="12" y2="14.7"/><line x1="8.5" y1="14.7" x2="8.5" y2="20"/><line x1="15.5" y1="14.7" x2="15.5" y2="20"/></svg></div>
-                        <h3>Network firewall</h3>
-                        <p>Block Tor, VPN &amp; datacenter ASNs, bad user-agents/referrers, with escalating temporary bans.</p>
-                    </article>
-                    <article class="card reveal" data-d="1">
-                        <div class="card__ico grad-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 10c0 6.5-8.5 12-8.5 12s-8.5-5.5-8.5-12a8.5 8.5 0 0 1 17 0z"/><circle cx="12" cy="10" r="2.8"/></svg></div>
-                        <h3>Geo report &amp; blocking</h3>
-                        <p>A world-map choropleth of where your spam comes from, plus offline country blocking.</p>
-                    </article>
-                    <article class="card reveal" data-d="2">
-                        <div class="card__ico grad-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="3" width="13" height="18" rx="2"/><path d="M9 3v2.2h6V3"/><polyline points="8.5 11.5 10.3 13.3 14.5 9"/><line x1="8.5" y1="16.5" x2="14.5" y2="16.5"/></svg></div>
-                        <h3>Deliverability tools</h3>
-                        <p>Bulk email-list verification and an SPF / DMARC / DKIM checker, right in your dashboard.</p>
-                    </article>
-                    <article class="card reveal">
-                        <div class="card__ico grad-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-                        <h3>Privacy by design</h3>
-                        <p>Nothing leaves your server. GDPR IP-anonymisation and automatic log purging built in.</p>
-                    </article>
-                    <article class="card reveal" data-d="1">
-                        <div class="card__ico grad-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 16 7 16 9.5 9 13 19 15.5 12 21.5 12"/></svg></div>
-                        <h3>Uptime monitor</h3>
-                        <p>Ping your URLs on a schedule and get emailed the moment a site goes down — or slows.</p>
-                    </article>
-                    <article class="card reveal" data-d="2">
-                        <div class="card__ico grad-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div>
-                        <h3>Setup in a minute</h3>
-                        <p>A guided wizard, WP Site-Health checks and import/export get you protected instantly.</p>
-                    </article>
-                    <article class="card reveal">
-                        <div class="card__ico grad-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="15" r="4.5"/><path d="M10.5 11.5L20 2"/><path d="M16 6l3 3"/><path d="M13 9l2.5 2.5"/></svg></div>
-                        <h3>Hide login</h3>
-                        <p>Move wp-login.php to an address of your own and 404 the old one — brute-force bots have nothing left to hammer. Multisite aware.</p>
+                    <article class="tile reveal" data-d="2">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 16 7 16 9.5 9 13 19 15.5 12 21.5 12"/></svg></span>
+                        <h3>Uptime &amp; deliverability <span class="tag tag--pro">Pro</span></h3>
+                        <p>Scheduled URL checks with email alerts, bulk list verification and an SPF / DKIM / DMARC checker.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- ══ Geo highlight ═════════════════════════════════════════════════════ -->
+        <!-- ══ Free vs Pro ═══════════════════════════════════════════════════════ -->
+        <section class="section compare" id="compare">
+            <div class="wrap">
+                <div class="section__head reveal">
+                    <span class="eyebrow">Free vs Pro</span>
+                    <h2>Everything in each edition</h2>
+                    <p>The free plugin is a complete, standalone anti-spam toolkit. Pro adds the heavy-duty threat intelligence and site-wide protection.</p>
+                </div>
+                <div class="compare__grid">
+                    <article class="compare__col reveal">
+                        <div class="compare__head"><h3>Free</h3><span class="tag tag--free">WordPress.org</span></div>
+                        <ul>
+                            <li>Syntax &amp; pattern validation</li>
+                            <li>Live SMTP + MX mailbox verification</li>
+                            <li>Behaviour &amp; bot signals (mouse, keystroke rhythm, headless detection, JS challenge)</li>
+                            <li>Honeypot &amp; minimum fill time</li>
+                            <li>Per-IP and per-zone rate limiting</li>
+                            <li>Invisible CAPTCHA (Turnstile / reCAPTCHA v3, your keys)</li>
+                            <li>Real-time inline email validation</li>
+                            <li>Allowlist for domains, emails and IP / CIDR ranges</li>
+                            <li>Hide login with multisite support</li>
+                            <li>Review Queue &amp; Timeline</li>
+                            <li>Retro Spam Scan with Review candidates</li>
+                            <li>Dashboard, WP widget &amp; traffic-by-form trends</li>
+                            <li>Daily / weekly / monthly digest with CSV</li>
+                            <li>GDPR: IP anonymisation, retention &amp; purge now</li>
+                            <li>Site Health checks &amp; setup wizard</li>
+                            <li>Import / export settings</li>
+                            <li>WordPress core, Contact Form 7, WPForms, Jetpack, Elementor</li>
+                            <li>Translations: Deutsch, Español, Français</li>
+                        </ul>
+                        <a class="btn btn--soft btn--block" href="https://wordpress.org/plugins/spamify/" target="_blank" rel="noopener">Download free</a>
+                    </article>
+                    <article class="compare__col compare__col--pro reveal" data-d="1">
+                        <div class="compare__head"><h3>Pro</h3><span class="tag tag--pro">Everything in Free, plus</span></div>
+                        <ul>
+                            <li>Disposable-domain blocking (100,000+, auto-refreshed)</li>
+                            <li>IP threat intel &amp; DNSBL feeds</li>
+                            <li>VPN, proxy &amp; Tor detection</li>
+                            <li>Datacenter / hosting range detection</li>
+                            <li>Content analysis: link stuffing &amp; spam keywords</li>
+                            <li>Homoglyph &amp; Unicode obfuscation detection</li>
+                            <li>Behavioural sender reputation</li>
+                            <li>Custom rules engine (if-this-then-that)</li>
+                            <li>Network firewall with escalating temporary bans</li>
+                            <li>Bad user-agent &amp; referrer blocking</li>
+                            <li>ASN blocking</li>
+                            <li>Geo report world map</li>
+                            <li>Offline country blocking</li>
+                            <li>Uptime monitor with email alerts</li>
+                            <li>Bulk email-list verification</li>
+                            <li>SPF / DKIM / DMARC checker</li>
+                            <li>WooCommerce, Gravity, Ninja &amp; Fluent Forms</li>
+                            <li>Newsletter opt-ins &amp; universal custom-target connector</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <a class="btn btn--primary btn--block" href="#pricing">See Pro plans</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Spam Scan ═════════════════════════════════════════════════════════ -->
+        <section class="section scan" id="scan">
+            <div class="wrap split">
+                <div class="split__copy reveal">
+                    <span class="eyebrow">Retro Spam Scan</span>
+                    <h2>Already have spam sitting in your database? Scan for it.</h2>
+                    <p>Spamify only judges submissions it sees — every account and comment that predates the plugin was never scored. The Spam Scan finds them, batch by batch, and shows the evidence behind every verdict.</p>
+                    <ul class="checklist">
+                        <li>Email pattern analysis — the same syntax layer as live submissions</li>
+                        <li>Network intelligence — Tor, VPN, hosting and consumer-ISP sources</li>
+                        <li>Profile signals — bio links, suspicious URLs, machine-generated usernames</li>
+                        <li>Bulk-registration clustering — uncommon domains shared by 5+ accounts</li>
+                        <li><b>New:</b> "Review candidates" — clean-looking accounts with prior flagged or blocked history</li>
+                    </ul>
+                    <p class="scan__note">Runs in safe batches across thousands of accounts, works the same for legacy comments, and never offers an admin, editor or your own account for deletion.</p>
+                </div>
+
+                <div class="reveal" data-d="1">
+                    <div class="scancard glass">
+                        <div class="mock__top"><span class="dotrow"><i></i><i></i><i></i></span><span class="mock__title">Spam Scan · Users</span></div>
+                        <div class="scantabs"><span>All</span><span>Spam</span><span class="on">Review candidates</span></div>
+                        <div class="scanrow">
+                            <div class="feed__who"><b>grxtchen88@mailhost-temp.net</b><small>Registered 2022-04-11</small></div>
+                            <span class="badge badge--spam">92 · Spam</span>
+                        </div>
+                        <div class="scanrow scanrow--hint">
+                            <div class="feed__who"><b>j.ortega@clean-looking.com</b><small>Clean now · 3 earlier blocks on file</small></div>
+                            <span class="badge badge--warn">Review</span>
+                        </div>
+                        <div class="scanrow">
+                            <div class="feed__who"><b>user48213@freemailbox.top</b><small>Registered 2023-01-27</small></div>
+                            <span class="badge badge--warn">47 · Suspicious</span>
+                        </div>
+                        <div class="scancard__foot">
+                            <span><b>1,842</b> flagged of 9,306 scanned</span>
+                            <span><span class="scanbtn scanbtn--ghost">Keep</span><span class="scanbtn scanbtn--danger">Delete</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Geo ═══════════════════════════════════════════════════════════════ -->
         <section class="section geo">
-            <div class="wrap geo__grid">
-                <div class="geo__copy reveal">
-                    <span class="eyebrow">Know your enemy</span>
+            <div class="wrap split">
+                <div class="split__copy reveal">
+                    <span class="eyebrow">Know your enemy <span class="tag tag--pro">Pro</span></span>
                     <h2>See where spam really comes from</h2>
-                    <p>The Pro geographic report resolves every blocked and flagged submission to its country and paints a Google-Analytics-style world map — powered by a free, offline database. No third-party analytics, no tracking.</p>
+                    <p>The geographic report resolves every blocked and flagged submission to its country and paints a world map — powered by a free, offline database. No third-party analytics, no tracking.</p>
                     <ul class="checklist">
                         <li>Interactive choropleth, zoom &amp; pan</li>
                         <li>Ranked country breakdown &amp; share</li>
-                        <li>Fully offline — free DB-IP database</li>
+                        <li>Offline country blocking from the same data</li>
                     </ul>
                 </div>
-                <div class="geo__art reveal" data-d="1">
+                <div class="reveal" data-d="1">
                     <div class="mapcard glass">
-                        <div class="mapcard__head">
-                            <span class="mapcard__dots"><i></i><i></i><i></i></span>
-                            <span class="mapcard__title">Spam origins · last 30 days</span>
-                        </div>
+                        <div class="mock__top"><span class="dotrow"><i></i><i></i><i></i></span><span class="mapcard__title">Spam origins · last 30 days</span></div>
                         <div class="worldmap" id="spamMap">
                             <img class="worldmap__img" src="assets/world.svg" width="1000" height="363" alt="World map showing where blocked spam originates" loading="lazy">
                         </div>
                         <ol class="maprank" id="spamRank" aria-label="Top spam origin countries"></ol>
                         <div class="mapcard__legend"><span>Fewer</span><i style="background:#8ab4f8"></i><i style="background:#4285f4"></i><i style="background:#1967d2"></i><i style="background:#174ea6"></i><i style="background:#0f3d86"></i><span>More</span></div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Admin experience ══════════════════════════════════════════════════ -->
+        <section class="section control">
+            <div class="wrap">
+                <div class="section__head reveal">
+                    <span class="eyebrow">Built for admins</span>
+                    <h2>Set it up in a minute. Stay in control after.</h2>
+                    <p>Small touches that make Spamify pleasant to run every day.</p>
+                </div>
+                <div class="control__grid">
+                    <div class="mini reveal"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span><h3>One-minute wizard</h3><p>Auto-detects your active form plugins and pre-checks only those zones.</p></div>
+                    <div class="mini reveal" data-d="1"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><h3>Site Health checks</h3><p>Logging, DNS and mailbox verification show up in WordPress Site Health.</p></div>
+                    <div class="mini reveal" data-d="2"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><polyline points="7 10 12 15 17 10"/><path d="M5 19h14"/></svg></span><h3>Import / export</h3><p>Move your whole configuration between sites in one click.</p></div>
+                    <div class="mini reveal" data-d="3"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3c2.500 2.600 3.800 5.600 3.800 9S14.500 18.400 12 21c-2.500-2.600-3.800-5.600-3.800-9S9.500 5.600 12 3z"/></svg></span><h3>Translated</h3><p>Deutsch, Español and Français — admin and visitor messages. All strings use <code>wp.i18n</code>.</p></div>
                 </div>
             </div>
         </section>
@@ -359,20 +407,28 @@
                     <h2>Drops into the forms you already use</h2>
                     <p>Auto-detects and protects your forms — no shortcodes, no per-form setup.</p>
                 </div>
-                <div class="chips reveal">
-                    <span class="chip">WordPress core</span>
-                    <span class="chip">Comments</span>
-                    <span class="chip">Registration</span>
-                    <span class="chip">Contact Form 7</span>
-                    <span class="chip">WPForms</span>
-                    <span class="chip">Jetpack Forms</span>
-                    <span class="chip">Elementor</span>
-                    <span class="chip chip--pro">WooCommerce</span>
-                    <span class="chip chip--pro">Gravity Forms</span>
-                    <span class="chip chip--pro">Ninja Forms</span>
-                    <span class="chip chip--pro">Fluent Forms</span>
-                    <span class="chip chip--pro">Newsletter opt-ins</span>
-                    <span class="chip chip--pro">Any form (universal)</span>
+                <div class="strip__row reveal">
+                    <div><img src="assets/logos/wordpress.svg" alt="" loading="lazy">WordPress</div>
+                    <div><img src="assets/logos/comments.svg" alt="" loading="lazy">Comments</div>
+                    <div><img src="assets/logos/registration.svg" alt="" loading="lazy">Registration</div>
+                    <div><img src="assets/logos/contact-form-7.png" alt="" loading="lazy">Contact Form 7</div>
+                    <div><img src="assets/logos/wpforms.png" alt="" loading="lazy">WPForms</div>
+                    <div><img src="assets/logos/jetpack.svg" alt="" loading="lazy">Jetpack Forms</div>
+                    <div><img src="assets/logos/elementor.svg" alt="" loading="lazy">Elementor</div>
+                    <div><img src="assets/logos/woocommerce.png" alt="" loading="lazy">WooCommerce <span class="tag tag--pro">Pro</span></div>
+                    <div><img src="assets/logos/gravity-forms.svg" alt="" loading="lazy">Gravity Forms <span class="tag tag--pro">Pro</span></div>
+                    <div><img src="assets/logos/ninja-forms.png" alt="" loading="lazy">Ninja Forms <span class="tag tag--pro">Pro</span></div>
+                    <div><img src="assets/logos/fluent-forms.png" alt="" loading="lazy">Fluent Forms <span class="tag tag--pro">Pro</span></div>
+                    <div><img src="assets/logos/newsletter.svg" alt="" loading="lazy">Newsletters <span class="tag tag--pro">Pro</span></div>
+                    <div><img src="assets/logos/any-form.svg" alt="" loading="lazy">Any form (universal) <span class="tag tag--pro">Pro</span></div>
+                    <div class="strip__more"><b>100+</b>More via custom targets</div>
+                </div>
+                <div class="forms__custom reveal" data-d="1">
+                    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none"/></svg></span>
+                    <div>
+                        <h3>Not on the list? Use a custom target.</h3>
+                        <p>Point Spamify at any form with a CSS selector — a new page builder, a niche plugin or a hand-rolled HTML form all work the same way. No native integration, no code to write.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -392,9 +448,10 @@
                         <p class="tier__sub">On WordPress.org</p>
                         <ul>
                             <li>Syntax + live SMTP/MX checks</li>
-                            <li>Invisible CAPTCHA</li>
-                            <li>Honeypot, timing &amp; rate limiting</li>
-                            <li>Allowlist &amp; GDPR tools</li>
+                            <li>Behaviour, honeypot &amp; timing</li>
+                            <li>Rate limiting &amp; invisible CAPTCHA</li>
+                            <li>Review Queue, Timeline &amp; digests</li>
+                            <li>Hide login, allowlist &amp; GDPR tools</li>
                             <li>WP core, CF7, WPForms, Jetpack, Elementor</li>
                         </ul>
                         <a class="btn btn--soft btn--block" href="https://wordpress.org/plugins/spamify/" target="_blank" rel="noopener">Download free</a>
@@ -405,7 +462,7 @@
                         <p class="tier__sub">Up to 3 sites</p>
                         <ul>
                             <li>Everything in Free, plus…</li>
-                            <li>All 12 detection layers</li>
+                            <li>Full detection stack</li>
                             <li>IP threat-intel &amp; disposable DB</li>
                             <li>WooCommerce, Gravity, Ninja, Fluent</li>
                             <li>Email support</li>
@@ -452,23 +509,31 @@
                 <div class="acc reveal">
                     <details>
                         <summary>Does it send my data to any external service?<i></i></summary>
-                        <p>No. The engine runs entirely on your server. SMTP checks talk directly to the recipient's mail server, and the geo database is stored locally. Nothing about your visitors is sent to us or anyone else.</p>
+                        <p>No. The engine runs entirely on your server. SMTP checks talk directly to the recipient's own mail server (you can switch this off), CAPTCHA is opt-in with your own keys, and the geo database is stored locally. Nothing about your visitors is sent to us.</p>
                     </details>
                     <details>
                         <summary>Will it block real customers by mistake?<i></i></summary>
-                        <p>Every layer is tunable and you can set an allowlist for trusted domains, emails and IPs. Thresholds, hard-block rules and a "flag instead of block" mode give you full control.</p>
+                        <p>Every layer is tunable. Set an allowlist for trusted domains, emails and IPs, and choose per-signal whether to block or just flag for the Review Queue. Flag Threshold only flags; only Block Threshold rejects.</p>
+                    </details>
+                    <details>
+                        <summary>What if spam already got into my site?<i></i></summary>
+                        <p>Run the Spam Scan. It scores existing users and comments in safe batches, shows the evidence, and never offers admins, editors or your own account for deletion.</p>
                     </details>
                     <details>
                         <summary>Do I need a paid CAPTCHA service?<i></i></summary>
-                        <p>CAPTCHA is optional and uses your own free Cloudflare Turnstile or Google reCAPTCHA v3 keys. The engine already stops most spam without it.</p>
+                        <p>No. CAPTCHA is optional and uses your own free Cloudflare Turnstile or Google reCAPTCHA v3 keys. The engine already stops most spam without it.</p>
                     </details>
                     <details>
                         <summary>What's the difference between Free and Pro?<i></i></summary>
-                        <p>Free covers core validation, CAPTCHA, honeypot, rate limiting and the common form plugins. Pro adds the full detection stack, the network firewall, the geo report, deliverability tools and every integration.</p>
+                        <p>Free covers email validation, bot and behaviour checks, rate limiting, the Review Queue, Timeline, digests and hide-login. Pro adds disposable-domain and IP threat intel, VPN/Tor detection, content analysis, the firewall, the geo report, deliverability tools and every integration.</p>
                     </details>
                     <details>
                         <summary>Is it GDPR-friendly?<i></i></summary>
-                        <p>Yes — optional IP anonymisation, automatic log purging on a schedule, and zero third-party data sharing by design.</p>
+                        <p>Yes — optional IP anonymisation, automatic log purging on a schedule (or on demand), and zero third-party data sharing by design.</p>
+                    </details>
+                    <details>
+                        <summary>Is it available in my language?<i></i></summary>
+                        <p>Admin screens and visitor-facing messages are translated into German, Spanish and French, and every string is translation-ready for more.</p>
                     </details>
                 </div>
             </div>
@@ -495,13 +560,14 @@
                 <p>Self-contained anti-spam for WordPress. No cloud, no compromise.</p>
             </div>
             <nav>
-                <h4>Product</h4><a href="#features">Features</a><a href="#engine">Engine</a><a href="#pricing">Pricing</a></nav>
+                <h4>Product</h4><a href="#features">Features</a><a href="#compare">Free vs Pro</a><a href="changelog.html">Changelog</a><a href="#engine">Engine</a><a href="#pricing">Pricing</a></nav>
             <nav>
-                <h4>Resources</h4><a href="blog/index.html">Blog</a><a href="#faq">FAQ</a><a href="https://wordpress.org/plugins/" target="_blank" rel="noopener">WordPress.org</a><a href="https://spamify-pro.github.io" target="_blank" rel="noopener">Pro add-on</a></nav>
+                <h4>Resources</h4><a href="blog/index.html">Blog</a><a href="#faq">FAQ</a><a href="https://wordpress.org/plugins/spamify/" target="_blank" rel="noopener">WordPress.org</a></nav>
         </div>
         <div class="wrap foot__bar"><span>© <span id="yr"></span> Spamify</span><span>Built for WordPress · GPL-2.0</span></div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://checkout.freemius.com/checkout.min.js"></script>
     <script src="assets/js/geomap.js" defer></script>
     <script src="assets/js/main.js" defer></script>

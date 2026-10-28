@@ -14,6 +14,12 @@ Spamify scores every form submission across seven independent layers before it r
 - **Honeypot and bot detection**: catches automated bot submissions.
 - **Offline country blocking**: geo-blocks selected countries using a local database — no external geo-IP service required.
 - **Real-time form validation**: validates fields as the visitor types.
+- **Review Queue & Timeline**: every flagged submission in one screen, plus a per-email/IP history across all zones.
+- **Retro Spam Scan**: scores existing users and comments, including a "Review candidates" filter for clean-looking accounts with prior flagged/blocked history.
+- **Hide Login**: moves wp-login.php and /wp-admin/ to a secret address (multisite aware), with a dashboard counter of denied probes.
+- **Per-zone rate limiting, flag-or-block bot signals, greylist-aware SMTP re-checks.**
+- **Digest reports, GDPR purge-now, setup wizard that auto-detects active form plugins.**
+- **Translations**: German, Spanish and French (v1.2.1).
 
 ## Supported integrations
 
@@ -24,7 +30,7 @@ Works with WordPress native comments and user registration, plus every major for
 - **Platform**: WordPress plugin.
 - **Privacy**: fully self-contained — every check runs on the site owner's own server, nothing is sent to the cloud.
 - **Category**: security / anti-spam.
-- **Pricing**: starts at $39 USD (one-time). See the pricing section for current tiers.
+- **Pricing**: free on WordPress.org; Pro from $49/year (3 sites), Agency $99/year (50 sites), Lifetime $249 one-time (unlimited sites). See the pricing section for current tiers.
 
 ## Common questions
 
